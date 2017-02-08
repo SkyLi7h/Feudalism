@@ -1,6 +1,5 @@
 <?php
 	//Fichier de configuration
-	
 	$NAME_APPLICATION = "test"; //Nom du site
 	$VERSION = "A0.1"; //Version du projet
 	$TEMPLATE = "testTemplate"; //Nom du template utilisé

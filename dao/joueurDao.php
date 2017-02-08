@@ -1,7 +1,5 @@
 <?php
 
-require_once "DAO/bddAccess.php";
-
 class joueurDao
 {
 	public function getPseudoFirstJoueur()
@@ -10,6 +8,7 @@ class joueurDao
 		
 		$reponse = $bdd->query('SELECT * FROM joueur');
 		$donnees = $reponse->fetch();	
+
 		return $donnees["pseudo"];
 	}
 }

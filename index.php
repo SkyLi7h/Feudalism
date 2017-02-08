@@ -11,7 +11,7 @@
 	//Appel du fichier de debug si besoin
 	if($DEBUG)
 	{
-		if (! @include_once("business/debug.php")) 
+		if (! @include_once("debug.php")) 
 			throw new Exception ("business/debug.php est introuvable !");
 		
 		$debug = new debugAppli();
@@ -43,7 +43,5 @@
 	//Appel du template utilisé
 	if (! @include_once("template/$TEMPLATE/index.php")) 
 			throw new Exception ("template/$TEMPLATE/index.php est introuvable !");
-		
-	require_once "template/$TEMPLATE/index.php";
 
 ?>

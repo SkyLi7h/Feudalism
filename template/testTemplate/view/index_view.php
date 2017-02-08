@@ -4,7 +4,7 @@
 	if($DEBUG)
 		$debug->show("Lancement de la view $viewClass avec en business $businessClass");	
 	
-	$business->test();
+	$business->affichePseudo();
 
 ?>
 
