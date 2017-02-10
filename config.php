@@ -11,5 +11,5 @@
 	$HOST = "localhost";
 	$DBNAME = "feudalism";
 	$LOGIN = "root";
-	$PASS = "19Nino552886!";
+	$PASS = "**!";
 ?>
