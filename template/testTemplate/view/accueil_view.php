@@ -22,6 +22,10 @@
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
 
             console.log(xhr.responseText);
+			if(xhr.responseText == "0")
+			{
+				document.location.href="index.php";
+			}
 
         }
 

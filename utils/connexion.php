@@ -12,11 +12,27 @@
 	}
 	
 	require_once "../dao/joueurDao.php";	
+	require_once "../dao/villageDao.php";
 	require_once "../entity/joueur.php";
+	require_once "../entity/village.php";
 	
 	$joueurDao = new joueurDao();
-	$joueur = $joueurDao->connexion($_POST["pseudo"], $_POST["pass"]);
-	echo $joueur->getEmail();
+	$result = $joueurDao->connexion($_POST["pseudo"], $_POST["pass"]);
+	
+	if($result == null)
+	{
+		echo "Mauvais pseudo ou mot de passe"; //Pas bon
+	}
+	else
+	{
+		$villageDao = new villageDao();
+		session_start();
+		$_SESSION["joueur"] = serialize($result);//Mise en session du joueur
+		$_SESSION["village"] = serialize($villageDao->getMinVillageConnexion($result->getJoueurId()));
+		$_SESSION["mod"] = "index";//Page de retour après connexion
+		$_SESSION["dernAction"] = time();//Mise en session du temps de la dernière action
+		echo 0; //ok
+	}
 
 
 ?>

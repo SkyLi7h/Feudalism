@@ -3,41 +3,16 @@
 	//A NE PAS TOUCHER
 	
 	session_start();
-	
-	//Classes toujours utiles en général
-		///
-		
-	//Si le joueur est connecté..
-	if(isset($_SESSION["idJoueur"]))
-	{
-		if($_SESSION["dernAction"] + $TPSMAXCO > time())
-			
-			//Classes toujours utiles en jeu
-			require_once "dao/villageDao.php";
-			require_once "utils/utilsInGame.php";
-			
-			//Mise en session du modèle utilisé		
-			$_SESSION['mod'] = $_GET["mod"];	
-	}
-	else
-	{
-		//Mise en session du modèle utilisé
-		if(isset($_GET["mod"]))
-		{		
-			$_SESSION['mod'] = $_GET["mod"];	
-		}
-		if(!isset($_SESSION['mod']))
-		{
-			$_SESSION['mod'] = $MOD_START;
-		}
-	}
-	
-	
+	//session_destroy();
 	
 	//Appel du fichier de configuration
 	if (! @include_once("config.php")) 
 		throw new Exception ("config.php est introuvable !");
 	
+	//Classes toujours utiles en général
+		///
+		
+		
 	//Appel du fichier de debug si besoin
 	if($DEBUG)
 	{
@@ -57,6 +32,44 @@
 		
 		$bddAccess = new bdd();
 		$bdd = $bddAccess->connexion($HOST, $DBNAME, $LOGIN, $PASS);
+	}
+		
+	//Si le joueur est connecté..
+	if(isset($_SESSION["joueur"]))
+	{	
+		//Utils
+		require_once "utils/utilsInGame.php";
+		$utilsinGame = new utilsInGame();
+		//Verif si pas timeout
+		if($_SESSION["dernAction"] + $TPSMAXCO < time())
+		{
+			$utilsinGame->logout();
+		}
+		else
+		{
+			$_SESSION["dernAction"] = time();
+		
+			//Classes toujours utiles en jeu
+			require_once "dao/joueurDao.php";
+			require_once "dao/villageDao.php";
+			require_once "entity/joueur.php";
+			require_once "entity/village.php";
+			
+			$utilsinGame->rechargementDonneesResBat();
+		}
+				
+	}
+	else
+	{
+		//Mise en session du modèle utilisé
+		if(isset($_GET["mod"]))
+		{		
+			$_SESSION["mod"] = $_GET["mod"];	
+		}
+		if(!isset($_SESSION["mod"]))
+		{
+			$_SESSION["mod"] = $MOD_START;
+		}
 	}
 	
 	

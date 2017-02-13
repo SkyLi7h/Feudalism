@@ -6,14 +6,20 @@ class joueurDao
 	{
 		global $bdd;
 		$reponse = $bdd->query('SELECT * FROM joueur where pseudo="'.$pseudo.'"');
-		$donnees = $reponse->fetch();
 		
-		if($donnees["pass"] != $mdp)
+		if($donnees = $reponse->fetch())
 		{
-			return 1;
+			if($donnees["pass"] != $mdp)
+			{
+				return null; //Mdp incorrect
+			}
+			
+			return new joueur($donnees["joueurId"], $donnees["mail"], $donnees["pseudo"], $donnees["pass"], $donnees["or"]); //Ok on retourne le joueur
 		}
-		
-		return new joueur($donnees["joueurId"], $donnees["mail"], $donnees["pseudo"], $donnees["pass"], $donnees["or"]);	
+		else
+		{
+			return null; //Joueur introuvable
+		}	
 	}	
 	
 	public function getPseudoFirstJoueur()

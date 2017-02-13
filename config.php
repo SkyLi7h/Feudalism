@@ -5,12 +5,12 @@
 	$TEMPLATE = "testTemplate"; //Nom du template utilisé
 	$MOD_START = "accueil"; //Module afficher à l'arrivée
 	$DEBUG = false; //DEBUG MODE
-	$TPSMAXCO = 60 * 10; //5 minutes
+	$TPSMAXCO = 60 * 5; //5 minutes
 	
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
 	$DBNAME = "feudalism";
 	$LOGIN = "root";
-	$PASS = "**!";
+	$PASS = "19Nino552886!";
 ?>

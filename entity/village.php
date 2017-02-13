@@ -14,10 +14,11 @@ class village
 	private $mine;
 	private $scierie;
 	private $carriere;
+	private $metal;
 	private $bois;
 	private $pierre;
 	
-	public function __construct($villageId, $joueur, $nom, $habitant, $x, $y, $chateau, $caserne, $ferme, $mine, $scierie, $carriere, $bois, $pierre)
+	public function __construct($villageId, $joueur, $nom, $habitant, $x, $y, $chateau, $caserne, $ferme, $mine, $scierie, $carriere, $metal, $bois, $pierre)
 	{
 		$this->villageId = $villageId;
 		$this->joueur = $joueur;
@@ -31,8 +32,14 @@ class village
 		$this->mine = $mine;
 		$this->scierie = $scierie;
 		$this->carriere = $carriere;
+		$this->metal = $metal;
 		$this->bois = $bois;
 		$this->pierre = $pierre;		
+	}
+	
+	public function getVillageId()
+	{
+		return $this->villageId;
 	}
 	
 	public function getNom()
@@ -43,6 +50,46 @@ class village
 	public function getScierie()
 	{
 		return $this->scierie;
+	}
+	
+	public function getBois()
+	{
+		return $this->bois;
+	}
+
+	public function setBois($bois)
+	{
+		$this->bois = $bois;
+	}
+	
+	public function getCarriere()
+	{
+		return $this->carriere;
+	}
+	
+	public function getPierre()
+	{
+		return $this->pierre;
+	}
+
+	public function setPierre($pierre)
+	{
+		$this->pierre = $pierre;
+	}
+	
+	public function getMine()
+	{
+		return $this->mine;
+	}
+	
+	public function getMetal()
+	{
+		return $this->metal;
+	}
+
+	public function setMetal($metal)
+	{
+		$this->metal = $metal;
 	}
 }
 

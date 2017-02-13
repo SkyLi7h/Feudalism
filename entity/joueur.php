@@ -7,6 +7,7 @@ class joueur
 	private $pseudo;
 	private $pass;
 	private $ors;
+	private $dernMajOrs;
 	
 	public function __construct($joueurId, $email, $pseudo, $pass, $ors)
 	{
@@ -14,7 +15,12 @@ class joueur
 		$this->email = $email;
 		$this->pseudo = $pseudo;
 		$this->pass = $pass;
-		$this->ors = $ors;		
+		$this->ors = $ors;			
+	}
+	
+	public function getJoueurId()
+	{
+		return $this->joueurId;
 	}
 	
 	public function getEmail()

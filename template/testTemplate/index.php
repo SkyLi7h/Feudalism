@@ -6,13 +6,13 @@
 	  <Title><?php echo $NAME_APPLICATION;?></Title>
 	  <meta name="description" content="Feudalism template">
 	  <meta name="author" content="Ferrer Lucas">
-	  <link rel="stylesheet" type="text/css" href="template/<?php echo $TEMPLATE; ?>/style/style.css" media="screen" /> 
+	  <link rel="stylesheet" type="text/css" href="template/<?php echo $TEMPLATE; ?>/style/style.css" media="screen" />
 	</header>	
 	<body>
 	
 		<body>
 		<div class="hautLayout">
-		
+			
 		</div>
 		<div class="mainLayout">
 			<div class="bordureHorHaut"></div>

@@ -3,22 +3,20 @@
 	$business = new indexBusiness();	
 	if($DEBUG)
 		$debug->show("Lancement de la view $viewClass avec en business $businessClass");	
-	
-	$village = $business->getVillageById(1);
-	
-	echo $village->getNom();
+
+	$village = unserialize($_SESSION["village"]);
 
 	//time();
 ?>
 
-<div id="bois">0</div>
+<div id="bois"><?php echo $village->getBois();?></div>
 
 <script>
 	var scierie = <?php echo $village->getScierie();?>;
-	var boisH = 400;
+	var boisH = 3600;
 	
 	var boisS = boisH/3600;
-	var bois = 0;
+	var bois = <?php echo $village->getBois();?>
 	
 	function setBois()
 	{
@@ -27,6 +25,5 @@
 		element.innerHTML = Math.round(bois);
 	}
 	
-	setInterval("setBois()", 1000);
-	
+	setInterval("setBois()", 1000);	
 </script>
