@@ -9,21 +9,48 @@
 	//time();
 ?>
 
-<div id="bois"><?php echo $village->getBois();?></div>
+<div id="bois"><?php echo floor($village->getBois());?></div>
+<div id="pierre"><?php echo floor($village->getPierre());?></div>
+<div id="metal"><?php echo floor($village->getMetal());?></div>
 
 <script>
-	var scierie = <?php echo $village->getScierie();?>;
-	var boisH = 3600;
 	
-	var boisS = boisH/3600;
-	var bois = <?php echo $village->getBois();?>
+	var boisS = <?php echo (($BOISGAINHEURE*POW($MULTIPLICATEUR, $village->getScierie()))/3600);?>;
+	var bois = <?php echo $village->getBois();?>;
+	
+	var pierreS = <?php echo (($PIERREGAINHEURE*POW($MULTIPLICATEUR, $village->getCarriere()))/3600);?>;
+	var pierre = <?php echo $village->getPierre();?>;
+	
+	var metalS = <?php echo (($METALGAINHEURE*POW($MULTIPLICATEUR, $village->getMine()))/3600);?>;
+	var metal = <?php echo $village->getMetal();?>;
 	
 	function setBois()
 	{
 		element = document.getElementById("bois");
 		bois += boisS;
-		element.innerHTML = Math.round(bois);
+		element.innerHTML = Math.floor(bois);
 	}
 	
-	setInterval("setBois()", 1000);	
+	function setPierre()
+	{
+		element = document.getElementById("pierre");
+		pierre += pierreS;
+		element.innerHTML = Math.floor(pierre);
+	}
+	
+	function setMetal()
+	{
+		element = document.getElementById("metal");
+		metal += metalS;
+		element.innerHTML = Math.floor(metal);
+	}
+	
+	function majRessources()
+	{
+		setBois();
+		setPierre();
+		setMetal();	
+	}
+	
+	setInterval("majRessources()", 1000);	
 </script>

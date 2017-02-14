@@ -47,9 +47,19 @@ class village
 		return $this->nom;
 	}
 	
+	public function upScierie()
+	{
+		$this->scierie++;
+	}
+	
 	public function getScierie()
 	{
 		return $this->scierie;
+	}
+	
+	public function setScierie($s)
+	{
+		$this->scierie = $s;
 	}
 	
 	public function getBois()
@@ -67,6 +77,16 @@ class village
 		return $this->carriere;
 	}
 	
+	public function setCarriere($c)
+	{
+		$this->carriere = $c;
+	}
+	
+	public function upCarrier()
+	{
+		$this->carriere++;
+	}
+	
 	public function getPierre()
 	{
 		return $this->pierre;
@@ -77,9 +97,19 @@ class village
 		$this->pierre = $pierre;
 	}
 	
+	public function upMine()
+	{
+		$this->mine++;
+	}
+	
 	public function getMine()
 	{
 		return $this->mine;
+	}
+	
+	public function setMine($m)
+	{
+		$this->mine = $m;
 	}
 	
 	public function getMetal()
