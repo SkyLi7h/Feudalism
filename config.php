@@ -21,13 +21,31 @@
 		$ORDEB = 1000;
 		//Bois
 		$BOISDEB = 500;
-		$BOISGAINHEURE = 150;
+		$BOISGAINHEURE = 150 * $VITESSE;
 		//Pierre
 		$PIERREDEB = 500;
-		$PIERREGAINHEURE = 150;
+		$PIERREGAINHEURE = 150 * $VITESSE;
 		//Metal
 		$METALDEB = 500;
-		$METALGAINHEURE = 150;
+		$METALGAINHEURE = 150 * $VITESSE;
+		
+	//Config batiments
+		//Scierie
+		$TABCOUTSCIERIE = [];
+			$TABCOUTSCIERIE["bois"] = 100;
+			$TABCOUTSCIERIE["pierre"] = 100;
+			$TABCOUTSCIERIE["metal"] = 100;
+		//Carriere
+		$TABCOUTCARRIERE = [];
+			$TABCOUTCARRIERE["bois"] = 100;
+			$TABCOUTCARRIERE["pierre"] = 100;
+			$TABCOUTCARRIERE["metal"] = 100;		
+		//Mine
+		$TABCOUTCARRIERE = [];
+			$TABCOUTMINE["bois"] = 100;
+			$TABCOUTMINE["pierre"] = 100;
+			$TABCOUTMINE["metal"] = 100;
+		
 	
 	
 ?>
