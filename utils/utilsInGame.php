@@ -5,7 +5,7 @@ class utilsInGame
 	public function logout()
 	{
 		global $MOD_START;
-		$_SESSION = array();
+		session_unset();
 		$_SESSION["mod"] = $MOD_START;
 	}	
 	
@@ -16,11 +16,10 @@ class utilsInGame
 		
 		$village = unserialize($_SESSION["village"]);
 		
-		//Recup donnée villages et maj si modif manuelle depuis panel ou bdd
+		//Recup donnée villages et maj si modif manuelle depuis panel ou bdd ou si add construction ( ressources retirées )
 		$reponseVillage = $bdd->query('SELECT * from village where villageId ='.$village->getVillageId());
 		$donneesVillage = $reponseVillage->fetch();
 		
-		/////A Enlever (peut-être) si prod car + de sécu/////////////////////////////
 		$village->setScierie($donneesVillage["scierie"]);
 		$village->setCarriere($donneesVillage["carriere"]);
 		$village->setMine($donneesVillage["mine"]);
@@ -28,7 +27,6 @@ class utilsInGame
 		$village->setBois($donneesVillage["bois"]);
 		$village->setPierre($donneesVillage["pierre"]);
 		$village->setMetal($donneesVillage["metal"]);
-		//////////////////////////////////////////////////////////////////////////////
 		
 		
 		//Recup données de construction

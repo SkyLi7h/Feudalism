@@ -28,23 +28,29 @@
 		//Metal
 		$METALDEB = 500;
 		$METALGAINHEURE = 150 * $VITESSE;
-		
-	//Config batiments
+	
+	
 		//Scierie
 		$TABCOUTSCIERIE = [];
-			$TABCOUTSCIERIE["bois"] = 100;
-			$TABCOUTSCIERIE["pierre"] = 100;
-			$TABCOUTSCIERIE["metal"] = 100;
+			$TABCOUTSCIERIE["multiplicateur"] = 1.9;
+			$TABCOUTSCIERIE["bois"] = 50;
+			$TABCOUTSCIERIE["pierre"] = 120;
+			$TABCOUTSCIERIE["metal"] = 90;
+			$TABCOUTSCIERIE["temps"] = 90/$VITESSE;
 		//Carriere
 		$TABCOUTCARRIERE = [];
-			$TABCOUTCARRIERE["bois"] = 100;
-			$TABCOUTCARRIERE["pierre"] = 100;
-			$TABCOUTCARRIERE["metal"] = 100;		
+			$TABCOUTCARRIERE["multiplicateur"] = 1.9;
+			$TABCOUTCARRIERE["bois"] = 90;
+			$TABCOUTCARRIERE["pierre"] = 50;
+			$TABCOUTCARRIERE["metal"] = 120;		
+			$TABCOUTCARRIERE["temps"] = 90/$VITESSE;		
 		//Mine
 		$TABCOUTCARRIERE = [];
-			$TABCOUTMINE["bois"] = 100;
-			$TABCOUTMINE["pierre"] = 100;
-			$TABCOUTMINE["metal"] = 100;
+			$TABCOUTMINE["multiplicateur"] = 1.9;
+			$TABCOUTMINE["bois"] = 120;
+			$TABCOUTMINE["pierre"] = 90;
+			$TABCOUTMINE["metal"] = 50;
+			$TABCOUTMINE["temps"] = 90/$VITESSE;
 		
 	
 	

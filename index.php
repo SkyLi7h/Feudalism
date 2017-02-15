@@ -57,19 +57,15 @@
 			
 			$utilsinGame->rechargementDonneesResBat();
 		}
-				
-	}
-	else
-	{
-		//Mise en session du modèle utilisé
+		
 		if(isset($_GET["mod"]))
 		{		
 			$_SESSION["mod"] = $_GET["mod"];	
-		}
-		if(!isset($_SESSION["mod"]))
-		{
-			$_SESSION["mod"] = $MOD_START;
-		}
+		}				
+	}
+	else
+	{
+		$_SESSION["mod"] = $MOD_START;
 	}
 	
 	
