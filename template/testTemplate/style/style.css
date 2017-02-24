@@ -1,9 +1,16 @@
+@font-face {
+    font-family: Trajan;
+    src: url(./font/Trajan.ttf);
+}
+
 html
 {
 	cursor:url(../images/cursor.png), auto;
 	background:url(../images/bg.png) no-repeat center fixed;
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
+	width: 100%;
+	height: 100%;
 }
 
 html input
@@ -16,11 +23,28 @@ html label
 	cursor:url(../images/cursor.png), auto;
 }
 
+html button:hover
+{
+	cursor:url(../images/cursor.png), auto;
+}
+html a
+{
+	cursor:url(../images/cursor.png), auto;
+}
+
 body
+{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.page
 {
 	width: 900px;
 	margin: auto;
-	position: relative;
+	min-height:80%;
 }
 
 .hautLayout
@@ -32,11 +56,57 @@ body
     background-position: center top; 
 }
 
+.logo
+{
+	width: 100%;
+	text-align: center;
+}
+
+#bouttonForum
+{
+	position: absolute;
+	top: -30px;
+	left: 20px;	
+}
+
+#bouttonForum button
+{
+	width: 180px;
+	font: bold 14px "Trajan", Sans-Serif;
+	width: 100px;
+}
+
+#bouttonDev
+{
+	position: absolute;
+	top: -30px;
+	left: 125px;
+}
+
+#bouttonDev button
+{
+	width: 180px;
+	font: bold 14px "Trajan", Sans-Serif;
+	width: 100px;
+}
+
+#bouttonDeconnexion
+{
+	position: absolute;
+	top: -22px;
+	right: 20px;	
+}
+
+#bouttonDeconnexion button
+{
+	font: bold 8px "Trajan", Sans-Serif;
+	width: 100px;
+}
+
 .mainLayout
 {
-	margin-top: 130px;
+	margin-top: 30px;
 	width: 100%;
-	height: 700px;
 	background-image:url(../images/fondPage.png);
 	position: relative;
 }
@@ -88,6 +158,67 @@ body
 	right: 0;
 }
 
+.angleBordureHautGauche
+{
+	width: 22px;
+	height: 22px;
+	background-image:url(../images/angleBordure.png);
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	-webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.angleBordureHautDroit
+{
+	width: 22px;
+	height: 22px;
+	background-image:url(../images/angleBordure.png);
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	-webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.angleBordureBasGauche
+{
+	width: 22px;
+	height: 22px;
+	background-image:url(../images/angleBordure.png);
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	-webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.angleBordureBasDroit
+{
+	width: 22px;
+	height: 22px;
+	background-image:url(../images/angleBordure.png);
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	-webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+
+
 .rubanBasLayout
 {
 	width: 100%;
@@ -99,17 +230,128 @@ body
 	padding: 30px;
 }
 
-/*AccueiView */
+.footer
+{
+	width: 100%;
+	height: 150px;
+	margin-top: 70px;
+	position: bottom;
+	background-color: black;
+	border-top: 5px inset grey;
+	text-align: center;
+	color: white;
+	font: bold 11px "Trajan", Sans-Serif;
+	padding-top: 10px;
+}
+
+/*AccueilView */
+
+.layoutAccueil
+{
+	width: 100%;
+	margin-top: 50px;
+	min-height: 370px;
+}
+
+ .ui-tooltip {
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    font: bold 11px "Trajan", Sans-Serif;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+  }
+
+/*AccueilView gauche*/
+
+.layoutAccueilGauche
+{
+	float: left;
+	width: 49.5%;
+}
+
+.layoutTitre
+{
+	width: 80%;
+	margin: auto;
+	height: 50px;
+	font: bold 11px "Trajan", Sans-Serif;
+	background-image:url(../images/redStripe.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+	color: #ede39d;
+	text-align: center;
+	line-height: 45px;
+	font-size: 13px;
+}
+
 .formConnexion
 {
-	width: 300px;
+	width: 100%;
 	margin: auto;
 	text-align: center;
 }
 
-.formConnexion label
+.formConnexion p
 {
-	width: 300px;
+	margin: 0;
+	padding: 0;
+}
+
+.formConnexion input
+{
+	width: 170px;
+	height: 25px;
+	background-color: #FCF7C2;
+	border: none;
+	border: 1px inset grey;
+	text-align: center;
+	margin-bottom: -5px;
+}
+
+.formConnexion button
+{
+	width: 180px;
+	font: bold 14px "Trajan", Sans-Serif;
+}
+
+/*AccueilView droit*/
+
+.layoutAccueilDroite
+{
+	float: right;
+	width: 50%;
+	border-left: 1px dashed black;
+}
+
+.formInscription
+{
+	width: 100%;
 	margin: auto;
 	text-align: center;
+}
+
+.formInscription p
+{
+	margin: 0;
+	padding: 0;
+}
+
+.formInscription input
+{
+	width: 170px;
+	height: 25px;
+	background-color: #FCF7C2;
+	border: none;
+	border: 1px inset grey;
+	text-align: center;
+	margin-bottom: -5px;
+}
+
+.formInscription button
+{
+	width: 180px;
+	font: bold 14px "Trajan", Sans-Serif;
 }

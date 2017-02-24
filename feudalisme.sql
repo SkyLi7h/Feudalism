@@ -13,8 +13,8 @@
 
 
 -- Export de la structure de la base pour feudalism
-CREATE DATABASE IF NOT EXISTS `feudalism` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `feudalism`;
+-- CREATE DATABASE IF NOT EXISTS `feudalism` /*!40100 DEFAULT CHARACTER SET utf8 */;
+-- USE `feudalism`;
 
 -- Export de la structure de la table feudalism. armee
 CREATE TABLE IF NOT EXISTS `armee` (

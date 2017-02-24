@@ -4,8 +4,8 @@
 	
 	if($DB_ACCESS == "MYSQL")
 	{
-		if (! @include_once("../DAO/bddAccess.php")) 
-			throw new Exception ("DAO/bddAccess.php est introuvable !");
+		if (! @include_once("../dao/bddAccess.php")) 
+			throw new Exception ("dao/bddAccess.php est introuvable !");
 		
 		$bddAccess = new bdd();
 		$bdd = $bddAccess->connexion($HOST, $DBNAME, $LOGIN, $PASS);

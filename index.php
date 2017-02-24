@@ -1,8 +1,7 @@
 <?php
+	session_start();
 	//Fenêtre principale de l'application. Appel du fichier de configuration et du template.
 	//A NE PAS TOUCHER
-	
-	session_start();
 	//session_destroy();
 	
 	//Appel du fichier de configuration
@@ -27,8 +26,8 @@
 	//Appel du fichier de base de données + connexion
 	if($DB_ACCESS == "MYSQL")
 	{
-		if (! @include_once("DAO/bddAccess.php")) 
-			throw new Exception ("DAO/bddAccess.php est introuvable !");
+		if (! @include_once("dao/bddAccess.php")) 
+			throw new Exception ("dao/bddAccess.php est introuvable !");
 		
 		$bddAccess = new bdd();
 		$bdd = $bddAccess->connexion($HOST, $DBNAME, $LOGIN, $PASS);

@@ -12,9 +12,9 @@
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
-	$DBNAME = "feudalism";
-	$LOGIN = "root";
-	$PASS = "19Nino552886!";
+	$DBNAME = "apmqlasti808566_lastimperium";
+	$LOGIN = "apmqlasti808566_lastimperium";
+	$PASS = "19Nino552886!!";
 	
 	//Config ressources
 	$MULTIPLICATEUR = 1.3;
