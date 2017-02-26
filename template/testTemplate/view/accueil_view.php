@@ -5,6 +5,10 @@
 		$debug->show("Lancement de la view $viewClass avec en business $businessClass");	
 	
 ?>
+<div style="width: 80%; min-height:75px; margin: auto; margin-top: 20px; padding: 1.2em; font: 14px 'Trajan', Sans-Serif;" class="ui-widget ui-front ui-widget-content ui-corner-all ui-widget-shadow">
+		<img width="110px;" style="float: left; margin-top: -17px; margin-left:-16px; margin-right: 15px;" align="top" src="template/<?php echo $TEMPLATE; ?>/images/conseilF.png"> 
+<span><i>Last Imperium</i> est en cours de développement. N'hésite pas à t'inscrire sur le <span style="color: yellow;"><i>forum</i></span> et à consulter le lien <span style="color: yellow;"><i>"dev"</i></span> pour te tenir informé des avancements ! A bientôt sur <span style="color: red;"><i>l'alpha</i></span> !</span>
+</div>
 <div class="layoutAccueil">
 	<div class="layoutAccueilGauche">
 		<div class="layoutTitre"><span>Connexion</span></div>
@@ -15,9 +19,6 @@
 			<br />
 			<button <?php if($MAINTENANCE){?> disabled <?php } ?>  onclick="connexionAjax()" class="ui-button ui-widget ui-corner-all"><span class="ui-icon ui-icon-unlocked"></span>Se connecter</button>
 		</form>
-	<div style="width: 80%; margin: auto; margin-top: 20px; padding: 1.2em; font: 14px 'Trajan', Sans-Serif;" class="ui-widget ui-front ui-widget-content ui-corner-all ui-widget-shadow">
-		Bienvenue, mon Seigneur.<br> <i>Last Imperium</i> est en cours de développement.<br> N'hésite pas à t'inscrire sur le <span style="color: yellow;"><i>forum</i></span> et de consulter le lien <span style="color: yellow;"><i>"dev"</i></span> pour te tenir informé sur nos avancements ! A bientôt sur <span style="color: red;"><i>l'alpha</i></span> !
-	</div>
 	</div>
 	<div class="layoutAccueilDroite">
 		<div class="layoutTitre"><span>Inscription</span></div>

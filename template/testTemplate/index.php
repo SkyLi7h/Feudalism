@@ -69,7 +69,7 @@
 					<button class="ui-button ui-widget ui-corner-all"><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Forum</button>
 				</div>		
 				<div id="bouttonDev">
-					<button class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Dev</button>
+					<a href="http://dev.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Dev</button></a>
 				</div>
 				<?php if(isset($_SESSION["joueur"])) {?>
 					<div id="bouttonDeconnexion">
