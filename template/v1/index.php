@@ -4,8 +4,9 @@
 	<head>
 	  <meta charset="utf-8">
 	  <Title><?php echo $NAME_APPLICATION;?> - <?php echo $_SESSION['mod']; ?></Title>
-	  <meta name="description" content="Feudalism template">
-	  <meta name="author" content="Ferrer Lucas">
+	  <meta name ="description" content ="<?php echo $DESCRIPTION;?>">
+	  <meta name="author" content="<?php echo $AUTEUR;?>">
+	  <meta name="keywords" content="<?php echo $MOTSCLES;?>">
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/external/jquery/jquery.js"></script>
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.js"></script>
 	  <link href="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.css" rel="stylesheet">

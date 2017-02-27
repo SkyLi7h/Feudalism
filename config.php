@@ -2,8 +2,11 @@
 	//Fichier de configuration
 	$NAME_APPLICATION = "Last imperium"; //Nom du site
 	$VERSION = "A0.1"; //Version du projet
-	$TEMPLATE = "testTemplate"; //Nom du template utilisé
+	$TEMPLATE = "v1"; //Nom du template utilisé
 	$MOD_START = "accueil"; //Module afficher à l'arrivée
+	$DESCRIPTION = "Jeu de stratégie - role play multijoueur par navigateur";
+	$AUTEUR = "FERRER LUCAS";
+	$MOTSCLES = "jeu, jeux, navigateur, stratégie, role-play, mmorpg, gratuit, game, combat, guerre, alliance, humain, orc, elfe, multijoueur";
 	$DEBUG = false; //DEBUG MODE
 	$TPSMAXCO = 10; //5 minutes
 	$VITESSE = 1;
@@ -12,9 +15,9 @@
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
-	$DBNAME = "lastimperium";
+	$DBNAME = "feudalism";
 	$LOGIN = "root";
-	$PASS = "";
+	$PASS = "19Nino552886!";
 	
 	//Config ressources
 	$MULTIPLICATEUR = 1.3;
