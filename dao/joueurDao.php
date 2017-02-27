@@ -22,7 +22,7 @@ class joueurDao
 		}	
 	}	
 	
-	public function getPseudoFirstJoueur()
+	public function getJoueur($id)
 	{
 		global $bdd;
 		
@@ -32,14 +32,27 @@ class joueurDao
 		return $donnees["pseudo"];
 	}
 	
-	public function getJoueur($id)
+	public function isExist($pseudo, $mail)
 	{
 		global $bdd;
 		
-		$reponse = $bdd->query('SELECT * FROM joueur');
+		$reponse = $bdd->query('SELECT * FROM joueur where pseudo="'.$pseudo.'" or mail="'.$mail.'"');
 		$donnees = $reponse->fetch();	
 
-		return $donnees["pseudo"];
+		if($donnees != null)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public function inscription($pseudo, $mdp, $mail)
+	{
+		global $bdd;
+		$bdd->query("INSERT INTO joueur(mail, pseudo, pass) VALUES('". $mail ."', '". $pseudo ."', '". $mdp ."')");
 	}
 }
 

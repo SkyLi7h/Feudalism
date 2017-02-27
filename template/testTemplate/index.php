@@ -66,7 +66,7 @@
 				<div class="angleBordureBasGauche"></div>
 				<div class="angleBordureBasDroit"></div>
 				<div id="bouttonForum">
-					<button class="ui-button ui-widget ui-corner-all"><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Forum</button>
+					<a href="http://forum.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all"><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Forum</button></a>
 				</div>		
 				<div id="bouttonDev">
 					<a href="http://dev.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Dev</button></a>

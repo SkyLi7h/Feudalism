@@ -8,7 +8,7 @@ class villageDao
 		
 		$reponse = $bdd->query('SELECT * FROM village where villageId ='.$villageId);
 		$donnees = $reponse->fetch();	
-		return new village($donnees["villageId"], $donnees["joueurId"], $donnees["nom"], $donnees["habitant"], $donnees["x"], $donnees["y"], $donnees["chateau"], $donnees["caserne"], $donnees["mine"], $donnees["scierie"], $donnees["carriere"], $donnees["metal"], $donnees["bois"], $donnees["pierre"]);
+		return new village($donnees["villageId"], $donnees["joueurId"], $donnees["nom"], $donnees["habitant"], $donnees["chateau"], $donnees["caserne"], $donnees["mine"], $donnees["scierie"], $donnees["carriere"], $donnees["metal"], $donnees["bois"], $donnees["pierre"]);
 	}
 	
 	public function getMinVillageConnexion($joueurId)
@@ -17,7 +17,7 @@ class villageDao
 		
 		$reponse = $bdd->query('SELECT * from village where joueurId ='.$joueurId.' ORDER BY villageId ASC LIMIT 1');
 		$donnees = $reponse->fetch();	
-		return new village($donnees["villageId"], $donnees["joueurId"], $donnees["nom"], $donnees["habitant"], $donnees["x"], $donnees["y"], $donnees["chateau"], $donnees["caserne"], $donnees["mine"], $donnees["scierie"], $donnees["carriere"], $donnees["metal"], $donnees["bois"], $donnees["pierre"]);
+		return new village($donnees["villageId"], $donnees["joueurId"], $donnees["nom"], $donnees["habitant"], $donnees["chateau"], $donnees["caserne"], $donnees["mine"], $donnees["scierie"], $donnees["carriere"], $donnees["metal"], $donnees["bois"], $donnees["pierre"]);
 	}
 	
 	public function addConstruction($villageId, $batiment, $tempsCons)
@@ -30,6 +30,32 @@ class villageDao
 	{
 		global $bdd;
 		$bdd->query('UPDATE village set bois='.$bois.', pierre='.$pierre.', metal='.$metal.' where villageId='.$villageId);
+	}
+	
+	public function addVillage($joueurId, $pseudo)
+	{
+		global $bdd;
+		$reponse = $bdd->query('SELECT * FROM carte where type = "plaine" and villageId IS NULL ORDER BY RAND() LIMIT 1 ');
+		$donnees = $reponse->fetch();
+		
+		$idTilles = $donnees["carteId"];
+		$nomVillage = "Village de " . $pseudo;
+		$habitants = 100;
+		$chateau = 1;
+		$caserne = 0;
+		$ferme = 1;
+		$mine = 1;
+		$scierie = 1;
+		$carriere = 1;
+		$metal = 500;
+		$bois = 500;
+		$pierre = 500;
+		
+		$bdd->query("INSERT INTO village(joueurId, nom, habitant, chateau, caserne, ferme, mine, scierie, carriere, metal, bois, pierre, dernMaj) VALUES(". $joueurId .", '". $nomVillage ."', ". $habitants .", ". $chateau .", ". $caserne .", ". $ferme .", ". $mine .", ". $scierie .", ". $carriere .", ". $metal .", ". $bois .", ". $pierre .", ". time() .")");		
+		$bdd->query('UPDATE carte set villageId='.$bdd->lastInsertId().' where carteId='.$idTilles);
+		
+
+		
 	}
 }
 

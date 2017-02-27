@@ -17,22 +17,19 @@
 	require_once "../entity/village.php";
 	
 	$joueurDao = new joueurDao();
-	$result = $joueurDao->connexion($_POST["pseudo"], $_POST["pass"]);
+	$villageDao = new villageDao();
 	
-	if($result == null)
+	if($joueurDao->isExist($_POST["pseudo"], $_POST["mail"]))
 	{
-		echo 1; //Pas bon
+		echo 1;
 	}
 	else
 	{
-		$villageDao = new villageDao();
-		session_start();
-		$_SESSION["joueur"] = serialize($result);//Mise en session du joueur
-		$_SESSION["village"] = serialize($villageDao->getMinVillageConnexion($result->getJoueurId()));
-		$_SESSION["mod"] = "index";//Page de retour après connexion
-		$_SESSION["dernAction"] = time();//Mise en session du temps de la dernière action
-		echo 0; //ok
-	}
+		//A AMELIORER POUR LES VERIF + MD5		
+		$joueurDao->inscription($_POST["pseudo"], $_POST["pass"], $_POST["mail"]);
+		$idTiles = $villageDao->addVillage($bdd->lastInsertId(), $_POST["pseudo"]);
+		return 0;
+	}	
 
 
 ?>

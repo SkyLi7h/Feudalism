@@ -6,8 +6,6 @@ class village
 	private $joueur;
 	private $nom;
 	private $habitant;
-	private $x;
-	private $y;
 	private $chateau;
 	private $caserne;
 	private $mine;
@@ -17,14 +15,12 @@ class village
 	private $bois;
 	private $pierre;
 	
-	public function __construct($villageId, $joueur, $nom, $habitant, $x, $y, $chateau, $caserne, $mine, $scierie, $carriere, $metal, $bois, $pierre)
+	public function __construct($villageId, $joueur, $nom, $habitant, $chateau, $caserne, $mine, $scierie, $carriere, $metal, $bois, $pierre)
 	{
 		$this->villageId = $villageId;
 		$this->joueur = $joueur;
 		$this->nom = $nom;
 		$this->habitant = $habitant;
-		$this->x = $x;
-		$this->y = $y;
 		$this->chateau = $chateau;
 		$this->caserne = $caserne;
 		$this->mine = $mine;

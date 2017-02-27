@@ -261,6 +261,13 @@ body
     text-transform: uppercase;
     box-shadow: 0 0 7px black;
   }
+  
+#msgErreurLogin
+{
+	display: none;
+	margin-bottom: 20px;
+	margin-top: -20px;
+}
 
 /*AccueilView gauche*/
 
