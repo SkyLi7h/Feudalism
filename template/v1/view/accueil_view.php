@@ -21,9 +21,9 @@
 	<div class="layoutAccueilGauche">
 		<div class="layoutTitre"><span>Connexion</span></div>
 		<form class="formConnexion" method="POST" action="javascript:void(0);" onSubmit="connexionAjax()">
-			<p id="tooltip"><input title="Votre pseudo" placeholder id="pseudo" type="text" name="pseudo" /></p>
+			<p id="tooltip"><input placeholder="Pseudo" title="Votre pseudo" placeholder id="pseudo" type="text" name="pseudo" /></p>
 			<br />
-			<p id="tooltip"><input title="Votre mot de passe" type="password" name="pass" id="pass" /></p>
+			<p id="tooltip"><input placeholder="Mot de passe" title="Votre mot de passe" type="password" name="pass" id="pass" /></p>
 			<br />
 			<button <?php if($MAINTENANCE){?> disabled <?php } ?>  onclick="connexionAjax()" class="ui-button ui-widget ui-corner-all"><span class="ui-icon ui-icon-unlocked"></span>Se connecter</button>
 		</form>
@@ -31,13 +31,13 @@
 	<div class="layoutAccueilDroite">
 		<div class="layoutTitre"><span>Inscription</span></div>
 		<form class="formInscription" method="POST" action="javascript:void(0);">
-			<p id="tooltip"><input title="Votre pseudo" id="pseudoInsc" type="text" name="pseudoInsc" /></p>
+			<p id="tooltip"><input placeholder="Pseudo" title="Votre pseudo" id="pseudoInsc" type="text" name="pseudoInsc" /></p>
 			<br />
-			<p id="tooltip"><input title="Votre mot de passe" type="password" name="passInsc" id="passInsc" /></p>
+			<p id="tooltip"><input placeholder="Mot de passe" title="Votre mot de passe" type="password" name="passInsc" id="passInsc" /></p>
 			<br />
-			<p id="tooltip"><input title="Confirmez votre mot de passe" type="password" name="passConfInsc" id="passConfInsc" /></p>
+			<p id="tooltip"><input placeholder="Mot de passe" title="Confirmez votre mot de passe" type="password" name="passConfInsc" id="passConfInsc" /></p>
 			<br />
-			<p id="tooltip"><input title="Votre email" type="email" name="mailInsc" id="mailInsc" /></p>
+			<p id="tooltip"><input placeholder="E-mail" title="Votre email" type="email" name="mailInsc" id="mailInsc" /></p>
 			<br />
 			<p id="tooltip"><select title="Choisissez votre faction" name="race" id="race">
 			  <option selected="selected">Humain</option>

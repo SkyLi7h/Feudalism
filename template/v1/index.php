@@ -53,6 +53,39 @@
 				<?php }?>
 			</div>
 			
+			<?php if(isset($_SESSION["joueur"])) {?>
+				<div class="menuBoucliers">
+					<div class="bouclierGeneral">
+						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+						<div id="txtBouclier">Général</div>
+					</div>
+					<div class="bouclierConstruction">
+						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+						<div id="txtBouclier">Bâtiments</div>
+					</div>	
+					<div class="bouclierCarte">
+						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+						<div id="txtBouclier">Carte</div>
+					</div>	
+					<div class="bouclierArmee">
+						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+						<div id="txtBouclier">Armée</div>
+					</div>
+					<div class="bouclierHeros">
+						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+						<div id="txtBouclier">Héros</div>
+					</div>
+					<div class="bouclierQuetes">
+						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+						<div id="txtBouclier">Quêtes</div>
+					</div>
+					<div class="bouclierMarche">
+						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+						<div id="txtBouclier">Marché</div>
+					</div>
+				</div>	
+			<?php }?>
+			
 			<div class="logo">
 				<a href="index.php?mod=index"><img src="template/<?php echo $TEMPLATE; ?>/images/logo2.png"/></a>
 			</div>				
@@ -81,6 +114,7 @@
 						<a href="index.php?mod=aide"><button class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Aide</button></a>
 					</div>
 				<?php }?>
+				
 				
 				<div class="include">
 					<?php if($MAINTENANCE){

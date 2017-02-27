@@ -60,6 +60,7 @@ body
 {
 	width: 100%;
 	text-align: center;
+	margin-top: 10px;
 }
 
 #bouttonForum
@@ -389,4 +390,122 @@ body
 {
 	width: 180px;
 	font: bold 14px "Trajan", Sans-Serif;
+}
+
+/* index */
+.menuBoucliers
+{
+	width: 100%;
+	height: 56px;
+	text-align: center;
+	padding-left: 50px;
+	margin-top: 10px;
+	color: #cbd9de;
+}
+
+.menuBoucliers div:hover
+{
+	color: yellow;
+}
+
+.menuBoucliers img
+{
+	position: absolute;
+	width: 150px;
+	height: 38px;
+	top: 37px;
+	left: -50px;
+}
+
+.menuBoucliers #txtBouclier
+{
+	position: absolute;
+	top: 46px;
+	left: -50px;
+	width: 150px;
+	height: 38px;
+	font: bold 12px "Trajan", Sans-Serif;
+}
+
+.bouclierGeneral
+{
+	float: left;
+	position: relative;
+	width: 51px;
+	height: 56px;
+	background-image:url(../images/shields/shield3.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+}
+
+.bouclierConstruction
+{
+	float: left;
+	position: relative;
+	width: 51px;
+	height: 56px;
+	background-image:url(../images/shields/shield5.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	margin-left : 75px;
+}
+
+.bouclierCarte
+{
+	float: left;
+	position: relative;
+	width: 51px;
+	height: 56px;
+	background-image:url(../images/shields/shield7.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	margin-left : 75px;
+}
+
+.bouclierArmee
+{
+	float: left;
+	position: relative;
+	width: 51px;
+	height: 56px;
+	background-image:url(../images/shields/shield4.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	margin-left : 75px;
+}
+
+.bouclierHeros
+{
+	float: left;
+	position: relative;
+	width: 51px;
+	height: 56px;
+	background-image:url(../images/shields/shield1.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	margin-left : 75px;
+}
+
+.bouclierQuetes
+{
+	float: left;
+	position: relative;
+	width: 51px;
+	height: 56px;
+	background-image:url(../images/shields/shield6.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	margin-left : 75px;
+}
+
+.bouclierMarche
+{
+	float: left;
+	position: relative;
+	width: 51px;
+	height: 56px;
+	background-image:url(../images/shields/shield8.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	margin-left : 75px;
 }
