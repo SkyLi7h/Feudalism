@@ -19,16 +19,25 @@
 	$joueurDao = new joueurDao();
 	$villageDao = new villageDao();
 	
-	if($joueurDao->isExist($_POST["pseudo"], $_POST["mail"]))
+	$pseudo = strip_tags(trim($_POST["pseudo"]));
+	$mdp = strip_tags(trim($_POST["pass"]));
+	$mdpConf = strip_tags(trim($_POST["passConf"]));
+	$mail =  strip_tags(trim($_POST["mail"]));
+	
+	if($mdp != $mdpConf)
+	{
+		echo 2;
+	}
+	else if($joueurDao->isExist($pseudo, $mail))
 	{
 		echo 1;
 	}
 	else
 	{
 		//A AMELIORER POUR LES VERIF + MD5		
-		$joueurDao->inscription($_POST["pseudo"], $_POST["pass"], $_POST["mail"]);
-		$idTiles = $villageDao->addVillage($bdd->lastInsertId(), $_POST["pseudo"]);
-		return 0;
+		$joueurDao->inscription($pseudo, $mdp, $mail);
+		$idTiles = $villageDao->addVillage($bdd->lastInsertId(), $pseudo);
+		echo 0;
 	}	
 
 

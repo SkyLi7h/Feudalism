@@ -90,6 +90,20 @@ body
 	width: 100px;
 }
 
+#bouttonAide
+{
+	position: absolute;
+	top: -30px;
+	right: 130px;
+}
+
+#bouttonAide button
+{
+	width: 180px;
+	font: bold 14px "Trajan", Sans-Serif;
+	width: 100px;
+}
+
 #bouttonDeconnexion
 {
 	position: absolute;
@@ -262,7 +276,7 @@ body
     box-shadow: 0 0 7px black;
   }
   
-#msgErreurLogin
+#msgInfos
 {
 	display: none;
 	margin-bottom: 20px;

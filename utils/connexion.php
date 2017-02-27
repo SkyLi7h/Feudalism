@@ -16,8 +16,11 @@
 	require_once "../entity/joueur.php";
 	require_once "../entity/village.php";
 	
+	$pseudo = strip_tags(trim($_POST["pseudo"]));
+	$mdp = strip_tags(trim($_POST["pass"]));
+	
 	$joueurDao = new joueurDao();
-	$result = $joueurDao->connexion($_POST["pseudo"], $_POST["pass"]);
+	$result = $joueurDao->connexion($pseudo, $mdp);
 	
 	if($result == null)
 	{

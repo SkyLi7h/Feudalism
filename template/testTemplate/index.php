@@ -52,7 +52,7 @@
 			</div>
 			
 			<div class="logo">
-				<img src="template/<?php echo $TEMPLATE; ?>/images/logo2.png"/>
+				<a href="index.php?mod=index"><img src="template/<?php echo $TEMPLATE; ?>/images/logo2.png"/></a>
 			</div>				
 			
 			<div class="mainLayout">
@@ -70,10 +70,13 @@
 				</div>		
 				<div id="bouttonDev">
 					<a href="http://dev.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Dev</button></a>
-				</div>
+				</div>				
 				<?php if(isset($_SESSION["joueur"])) {?>
 					<div id="bouttonDeconnexion">
 						<button onClick="deconnexion()" class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-power"></span></span>Déconnexion</button>
+					</div>
+					<div id="bouttonAide">
+						<a href="index.php?mod=aide"><button class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Aide</button></a>
 					</div>
 				<?php }?>
 				

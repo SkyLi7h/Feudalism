@@ -5,11 +5,11 @@
 		$debug->show("Lancement de la view $viewClass avec en business $businessClass");	
 	
 ?>
-	<div id="msgErreurLogin">
+	<div id="msgInfos">
 		<div class="ui-widget">
 			<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
 				<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-				<p>Login incorrects !</p>
+				<p id='msgInfosTxt'></p>
 			</div>
 		</div>
 	</div>
@@ -59,14 +59,14 @@
 
         if (xhrConnexion.readyState === XMLHttpRequest.DONE && xhrConnexion.status === 200) {
 
-			console.log(xhrConnexion.responseText);
 			if(xhrConnexion.responseText == 0)
 			{
 				document.location.href="index.php";
 			}
 			else if(xhrConnexion.responseText == "1")
 			{
-				document.getElementById("msgErreurLogin").style = "display: block;";
+				document.getElementById("msgInfos").style = "display: block;";
+				document.getElementById("msgInfosTxt").innerHTML = "Login incorrects !";
 			}
 
         }
@@ -91,7 +91,20 @@
         if (xhrInscription.readyState === XMLHttpRequest.DONE && xhrInscription.status === 200) {
 			if(xhrInscription.responseText == "0")
 			{
-				
+				document.getElementById("msgInfos").style = "display: block;";
+				document.getElementById("msgInfosTxt").innerHTML = "Inscription réussie ! Vous pouvez vous connecter !";
+			}
+			
+			if(xhrInscription.responseText == "1")
+			{
+				document.getElementById("msgInfos").style = "display: block;";
+				document.getElementById("msgInfosTxt").innerHTML = "Ce joueur existe déjà !";
+			}
+			
+			if(xhrInscription.responseText == "2")
+			{
+				document.getElementById("msgInfos").style = "display: block;";
+				document.getElementById("msgInfosTxt").innerHTML = "Vos mots de passe ne correspondent pas !";
 			}
 
         }
