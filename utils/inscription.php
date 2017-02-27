@@ -24,7 +24,15 @@
 	$mdpConf = strip_tags(trim($_POST["passConf"]));
 	$mail =  strip_tags(trim($_POST["mail"]));
 	
-	if($mdp != $mdpConf)
+	if($pseudo == "" || strlen($pseudo) < 5 || strlen($pseudo) > 20)
+	{
+		echo 3;
+	}
+	else if($mdp == "" || strlen($mdp) < 5 || strlen($mdp) > 20)
+	{
+		echo 4;
+	}
+	else if($mdp != $mdpConf)
 	{
 		echo 2;
 	}
@@ -33,8 +41,7 @@
 		echo 1;
 	}
 	else
-	{
-		//A AMELIORER POUR LES VERIF + MD5		
+	{		
 		$joueurDao->inscription($pseudo, $mdp, $mail);
 		$idTiles = $villageDao->addVillage($bdd->lastInsertId(), $pseudo);
 		echo 0;
