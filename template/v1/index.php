@@ -7,6 +7,7 @@
 	  <meta name ="description" content ="<?php echo $DESCRIPTION;?>">
 	  <meta name="author" content="<?php echo $AUTEUR;?>">
 	  <meta name="keywords" content="<?php echo $MOTSCLES;?>">
+	  <meta name="news_keywords" content="<?php echo $MOTSCLES;?>" />
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/external/jquery/jquery.js"></script>
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.js"></script>
 	  <link href="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.css" rel="stylesheet">
