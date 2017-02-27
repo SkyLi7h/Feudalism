@@ -8,7 +8,7 @@
 	$AUTEUR = "FERRER LUCAS";
 	$MOTSCLES = "jeu, jeux, navigateur, stratégie, role-play, mmorpg, gratuit, game, combat, guerre, alliance, humain, orc, elfe, multijoueur";
 	$DEBUG = false; //DEBUG MODE
-	$TPSMAXCO = 10; //5 minutes
+	$TPSMAXCO = 60*5; //5 minutes
 	$VITESSE = 1;
 	$MAINTENANCE = false;
 	
@@ -22,7 +22,7 @@
 	//Config ressources
 	$MULTIPLICATEUR = 1.3;
 		//Or
-		$ORDEB = 1000;
+		$ORDEB = 0;
 		//Bois
 		$BOISDEB = 500;
 		$BOISGAINHEURE = 150 * $VITESSE;

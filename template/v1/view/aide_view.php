@@ -76,6 +76,7 @@
 		A suivre
 	  </div>
 	</div>
+</div>
 
 <script>
 	$( function() {
