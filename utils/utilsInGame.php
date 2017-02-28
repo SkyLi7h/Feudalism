@@ -9,6 +9,7 @@ class utilsInGame
 		session_unset();
 		session_destroy();
 		header("Refresh:0; url=index.php");
+		exit;
 	}	
 	
 	//Maj des ressources et batiments dans la bdd à chaque rechargement de page
