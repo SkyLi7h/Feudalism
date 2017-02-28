@@ -31,6 +31,19 @@ class village
 		$this->pierre = $pierre;		
 	}
 	
+	public function GetNiveauByName($nom)
+	{
+		switch($nom)
+		{
+			case "Scierie":
+				return $this->getScierie();
+			case "Carriere":
+				return $this->getCarriere();
+			case "Mine":
+				return $this->getMine();
+		}
+	}
+	
 	public function getVillageId()
 	{
 		return $this->villageId;
@@ -76,7 +89,7 @@ class village
 		$this->carriere = $c;
 	}
 	
-	public function upCarrier()
+	public function upCarriere()
 	{
 		$this->carriere++;
 	}

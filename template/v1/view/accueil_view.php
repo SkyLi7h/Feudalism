@@ -39,12 +39,12 @@
 			<br />
 			<p id="tooltip"><input placeholder="E-mail" title="Votre email" type="email" name="mailInsc" id="mailInsc" /></p>
 			<br />
-			<p id="tooltip"><select title="Choisissez votre faction" name="race" id="race">
+			<!-- <p id="tooltip"><select title="Choisissez votre faction" name="race" id="race">
 			  <option selected="selected">Humain</option>
 			  <option>Elfe</option>
 			  <option>Orc</option>
 			</select></p>
-			<br />
+			<br /> -->
 			<button onclick="inscriptionAjax()" id="bouttonInscription" class="ui-button ui-widget ui-corner-all"><span class="ui-icon ui-icon-bullet"></span>S'inscrire<span class="ui-icon ui-icon-bullet"></span></button>
 		</form>
 	</div>

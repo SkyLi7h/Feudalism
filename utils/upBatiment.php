@@ -27,17 +27,12 @@
 	$village = unserialize($_SESSION["village"]);
 	$batiment = $_POST["bat"];
 	
+	$batAConstruire = $BATIMENTS[$batiment];
 	
-	
-	switch($batiment)
-	{
-		case "scierie":
-			$coutBois = $TABCOUTSCIERIE["bois"] * (pow($TABCOUTSCIERIE["multiplicateur"],$village->getScierie()-1));
-			$coutPierre = $TABCOUTSCIERIE["pierre"] * (pow($TABCOUTSCIERIE["multiplicateur"],$village->getScierie()-1));
-			$coutMetal = $TABCOUTSCIERIE["metal"] * (pow($TABCOUTSCIERIE["multiplicateur"],$village->getScierie()-1));
-			$temps = $TABCOUTSCIERIE["temps"] * (pow($TABCOUTSCIERIE["multiplicateur"],$village->getScierie()-1));		
-			break;		
-	}
+	$coutBois = $batAConstruire["bois"] * (pow($batAConstruire["multiplicateur"],$village->GetNiveauByName($batiment)-1));
+	$coutPierre = $batAConstruire["pierre"] * (pow($batAConstruire["multiplicateur"],$village->GetNiveauByName($batiment)-1));
+	$coutMetal = $batAConstruire["metal"] * (pow($batAConstruire["multiplicateur"],$village->GetNiveauByName($batiment)-1));
+	$temps = $batAConstruire["temps"] * (pow($batAConstruire["multiplicateur"],$village->GetNiveauByName($batiment)-1));	
 
 	if($village->getBois() >= $coutBois && $village->getPierre() >= $coutPierre && $village->getMetal() >= $coutMetal)
 	{
@@ -50,8 +45,6 @@
 		echo $villageDao->addConstruction($village->getVillageId(), $batiment, $temps);
 
 	}
-	
-	$villageDao = new villageDao();
 
 	
 

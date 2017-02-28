@@ -40,29 +40,50 @@
 					$gainSecondeBois =  (($BOISGAINHEURE*POW($MULTIPLICATEUR, $village->getScierie()))/3600);
 					$gainSecondePierre =  (($PIERREGAINHEURE*POW($MULTIPLICATEUR, $village->getCarriere()))/3600);
 					$gainSecondeMetal =  (($METALGAINHEURE*POW($MULTIPLICATEUR, $village->getMine()))/3600);
+					
+					$gainSecondeBoisSuiv =  (($BOISGAINHEURE*POW($MULTIPLICATEUR, $village->getScierie()+1))/3600);
+					$gainSecondePierreSuiv =  (($PIERREGAINHEURE*POW($MULTIPLICATEUR, $village->getCarriere()+1))/3600);
+					$gainSecondeMetalSuiv =  (($METALGAINHEURE*POW($MULTIPLICATEUR, $village->getMine()+1))/3600);
+					
+					$gainSecondeBatSuiv = [];
+					$gainSecondeBatSuiv["Scierie"] = $gainSecondeBoisSuiv;
+					$gainSecondeBatSuiv["Carriere"] = $gainSecondePierreSuiv;
+					$gainSecondeBatSuiv["Mine"] = $gainSecondeMetalSuiv;
+					
+					$gainSecondeBat = [];
+					$gainSecondeBat["Scierie"] = $gainSecondeBois;
+					$gainSecondeBat["Carriere"] = $gainSecondePierre;
+					$gainSecondeBat["Mine"] = $gainSecondeMetal;
+					
+					$joueur = unserialize($_SESSION["joueur"]); 
 				}				
 			?>
 			<body>
 			<div class="hautLayout">
 				<?php if(isset($_SESSION["joueur"])) {?>
-					<center>
-					<span id="bois"><?php echo floor($village->getBois());?></span>
-					<span id="pierre"><?php echo floor($village->getPierre());?></span>
-					<span id="metal"><?php echo floor($village->getMetal());?></span>
-					</center>
+					<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/wood.png"><span id="bois"><?php echo floor($village->getBois());?></span>
+					<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/stone.png"><span id="pierre"><?php echo floor($village->getPierre());?></span>
+					<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/iron.png"><span id="metal"><?php echo floor($village->getMetal());?></span>
+					<img width="16px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/money.png"><span id="or"><?php echo floor($joueur->getOrs());?></span>
 				<?php }?>
-			</div>
+			</div>		
 			
+			<div class="logo">
+				<a href="index.php?mod=index"><img src="template/<?php echo $TEMPLATE; ?>/images/logo2.png"/></a>
+			</div>	
+
 			<?php if(isset($_SESSION["joueur"])) {?>
 				<div class="menuBoucliers">
 					<div class="bouclierGeneral">
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 						<div id="txtBouclier">Général</div>
 					</div>
+					<a href="index.php?mod=batiments">
 					<div class="bouclierConstruction">
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 						<div id="txtBouclier">Bâtiments</div>
 					</div>	
+					</a>
 					<div class="bouclierCarte">
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 						<div id="txtBouclier">Carte</div>
@@ -85,10 +106,6 @@
 					</div>
 				</div>	
 			<?php }?>
-			
-			<div class="logo">
-				<a href="index.php?mod=index"><img src="template/<?php echo $TEMPLATE; ?>/images/logo2.png"/></a>
-			</div>				
 			
 			<div class="mainLayout">
 				<div class="bordureHorHaut"></div>

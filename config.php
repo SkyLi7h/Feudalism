@@ -1,5 +1,6 @@
 ﻿<?php
 	//Fichier de configuration
+	date_default_timezone_set('Europe/Paris');
 	$NAME_APPLICATION = "Last imperium"; //Nom du site
 	$VERSION = "A0.1"; //Version du projet
 	$TEMPLATE = "v1"; //Nom du template utilisé
@@ -15,9 +16,9 @@
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
-	$DBNAME = "lastimperium";
+	$DBNAME = "feudalism";
 	$LOGIN = "root";
-	$PASS = "";
+	$PASS = "19Nino552886!";
 	
 	//Config ressources
 	$MULTIPLICATEUR = 1.3;
@@ -34,27 +35,38 @@
 		$METALGAINHEURE = 150 * $VITESSE;
 	
 	
-		//Scierie
-		$TABCOUTSCIERIE = [];
-			$TABCOUTSCIERIE["multiplicateur"] = 1.9;
-			$TABCOUTSCIERIE["bois"] = 50;
-			$TABCOUTSCIERIE["pierre"] = 120;
-			$TABCOUTSCIERIE["metal"] = 90;
-			$TABCOUTSCIERIE["temps"] = 90/$VITESSE;
-		//Carriere
-		$TABCOUTCARRIERE = [];
-			$TABCOUTCARRIERE["multiplicateur"] = 1.9;
-			$TABCOUTCARRIERE["bois"] = 90;
-			$TABCOUTCARRIERE["pierre"] = 50;
-			$TABCOUTCARRIERE["metal"] = 120;		
-			$TABCOUTCARRIERE["temps"] = 90/$VITESSE;		
-		//Mine
-		$TABCOUTCARRIERE = [];
-			$TABCOUTMINE["multiplicateur"] = 1.9;
-			$TABCOUTMINE["bois"] = 120;
-			$TABCOUTMINE["pierre"] = 90;
-			$TABCOUTMINE["metal"] = 50;
-			$TABCOUTMINE["temps"] = 90/$VITESSE;
+	//Bâtiments
+		$BATIMENTS = [];
+			$BATIMENTS["Scierie"] = [];
+				$BATIMENTS["Scierie"]["nom"] = "Scierie";
+				$BATIMENTS["Scierie"]["description"] = "Le bois, une ressource indispensable pour améliorer votre village !";
+				$BATIMENTS["Scierie"]["img"] = "buildingTemp.png";
+				$BATIMENTS["Scierie"]["multiplicateur"] = 1.9;
+				$BATIMENTS["Scierie"]["bois"] = 50;
+				$BATIMENTS["Scierie"]["pierre"] = 120;
+				$BATIMENTS["Scierie"]["metal"] = 90;
+				$BATIMENTS["Scierie"]["temps"] = 90/$VITESSE;
+				$BATIMENTS["Scierie"]["prerequis"] = [];
+			$BATIMENTS["Carriere"] = [];
+				$BATIMENTS["Carriere"]["nom"] = "Carriere";
+				$BATIMENTS["Carriere"]["description"] = "La pierre, une ressource indispensable pour améliorer votre village !";
+				$BATIMENTS["Carriere"]["img"] = "buildingTemp.png";
+				$BATIMENTS["Carriere"]["multiplicateur"] = 1.9;
+				$BATIMENTS["Carriere"]["bois"] = 90;
+				$BATIMENTS["Carriere"]["pierre"] = 50;
+				$BATIMENTS["Carriere"]["metal"] = 120;
+				$BATIMENTS["Carriere"]["temps"] = 90/$VITESSE;
+				$BATIMENTS["Carriere"]["prerequis"] = [];
+			$BATIMENTS["Mine"] = [];
+				$BATIMENTS["Mine"]["nom"] = "Mine";
+				$BATIMENTS["Mine"]["description"] = "Le métal, une ressource indispensable pour améliorer votre village et vos unités !";
+				$BATIMENTS["Mine"]["img"] = "buildingTemp.png";
+				$BATIMENTS["Mine"]["multiplicateur"] = 1.9;
+				$BATIMENTS["Mine"]["bois"] = 120;
+				$BATIMENTS["Mine"]["pierre"] = 90;
+				$BATIMENTS["Mine"]["metal"] = 50;
+				$BATIMENTS["Mine"]["temps"] = 90/$VITESSE;
+				$BATIMENTS["Mine"]["prerequis"] = [];
 		
 	
 	

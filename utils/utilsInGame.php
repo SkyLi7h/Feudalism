@@ -5,8 +5,10 @@ class utilsInGame
 	public function logout()
 	{
 		global $MOD_START;
-		session_unset();
 		$_SESSION["mod"] = $MOD_START;
+		session_unset();
+		session_destroy();
+		header("Refresh:0; url=index.php");
 	}	
 	
 	//Maj des ressources et batiments dans la bdd à chaque rechargement de page
@@ -37,13 +39,13 @@ class utilsInGame
 			{
 				switch ($donneesConstruction["batiment"]) 
 				{
-					case "scierie":
+					case "Scierie":
 						$village->upScierie();
 						break;
-					case "carriere":
+					case "Carriere":
 						$village->upCarriere();
 						break;
-					case "mine":
+					case "Mine":
 						$village->upMine();
 						break;					
 				}

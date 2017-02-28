@@ -27,6 +27,11 @@ class joueur
 	{
 		return $this->email;
 	}
+	
+	public function getOrs()
+	{
+		return $this->ors;
+	}
 }
 
 

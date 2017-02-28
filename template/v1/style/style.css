@@ -54,13 +54,23 @@ body
 	background-image:url(../images/haut.png);
 	background-repeat: no-repeat;
     background-position: center top; 
+	text-align: center;
+	padding-top: 6px;
+	font: bold 12px "Trajan", Sans-Serif;
+	color: #cbd9de;
+}
+
+.hautLayout img
+{
+	vertical-align:top;
+	margin-left: 10px;
+	margin-right: 2px;
 }
 
 .logo
 {
 	width: 100%;
 	text-align: center;
-	margin-top: 10px;
 }
 
 #bouttonForum
@@ -120,7 +130,7 @@ body
 
 .mainLayout
 {
-	margin-top: 30px;
+	margin-top: 50px;
 	width: 100%;
 	background-image:url(../images/fondPage.png);
 	position: relative;
@@ -399,9 +409,20 @@ body
 	height: 56px;
 	text-align: center;
 	padding-left: 50px;
-	margin-top: 10px;
 	color: #cbd9de;
 }
+
+.menuBoucliers a
+{
+	color: #cbd9de;
+	text-decoration: none;
+}
+.menuBoucliers a:after
+{
+	color: #cbd9de;
+	text-decoration: none;
+}
+
 
 .menuBoucliers div:hover
 {
@@ -508,4 +529,120 @@ body
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
 	margin-left : 75px;
+}
+
+/*Bâtiments*/
+.layoutBatiment
+{
+	position: relative;
+	width: 90%;
+	margin: auto;
+	margin-top: 8px;
+	background-color: #FCF7C2;
+	padding: 8px;
+	height: 180px;
+}
+
+#nomBatiment
+{
+	width:250px;
+	height:30px;
+	font: bold 13px "Trajan", Sans-Serif;
+	background-image:url(../images/purpleStripe.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+	color: #cbd9de;
+	padding-top: 7px;
+	text-align: center;
+}
+
+#imgBatiment
+{
+	float: left;
+	width: 20%;
+	margin-top: -18px;
+	margin-left: 80px;
+}
+
+#descBatiment
+{
+	font: bold 13px "Trajan", Sans-Serif;
+	margin-top: 40px;
+	float: left;
+	width: 65%;
+	height: 90px;
+}
+
+#niveauBatiment
+{
+	font: bold 13px "Trajan", Sans-Serif;
+	margin-left: 250px;
+	text-align: center;
+	width: 150px;
+	float: left;
+	
+}
+
+#gainBatiment
+{
+	font: bold 13px "Trajan", Sans-Serif;
+	text-align: center;
+	width: 200px;
+	float: left;
+}
+
+#buildBatiment
+{
+	float: left;
+	margin-left: 80px;
+	width:100px;
+	height:25px;
+	font: bold 10px "Trajan", Sans-Serif;
+	background-image:url(../images/buttons/build.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+	color: #cbd9de;
+	padding-top: 11px;
+	text-align: center;
+	margin-top: -40px;
+}
+
+#buildBatiment:hover
+{
+		background-image:url(../images/buttons/buildOver.png);
+}
+
+#buildBatiment:active
+{
+		background-image:url(../images/buttons/buildClicked.png);
+}
+
+#buildBatimentInsuf
+{
+	float: left;
+	margin-left: 80px;
+	width:100px;
+	height:25px;
+	font: bold 10px "Trajan", Sans-Serif;
+	background-image:url(../images/buttons/disabled.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+	color: #cbd9de;
+	padding-top: 11px;
+	text-align: center;
+	margin-top: -40px;
+}
+
+#coutBatiment
+{
+	position: absolute;
+	width:60%;
+	top: 162px;
+	left: 210px;
 }
