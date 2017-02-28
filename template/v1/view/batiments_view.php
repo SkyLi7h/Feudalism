@@ -5,38 +5,58 @@
 		$debug->show("Lancement de la view $viewClass avec en business $businessClass");	
 
 	$village = unserialize($_SESSION["village"]);
+	$constrAutorise = true;
+	if(count($listBatEnConstr) > 0)
+	{
+		$constrAutorise = false;
+		$tempsFin = $listBatEnConstr[0][3] + $listBatEnConstr[0][2];
+		$tempsRest = $tempsFin - time();
+		$pourcTpsRest = ($tempsRest / $listBatEnConstr[0][2]) * 100;
+	}
 ?>
 
 <script>
-	function upBatiment(batiment)
-	{
-		var xhr = new XMLHttpRequest();		
-		xhr.open('POST', 'utils/upBatiment.php');
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhr.send('bat=' + batiment);
-		
-		xhr.addEventListener('readystatechange', function() 
+	<?php
+		if(count($listBatEnConstr) == 0)
 		{
-
-			if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) 
+	?>
+			function upBatiment(batiment)
 			{
-				location.reload();
-			}
+				var xhr = new XMLHttpRequest();		
+				xhr.open('POST', 'utils/upBatiment.php');
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhr.send('bat=' + batiment);
+				
+				xhr.addEventListener('readystatechange', function() 
+				{
 
-		});
-	}
+					if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) 
+					{
+						location.reload();
+					}
+
+				});
+			}
+	
+	<?php
+		}
+	?>
 	
 	 $( function() {
     $( "#progressbar" ).progressbar({
-      value: 37
+      value: <?php echo (100 - $pourcTpsRest); ?>
     });
   } );
 </script>
 
-<div style="width: 80%; margin: auto; margin-top: 10px; margin-bottom: 10px; height: 20px;" id="progressbar"></div>
+<?php
+	if(count($listBatEnConstr) > 0)
+	{
+?>
+<div style="width: 80%; margin: auto; margin-top: 10px; margin-bottom: 15px; height: 20px;" id="progressbar"><div style="position: absolute; top:45px; left:0; width:100%; height:100%; font-size: 12px; text-align: center;" id="infos"><?php echo $listBatEnConstr[0][1] . " - " . gmdate('H:i:s', floor($tempsRest)) ?></div></div>
 
 <?php
-
+	}
 
 	foreach ($BATIMENTS as $batiment)
 	{
@@ -72,6 +92,11 @@
 		}
 		
 		if(!$boisSuf  || !$pierreSuf  || !$metalSuf)
+		{
+			$boutonConstruire = '<div id="buildBatimentInsuf">Construire</div>';
+		}
+		
+		if(!$constrAutorise)
 		{
 			$boutonConstruire = '<div id="buildBatimentInsuf">Construire</div>';
 		}

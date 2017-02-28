@@ -54,7 +54,7 @@
 			require_once "entity/joueur.php";
 			require_once "entity/village.php";
 			
-			$utilsinGame->rechargementDonneesResBat();
+			$listBatEnConstr = $utilsinGame->rechargementDonneesResBat();
 		}
 		
 		if(isset($_GET["mod"]))

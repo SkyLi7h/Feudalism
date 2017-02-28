@@ -30,6 +30,7 @@ class utilsInGame
 		$village->setPierre($donneesVillage["pierre"]);
 		$village->setMetal($donneesVillage["metal"]);
 		
+		$listBatEnConstr = [];
 		
 		//Recup données de construction
 		$reponseConstruction = $bdd->query('SELECT * from construction where villageId ='.$village->getVillageId());
@@ -52,6 +53,10 @@ class utilsInGame
 				
 				$bdd->query('DELETE from construction where constructionId ='.$donneesConstruction["constructionId"]);
 			}
+			else
+			{
+				array_push($listBatEnConstr, $donneesConstruction);
+			}
 			
 			
 		}
@@ -73,6 +78,8 @@ class utilsInGame
 		
 		//Maj du village dans la bdd
 		$bdd->query('UPDATE village set bois='.$boisTot.', pierre='.$pierreTot.', metal='.$metalTot.', scierie='.$village->getScierie().', carriere='.$village->getCarriere().', mine='.$village->getMine().', dernMaj='. time() .' where villageId='.$village->getVillageId());
+		
+		return $listBatEnConstr;
 	}
 }
 
