@@ -1,11 +1,12 @@
 <?php
+	session_start();
 	if (! @include_once("../config.php")) 
 		throw new Exception ("config.php est introuvable !");
 	
 	if($DB_ACCESS == "MYSQL")
 	{
-		if (! @include_once("../DAO/bddAccess.php")) 
-			throw new Exception ("DAO/bddAccess.php est introuvable !");
+		if (! @include_once("../dao/bddAccess.php")) 
+			throw new Exception ("dao/bddAccess.php est introuvable !");
 		
 		$bddAccess = new bdd();
 		$bdd = $bddAccess->connexion($HOST, $DBNAME, $LOGIN, $PASS);
@@ -17,8 +18,6 @@
 	require_once "../entity/village.php";
 	require_once "../utils/utilsInGame.php";
 	
-	session_start();
-	
 	//Maj Ressource
 	$utilsinGame = new utilsInGame();
 	$utilsinGame->rechargementDonneesResBat();
@@ -29,10 +28,10 @@
 	
 	$batAConstruire = $BATIMENTS[$batiment];
 	
-	$coutBois = $batAConstruire["bois"] * (pow($batAConstruire["multiplicateur"],$village->GetNiveauByName($batiment)-1));
-	$coutPierre = $batAConstruire["pierre"] * (pow($batAConstruire["multiplicateur"],$village->GetNiveauByName($batiment)-1));
-	$coutMetal = $batAConstruire["metal"] * (pow($batAConstruire["multiplicateur"],$village->GetNiveauByName($batiment)-1));
-	$temps = $batAConstruire["temps"] * (pow($batAConstruire["multiplicateur"],$village->GetNiveauByName($batiment)-1));	
+	$coutBois = $batAConstruire["cout"][$village->GetNiveauByName($batiment)]["bois"];
+	$coutPierre = $batAConstruire["cout"][$village->GetNiveauByName($batiment)]["pierre"];
+	$coutMetal = $batAConstruire["cout"][$village->GetNiveauByName($batiment)]["metal"];
+	$temps = $batAConstruire["cout"][$village->GetNiveauByName($batiment)]["temps"];
 
 	if($village->getBois() >= $coutBois && $village->getPierre() >= $coutPierre && $village->getMetal() >= $coutMetal)
 	{

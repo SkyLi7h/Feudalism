@@ -37,25 +37,13 @@
 				if(isset($_SESSION["joueur"]))
 				{
 					$village = unserialize($_SESSION["village"]); 
-					$gainSecondeBois =  (($BOISGAINHEURE*POW($MULTIPLICATEUR, $village->getScierie()))/3600);
-					$gainSecondePierre =  (($PIERREGAINHEURE*POW($MULTIPLICATEUR, $village->getCarriere()))/3600);
-					$gainSecondeMetal =  (($METALGAINHEURE*POW($MULTIPLICATEUR, $village->getMine()))/3600);
+					$joueur = unserialize($_SESSION["joueur"]);
 					
-					$gainSecondeBoisSuiv =  (($BOISGAINHEURE*POW($MULTIPLICATEUR, $village->getScierie()+1))/3600);
-					$gainSecondePierreSuiv =  (($PIERREGAINHEURE*POW($MULTIPLICATEUR, $village->getCarriere()+1))/3600);
-					$gainSecondeMetalSuiv =  (($METALGAINHEURE*POW($MULTIPLICATEUR, $village->getMine()+1))/3600);
+					//Maj des ressources dans la session
+					$gainSecondeBois = ($BATIMENTS["Scierie"]["gain"][$village->getScierie()]/3600);
+					$gainSecondePierre = ($BATIMENTS["Carriere"]["gain"][$village->getCarriere()]/3600);
+					$gainSecondeMetal = ($BATIMENTS["Mine"]["gain"][$village->getMine()]/3600);
 					
-					$gainSecondeBatSuiv = [];
-					$gainSecondeBatSuiv["Scierie"] = $gainSecondeBoisSuiv;
-					$gainSecondeBatSuiv["Carriere"] = $gainSecondePierreSuiv;
-					$gainSecondeBatSuiv["Mine"] = $gainSecondeMetalSuiv;
-					
-					$gainSecondeBat = [];
-					$gainSecondeBat["Scierie"] = $gainSecondeBois;
-					$gainSecondeBat["Carriere"] = $gainSecondePierre;
-					$gainSecondeBat["Mine"] = $gainSecondeMetal;
-					
-					$joueur = unserialize($_SESSION["joueur"]); 
 				}				
 			?>
 			<body>
@@ -65,6 +53,20 @@
 					<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/stone.png"><span id="pierre"><?php echo floor($village->getPierre());?></span>
 					<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/iron.png"><span id="metal"><?php echo floor($village->getMetal());?></span>
 					<img width="16px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/money.png"><span id="or"><?php echo floor($joueur->getOrs());?></span>
+				<?php }?>
+					<div id="bouttonForum">
+						<a href="http://forum.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all">Forum</button></a>
+					</div>		
+					<div id="bouttonDev">
+						<a href="http://dev.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all">Dev</button></a>
+					</div>				
+				<?php if(isset($_SESSION["joueur"])) {?>
+					<div id="bouttonDeconnexion">
+							<button onClick="deconnexion()" class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-power"></span></span>Déconnexion</button>
+					</div>
+					<div id="bouttonAide">
+							<a href="index.php?mod=aide"><button class="ui-button ui-widget ui-corner-all"></span>Aide</button></a>
+					</div>
 				<?php }?>
 			</div>		
 			
@@ -117,20 +119,6 @@
 				<div class="angleBordureHautDroit"></div>
 				<div class="angleBordureBasGauche"></div>
 				<div class="angleBordureBasDroit"></div>
-				<div id="bouttonForum">
-					<a href="http://forum.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all"><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Forum</button></a>
-				</div>		
-				<div id="bouttonDev">
-					<a href="http://dev.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Dev</button></a>
-				</div>				
-				<?php if(isset($_SESSION["joueur"])) {?>
-					<div id="bouttonDeconnexion">
-						<button onClick="deconnexion()" class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-power"></span></span>Déconnexion</button>
-					</div>
-					<div id="bouttonAide">
-						<a href="index.php?mod=aide"><button class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-arrowreturn-1-e"></span>Aide</button></a>
-					</div>
-				<?php }?>
 				
 				
 				<div class="include">
@@ -141,7 +129,7 @@
 						<div class="ui-widget">
 							<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
 								<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-								<strong>Attention ! </strong> Jeu en maintenant, consultez le forum ou la partie Dev pour plus d'infos !</p>
+								<strong>Attention ! </strong> Jeu en maintenance, consultez le forum ou la partie Dev pour plus d'infos !</p>
 							</div>
 						</div>			
 					<?php } ?>

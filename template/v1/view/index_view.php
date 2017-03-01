@@ -6,5 +6,7 @@
 
 	$village = unserialize($_SESSION["village"]);
 
-	//time();
 ?>
+
+<center>Coucou justin ! Tu ne devrais pas travailler Java par hasard ? Moi je m'emmerde. Alors je crée un jeu. Lol </center>
+<center>#vieux HTML vite fait à l'arrache</center>

@@ -58,6 +58,7 @@ body
 	padding-top: 6px;
 	font: bold 12px "Trajan", Sans-Serif;
 	color: #cbd9de;
+	position: relative;
 }
 
 .hautLayout img
@@ -76,50 +77,50 @@ body
 #bouttonForum
 {
 	position: absolute;
-	top: -30px;
-	left: 20px;	
+	top: 33px;
+	left: 130px;	
 }
 
 #bouttonForum button
 {
-	width: 180px;
-	font: bold 14px "Trajan", Sans-Serif;
-	width: 100px;
+	font: bold 13px "Trajan", Sans-Serif;
+	width: 80px;
+	height: 28px;
 }
 
 #bouttonDev
 {
 	position: absolute;
-	top: -30px;
-	left: 125px;
+	top: 33px;
+	left: 215px;
 }
 
 #bouttonDev button
 {
-	width: 180px;
-	font: bold 14px "Trajan", Sans-Serif;
-	width: 100px;
+	font: bold 13px "Trajan", Sans-Serif;
+	width: 70px;
+	height: 28px;
 }
 
 #bouttonAide
 {
 	position: absolute;
-	top: -30px;
-	right: 130px;
+	top: 33px;
+	right: 215px;
 }
 
 #bouttonAide button
 {
-	width: 180px;
-	font: bold 14px "Trajan", Sans-Serif;
-	width: 100px;
+	font: bold 13px "Trajan", Sans-Serif;
+	width: 70px;
+	height: 28px;
 }
 
 #bouttonDeconnexion
 {
 	position: absolute;
-	top: -22px;
-	right: 20px;	
+	top: 37px;
+	right: 110px;	
 }
 
 #bouttonDeconnexion button
@@ -130,10 +131,11 @@ body
 
 .mainLayout
 {
-	margin-top: 50px;
+	margin-top: 30px;
 	width: 100%;
 	background-image:url(../images/fondPage.png);
 	position: relative;
+	padding-top: 10px;
 }
 
 .bordureHorHaut
@@ -150,7 +152,7 @@ body
 	width: 100%;
 	text-align: center;
 	position: absolute;
-	top: -35px;
+	top: -17px;
 }
 
 
@@ -562,7 +564,7 @@ body
 {
 	float: left;
 	width: 20%;
-	margin-top: -18px;
+	margin-top: -8px;
 	margin-left: 80px;
 }
 
@@ -581,16 +583,19 @@ body
 	margin-left: 250px;
 	text-align: center;
 	width: 150px;
-	float: left;
-	
+	position: absolute;
+	top: 20px;
+	left: 10px;
 }
 
 #gainBatiment
 {
 	font: bold 13px "Trajan", Sans-Serif;
 	text-align: center;
-	width: 200px;
-	float: left;
+	width: 250px;
+	position: absolute;
+	top: 20px;
+	left: 400px;
 }
 
 #buildBatiment
@@ -608,7 +613,7 @@ body
 	color: #cbd9de;
 	padding-top: 11px;
 	text-align: center;
-	margin-top: -40px;
+	margin-top: -25px;
 }
 
 #buildBatiment:hover
@@ -636,7 +641,7 @@ body
 	color: #cbd9de;
 	padding-top: 11px;
 	text-align: center;
-	margin-top: -40px;
+	margin-top: -25px;
 }
 
 #coutBatiment

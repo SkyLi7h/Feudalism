@@ -41,6 +41,10 @@ class village
 				return $this->getCarriere();
 			case "Mine":
 				return $this->getMine();
+			case "Château":
+				return $this->getChateau();
+			case "Caserne":
+				return $this->getCaserne();
 		}
 	}
 	
@@ -127,6 +131,25 @@ class village
 	public function setMetal($metal)
 	{
 		$this->metal = $metal;
+	}
+	
+	public function upChateau()
+	{
+		$this->chateau++;
+	}
+	
+	public function getChateau()
+	{
+		return $this->chateau;
+	}
+	public function upCaserne()
+	{
+		$this->caserne++;
+	}
+	
+	public function getCaserne()
+	{
+		return $this->caserne;
 	}
 }
 

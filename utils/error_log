@@ -1,0 +1,95 @@
+[24-Feb-2017 16:18:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on boolean in /home/apmqlasti808566/public_html/dao/joueurDao.php:10
+Stack trace:
+#0 /home/apmqlasti808566/public_html/utils/connexion.php(20): joueurDao->connexion('" ?> <?php echo...', 'test')
+#1 {main}
+  thrown in /home/apmqlasti808566/public_html/dao/joueurDao.php on line 10
+[24-Feb-2017 16:18:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on boolean in /home/apmqlasti808566/public_html/dao/joueurDao.php:10
+Stack trace:
+#0 /home/apmqlasti808566/public_html/utils/connexion.php(20): joueurDao->connexion('" ?> <?php echo...', 'test')
+#1 {main}
+  thrown in /home/apmqlasti808566/public_html/dao/joueurDao.php on line 10
+[01-Mar-2017 14:43:58 Europe/Paris] PHP Fatal error:  Call to a member function fetch() on boolean in /home/apmqlasti808566/public_html/dao/villageDao.php on line 39
+[01-Mar-2017 14:55:48 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 14:55:54 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 14:56:04 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 14:56:19 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 14:57:01 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 14:57:48 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 14:57:50 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 15:04:36 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 15:04:37 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 15:04:38 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 15:04:39 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 15:12:08 Europe/Paris] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 14:23:40 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /home/apmqlasti808566/public_html/dao/bddAccess.php:7
+Stack trace:
+#0 /home/apmqlasti808566/public_html/dao/bddAccess.php(7): PDO->__construct('mysql:host=loca...', 'root', '19Nino552886!')
+#1 /home/apmqlasti808566/public_html/utils/connexion.php(11): bdd->connexion('localhost', 'feudalism', 'root', '19Nino552886!')
+#2 {main}
+  thrown in /home/apmqlasti808566/public_html/dao/bddAccess.php on line 7
+[01-Mar-2017 14:23:40 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /home/apmqlasti808566/public_html/dao/bddAccess.php:7
+Stack trace:
+#0 /home/apmqlasti808566/public_html/dao/bddAccess.php(7): PDO->__construct('mysql:host=loca...', 'root', '19Nino552886!')
+#1 /home/apmqlasti808566/public_html/utils/connexion.php(11): bdd->connexion('localhost', 'feudalism', 'root', '19Nino552886!')
+#2 {main}
+  thrown in /home/apmqlasti808566/public_html/dao/bddAccess.php on line 7
+[01-Mar-2017 14:23:42 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /home/apmqlasti808566/public_html/dao/bddAccess.php:7
+Stack trace:
+#0 /home/apmqlasti808566/public_html/dao/bddAccess.php(7): PDO->__construct('mysql:host=loca...', 'root', '19Nino552886!')
+#1 /home/apmqlasti808566/public_html/utils/connexion.php(11): bdd->connexion('localhost', 'feudalism', 'root', '19Nino552886!')
+#2 {main}
+  thrown in /home/apmqlasti808566/public_html/dao/bddAccess.php on line 7
+[01-Mar-2017 14:23:42 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /home/apmqlasti808566/public_html/dao/bddAccess.php:7
+Stack trace:
+#0 /home/apmqlasti808566/public_html/dao/bddAccess.php(7): PDO->__construct('mysql:host=loca...', 'root', '19Nino552886!')
+#1 /home/apmqlasti808566/public_html/utils/connexion.php(11): bdd->connexion('localhost', 'feudalism', 'root', '19Nino552886!')
+#2 {main}
+  thrown in /home/apmqlasti808566/public_html/dao/bddAccess.php on line 7
+[01-Mar-2017 14:24:50 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 14:24:55 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 8
+[01-Mar-2017 14:28:46 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'DAO/bddAccess.php est introuvable !' in /home/apmqlasti808566/public_html/utils/upBatiment.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/apmqlasti808566/public_html/utils/upBatiment.php on line 9

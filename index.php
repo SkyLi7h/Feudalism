@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	date_default_timezone_set('Europe/Paris');
 	//Fenêtre principale de l'application. Appel du fichier de configuration et du template.
 	//A NE PAS TOUCHER
 	//session_destroy();
@@ -55,12 +56,12 @@
 			require_once "entity/village.php";
 			
 			$listBatEnConstr = $utilsinGame->rechargementDonneesResBat();
-		}
-		
-		if(isset($_GET["mod"]))
-		{		
-			$_SESSION["mod"] = $_GET["mod"];	
-		}				
+			
+			if(isset($_GET["mod"]))
+			{		
+				$_SESSION["mod"] = $_GET["mod"];	
+			}	
+		}			
 	}
 	else
 	{

@@ -5,17 +5,15 @@ class utilsInGame
 	public function logout()
 	{
 		global $MOD_START;
-		$_SESSION["mod"] = $MOD_START;
 		session_unset();
 		session_destroy();
-		header("Refresh:0; url=index.php");
-		exit;
+		$_SESSION["mod"] = $MOD_START;
 	}	
 	
 	//Maj des ressources et batiments dans la bdd à chaque rechargement de page
 	public function rechargementDonneesResBat()
 	{
-		global $bdd, $MULTIPLICATEUR, $BOISGAINHEURE, $PIERREGAINHEURE, $METALGAINHEURE;
+		global $bdd, $BATIMENTS;
 		
 		$village = unserialize($_SESSION["village"]);
 		
@@ -49,7 +47,13 @@ class utilsInGame
 						break;
 					case "Mine":
 						$village->upMine();
-						break;					
+						break;	
+					case "Château":
+						$village->upChateau();
+						break;	
+					case "Caserne":
+						$village->upCaserne();
+						break;	
 				}
 				
 				$bdd->query('DELETE from construction where constructionId ='.$donneesConstruction["constructionId"]);
@@ -66,9 +70,9 @@ class utilsInGame
 		$tpsEcoule = time() - $donneesVillage["dernMaj"];
 		
 		//Maj des ressources dans la session
-		$boisTot = $village->getBois() + ((($BOISGAINHEURE*POW($MULTIPLICATEUR,$village->getScierie()))/3600)*$tpsEcoule);
-		$pierreTot = $village->getPierre() + ((($PIERREGAINHEURE*POW($MULTIPLICATEUR,$village->getCarriere()))/3600)*$tpsEcoule);
-		$metalTot = $village->getMetal() + ((($METALGAINHEURE*POW($MULTIPLICATEUR,$village->getMine()))/3600)*$tpsEcoule);
+		$boisTot = $village->getBois() + (($BATIMENTS["Scierie"]["gain"][$village->getScierie()]/3600)*$tpsEcoule);
+		$pierreTot = $village->getPierre() + (($BATIMENTS["Carriere"]["gain"][$village->getCarriere()]/3600)*$tpsEcoule);
+		$metalTot = $village->getMetal() + (($BATIMENTS["Mine"]["gain"][$village->getMine()]/3600)*$tpsEcoule);
 		
 		$village->setBois($boisTot);
 		$village->setPierre($pierreTot);
@@ -78,7 +82,7 @@ class utilsInGame
 		$_SESSION["village"] = serialize($village);
 		
 		//Maj du village dans la bdd
-		$bdd->query('UPDATE village set bois='.$boisTot.', pierre='.$pierreTot.', metal='.$metalTot.', scierie='.$village->getScierie().', carriere='.$village->getCarriere().', mine='.$village->getMine().', dernMaj='. time() .' where villageId='.$village->getVillageId());
+		$bdd->query('UPDATE village set bois='.$boisTot.', pierre='.$pierreTot.', metal='.$metalTot.', scierie='.$village->getScierie().', carriere='.$village->getCarriere().', mine='.$village->getMine().', chateau='.$village->getChateau().', caserne='.$village->getCaserne().', dernMaj='. time() .' where villageId='.$village->getVillageId());
 		
 		return $listBatEnConstr;
 	}
