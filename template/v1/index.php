@@ -12,6 +12,8 @@
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.js"></script>
 	  <link href="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.css" rel="stylesheet">
 	  <link rel="stylesheet" type="text/css" href="template/<?php echo $TEMPLATE; ?>/style/style.css" media="screen" />
+	  <link rel="shortcut icon" href="template/<?php echo $TEMPLATE; ?>/images/favicon.ico" type="image/x-icon">
+	  <link rel="icon" href="template/<?php echo $TEMPLATE; ?>/images/favicon.ico" type="image/x-icon">
 	</head>	
 	<body>
 		<script>
@@ -29,7 +31,7 @@
 					document.location.href="index.php";
 				}
 
-			});
+				});
 			}
 		</script>
 		<div class="page">
@@ -86,10 +88,12 @@
 						<div id="txtBouclier">Bâtiments</div>
 					</div>	
 					</a>
+					<a href="index.php?mod=carte">
 					<div class="bouclierCarte">
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 						<div id="txtBouclier">Carte</div>
 					</div>	
+					</a>
 					<div class="bouclierArmee">
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 						<div id="txtBouclier">Armée</div>

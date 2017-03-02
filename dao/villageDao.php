@@ -52,7 +52,7 @@ class villageDao
 		$pierre = 500;
 		
 		$bdd->query("INSERT INTO village(joueurId, nom, habitant, chateau, caserne, ferme, mine, scierie, carriere, metal, bois, pierre, dernMaj) VALUES(". $joueurId .", '". $nomVillage ."', ". $habitants .", ". $chateau .", ". $caserne .", ". $ferme .", ". $mine .", ". $scierie .", ". $carriere .", ". $metal .", ". $bois .", ". $pierre .", ". time() .")");		
-		$bdd->query('UPDATE carte set villageId='.$bdd->lastInsertId().' where carteId='.$idTilles);
+		$bdd->query('UPDATE carte set villageId='.$bdd->lastInsertId().', type="village" where carteId='.$idTilles);
 		
 
 		

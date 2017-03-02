@@ -20,7 +20,7 @@
 	$mdp = strip_tags(trim($_POST["pass"]));
 	
 	$joueurDao = new joueurDao();
-	$result = $joueurDao->connexion($pseudo, $mdp);
+	$result = $joueurDao->connexion($pseudo, md5($mdp));
 	
 	if($result == null)
 	{

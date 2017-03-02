@@ -11,6 +11,8 @@
 	$TPSMAXCO = 60*5; //5 minutes
 	$VITESSE = 1;
 	$MAINTENANCE = false;
+	$CARTEX = 50;
+	$CARTEY = 50;
 	
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
@@ -389,6 +391,19 @@
 						$BATIMENTS["Caserne"]["cout"][9]["pierre"] = 200;
 						$BATIMENTS["Caserne"]["cout"][9]["metal"] = 200;
 						$BATIMENTS["Caserne"]["cout"][9]["temps"] = 100;
+						
+			//Héros
+				$NOM = [];
+					$NOM[1] = "Hejo";
+					$NOM[2] = "Wilza";
+					$NOM[3] = "Wisebald";
+					$NOM[4] = "Leyeli";
+					$NOM[5] = "Thyjo";
+					$NOM[6] = "Heskev";
+					$NOM[7] = "Dancia";
+					$NOM[8] = "Berguth";
+					$NOM[9] = "Roman";
+					$NOM[10] = "Donfrith";
 		
 	
 	

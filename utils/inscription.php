@@ -42,7 +42,7 @@
 	}
 	else
 	{		
-		$joueurDao->inscription($pseudo, $mdp, $mail);
+		$joueurDao->inscription($pseudo, md5($mdp), $mail);
 		$idTiles = $villageDao->addVillage($bdd->lastInsertId(), $pseudo);
 		echo 0;
 	}	
