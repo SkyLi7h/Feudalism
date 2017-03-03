@@ -14,8 +14,10 @@ class village
 	private $metal;
 	private $bois;
 	private $pierre;
+	private $paysans;
+	private $lancePierre;
 	
-	public function __construct($villageId, $joueur, $nom, $habitant, $chateau, $caserne, $mine, $scierie, $carriere, $metal, $bois, $pierre)
+	public function __construct($villageId, $joueur, $nom, $habitant, $chateau, $caserne, $mine, $scierie, $carriere, $metal, $bois, $pierre, $paysans, $lancePierre)
 	{
 		$this->villageId = $villageId;
 		$this->joueur = $joueur;
@@ -28,7 +30,9 @@ class village
 		$this->carriere = $carriere;
 		$this->metal = $metal;
 		$this->bois = $bois;
-		$this->pierre = $pierre;		
+		$this->pierre = $pierre;	
+		$this->paysans = $paysans;
+		$this->lancePierre = $lancePierre;			
 	}
 	
 	public function GetNiveauByName($nom)
@@ -45,6 +49,17 @@ class village
 				return $this->getChateau();
 			case "Caserne":
 				return $this->getCaserne();
+		}
+	}
+	
+	public function GetNbByName($nom)
+	{
+		switch($nom)
+		{
+			case "Paysans":
+				return $this->getPaysans();
+			case "Lance-pierre":
+				return $this->getLancePierre();
 		}
 	}
 	
@@ -150,6 +165,26 @@ class village
 	public function getCaserne()
 	{
 		return $this->caserne;
+	}
+	
+	public function getPaysans()
+	{
+		return $this->paysans;
+	}
+	
+	public function setPaysans($nb)
+	{
+		$this->paysans = $nb;
+	}
+	
+	public function getLancePierre()
+	{
+		return $this->lancePierre;
+	}
+	
+	public function setLancePierre($nb)
+	{
+		$this->lancePierre = $nb;
 	}
 }
 

@@ -77,10 +77,10 @@
 			</div>	
 
 			<?php if(isset($_SESSION["joueur"])) {?>
-				<div class="menuBoucliers">
+				<div class="menuBoucliers">	
 					<div class="bouclierGeneral">
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Général</div>
+						<div id="txtBouclier">Alliance</div>
 					</div>
 					<a href="index.php?mod=batiments">
 					<div class="bouclierConstruction">
@@ -94,10 +94,12 @@
 						<div id="txtBouclier">Carte</div>
 					</div>	
 					</a>
+					<a href="index.php?mod=unites">
 					<div class="bouclierArmee">
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 						<div id="txtBouclier">Armée</div>
 					</div>
+					</a>
 					<div class="bouclierHeros">
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 						<div id="txtBouclier">Héros</div>
@@ -220,8 +222,8 @@
 			</script>
 				<?php } ?>
 		</div>
+		<div class="footer">
+			lastimperium.com &copy; 2016-2017 vDev0.1
+		</div>
 	</body>
-	<div class="footer">
-		lastimperium.com &copy; 2016-2017 vDev0.1
-	</div>
 </html>

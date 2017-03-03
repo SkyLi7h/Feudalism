@@ -29,11 +29,6 @@
 				$BATIMENTS["Château"]["maxNiveau"] = 10;
 				$BATIMENTS["Château"]["description"] = "Le château, votre résidence et coeur de votre village !";
 				$BATIMENTS["Château"]["img"] = "buildingTemp.png";
-				$BATIMENTS["Château"]["multiplicateur"] = 1.9;
-				$BATIMENTS["Château"]["bois"][] = 200;
-				$BATIMENTS["Château"]["pierre"] = 200;
-				$BATIMENTS["Château"]["metal"] = 200;
-				$BATIMENTS["Château"]["temps"] = 240/$VITESSE;
 				$BATIMENTS["Château"]["prerequis"] = [];
 				$BATIMENTS["Château"]["cout"] = [];
 					$BATIMENTS["Château"]["cout"][0] = [];
@@ -85,20 +80,7 @@
 						$BATIMENTS["Château"]["cout"][9]["bois"] = 200;
 						$BATIMENTS["Château"]["cout"][9]["pierre"] = 200;
 						$BATIMENTS["Château"]["cout"][9]["metal"] = 200;
-						$BATIMENTS["Château"]["cout"][9]["temps"] = 100;
-				
-			// $BATIMENTS["Entrepôt"] = [];
-				// $BATIMENTS["Entrepôt"]["nom"] = "Entrepôt";
-				// $BATIMENTS["Entrepôt"]["type"] = "Stockage";
-				// $BATIMENTS["Entrepôt"]["maxNiveau"] = 10;
-				// $BATIMENTS["Entrepôt"]["description"] = "Si vous souhaitez stocker plus de matières premières, l'entrepôt est là !";
-				// $BATIMENTS["Entrepôt"]["img"] = "buildingTemp.png";
-				// $BATIMENTS["Entrepôt"]["multiplicateur"] = 1.9;
-				// $BATIMENTS["Entrepôt"]["bois"] = 120;
-				// $BATIMENTS["Entrepôt"]["pierre"] = 80;
-				// $BATIMENTS["Entrepôt"]["metal"] = 50;
-				// $BATIMENTS["Entrepôt"]["temps"] = 160/$VITESSE;
-				// $BATIMENTS["Entrepôt"]["prerequis"] = [];
+						$BATIMENTS["Château"]["cout"][9]["temps"] = 100;				
 				
 			$BATIMENTS["Scierie"] = [];
 				$BATIMENTS["Scierie"]["nom"] = "Scierie";
@@ -118,11 +100,6 @@
 				$BATIMENTS["Scierie"]["maxNiveau"] = 10;
 				$BATIMENTS["Scierie"]["description"] = "Le bois, une ressource indispensable pour améliorer votre village !";
 				$BATIMENTS["Scierie"]["img"] = "buildingTemp.png";
-				$BATIMENTS["Scierie"]["multiplicateur"] = 1.9;
-				$BATIMENTS["Scierie"]["bois"] = 50;
-				$BATIMENTS["Scierie"]["pierre"] = 120;
-				$BATIMENTS["Scierie"]["metal"] = 90;
-				$BATIMENTS["Scierie"]["temps"] = 90/$VITESSE;
 				$BATIMENTS["Scierie"]["prerequis"] = [];
 				$BATIMENTS["Scierie"]["cout"] = [];
 					$BATIMENTS["Scierie"]["cout"][0] = [];
@@ -194,11 +171,6 @@
 				$BATIMENTS["Carriere"]["maxNiveau"] = 10;
 				$BATIMENTS["Carriere"]["description"] = "La pierre, une ressource indispensable pour améliorer votre village !";
 				$BATIMENTS["Carriere"]["img"] = "buildingTemp.png";
-				$BATIMENTS["Carriere"]["multiplicateur"] = 1.9;
-				$BATIMENTS["Carriere"]["bois"] = 90;
-				$BATIMENTS["Carriere"]["pierre"] = 50;
-				$BATIMENTS["Carriere"]["metal"] = 120;
-				$BATIMENTS["Carriere"]["temps"] = 90/$VITESSE;
 				$BATIMENTS["Carriere"]["prerequis"] = [];
 				$BATIMENTS["Carriere"]["cout"] = [];
 					$BATIMENTS["Carriere"]["cout"][0] = [];
@@ -270,11 +242,6 @@
 				$BATIMENTS["Mine"]["maxNiveau"] = 10;
 				$BATIMENTS["Mine"]["description"] = "Le métal, une ressource indispensable pour améliorer votre village et vos unités !";
 				$BATIMENTS["Mine"]["img"] = "buildingTemp.png";
-				$BATIMENTS["Mine"]["multiplicateur"] = 1.9;
-				$BATIMENTS["Mine"]["bois"] = 120;
-				$BATIMENTS["Mine"]["pierre"] = 90;
-				$BATIMENTS["Mine"]["metal"] = 50;
-				$BATIMENTS["Mine"]["temps"] = 90/$VITESSE;
 				$BATIMENTS["Mine"]["prerequis"] = [];
 				$BATIMENTS["Mine"]["cout"] = [];
 					$BATIMENTS["Mine"]["cout"][0] = [];
@@ -334,11 +301,6 @@
 				$BATIMENTS["Caserne"]["maxNiveau"] = 10;
 				$BATIMENTS["Caserne"]["description"] = "Par ici, mon seigneur ! Depuis ce bâtiment, vous pouvez recruter des hommes de main !";
 				$BATIMENTS["Caserne"]["img"] = "buildingTemp.png";
-				$BATIMENTS["Caserne"]["multiplicateur"] = 1.9;
-				$BATIMENTS["Caserne"]["bois"] = 150;
-				$BATIMENTS["Caserne"]["pierre"] = 220;
-				$BATIMENTS["Caserne"]["metal"] = 90;
-				$BATIMENTS["Caserne"]["temps"] = 180/$VITESSE;
 				$BATIMENTS["Caserne"]["prerequis"] = [];
 				$BATIMENTS["Caserne"]["cout"] = [];
 					$BATIMENTS["Caserne"]["cout"][0] = [];
@@ -391,6 +353,39 @@
 						$BATIMENTS["Caserne"]["cout"][9]["pierre"] = 200;
 						$BATIMENTS["Caserne"]["cout"][9]["metal"] = 200;
 						$BATIMENTS["Caserne"]["cout"][9]["temps"] = 100;
+						
+						
+			//Unités
+				$UNITES = [];
+					$UNITES["Paysans"] = [];
+						$UNITES["Paysans"]["nom"] = "Paysans";
+						$UNITES["Paysans"]["description"] = "Des paysans. Pas vraiment une unité de combat, mais assez courageux pour défendre leur terre.";
+						$UNITES["Paysans"]["caserne"] = 1;
+						$UNITES["Paysans"]["cout"] = [];
+						$UNITES["Paysans"]["img"] = "paysans.png";
+							$UNITES["Paysans"]["cout"]["bois"] = 15;
+							$UNITES["Paysans"]["cout"]["metal"] = 10;
+							$UNITES["Paysans"]["cout"]["pierre"] = 0;
+							$UNITES["Paysans"]["cout"]["temps"] = 10;
+						$UNITES["Paysans"]["ATK"] = 10;
+						$UNITES["Paysans"]["DEF"] = 10;
+						$UNITES["Paysans"]["VIT"] = 100;
+						$UNITES["Paysans"]["TRA"] = 5;
+						
+					$UNITES["Lance-pierre"] = [];
+						$UNITES["Lance-pierre"]["nom"] = "Lance-pierre";
+						$UNITES["Lance-pierre"]["description"] = "Des hommes qui balancent des pierres sur l'ennemi... Normal au moyen-âge. ";
+						$UNITES["Lance-pierre"]["caserne"] = 1;
+						$UNITES["Lance-pierre"]["cout"] = [];
+						$UNITES["Lance-pierre"]["img"] = "lancePierre.png";
+							$UNITES["Lance-pierre"]["cout"]["bois"] = 15;
+							$UNITES["Lance-pierre"]["cout"]["metal"] = 10;
+							$UNITES["Lance-pierre"]["cout"]["pierre"] = 5;
+							$UNITES["Lance-pierre"]["cout"]["temps"] = 20;
+						$UNITES["Lance-pierre"]["ATK"] = 20;
+						$UNITES["Lance-pierre"]["DEF"] = 10;
+						$UNITES["Lance-pierre"]["VIT"] = 100;
+						$UNITES["Lance-pierre"]["TRA"] = 10;
 						
 			//Héros
 				$NOM = [];

@@ -37,14 +37,16 @@ body
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 15%;
 }
 
 .page
 {
 	width: 900px;
 	margin: auto;
-	min-height:80%;
+	min-height:100%;
 }
 
 .hautLayout
@@ -262,13 +264,14 @@ body
 	width: 100%;
 	height: 150px;
 	margin-top: 70px;
-	position: bottom;
 	background-color: black;
 	border-top: 5px inset grey;
 	text-align: center;
 	color: white;
 	font: bold 11px "Trajan", Sans-Serif;
 	padding-top: 10px;
+	position: absolute;
+	bottom: 0;
 }
 
 /*AccueilView */
@@ -652,6 +655,11 @@ body
 	left: 210px;
 }
 
+#coutBatiment img
+{
+	vertical-align:top;
+}
+
 /*carte*/
 #divMap
 {
@@ -678,4 +686,148 @@ body
 	background-image: URL('img/plainTest.png');
 	background-position: center top;
 	background-size: 100% auto;
+}
+
+/*Unités*/
+.layoutUnite
+{
+	position: relative;
+	width: 90%;
+	margin: auto;
+	margin-top: 8px;
+	background-color: #FCF7C2;
+	padding: 8px;
+	height: 180px;
+}
+
+#nomUnite
+{
+	width:250px;
+	height:30px;
+	font: bold 13px "Trajan", Sans-Serif;
+	background-image:url(../images/tealStripe.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+	color: #cbd9de;
+	padding-top: 7px;
+	text-align: center;
+}
+
+#imgUnite
+{
+	float: left;
+	width: 20%;
+	margin-top: 15px;
+	margin-left: 90px;
+}
+
+#descUnite
+{
+	font: bold 13px "Trajan", Sans-Serif;
+	margin-top: 40px;
+	float: left;
+	width: 65%;
+	height: 90px;
+}
+
+#nbUnite
+{
+	font: bold 13px "Trajan", Sans-Serif;
+	margin-left: 250px;
+	text-align: center;
+	width: 150px;
+	position: absolute;
+	top: 20px;
+	left: 10px;
+}
+
+#RecrutUnite
+{
+	float: left;
+	margin-left: 70px;
+	width:100px;
+	height:25px;
+	font: bold 10px "Trajan", Sans-Serif;
+	background-image:url(../images/buttons/build.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+	color: #cbd9de;
+	padding-top: 11px;
+	text-align: center;
+	margin-top: -25px;
+}
+
+#RecrutUnite:hover
+{
+		background-image:url(../images/buttons/buildOver.png);
+}
+
+#RecrutUnite:active
+{
+		background-image:url(../images/buttons/buildClicked.png);
+}
+
+#RecrutUniteInsuf
+{
+	float: left;
+	margin-left: 80px;
+	width:100px;
+	height:25px;
+	font: bold 10px "Trajan", Sans-Serif;
+	background-image:url(../images/buttons/disabled.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+	color: #cbd9de;
+	padding-top: 11px;
+	text-align: center;
+	margin-top: -25px;
+}
+
+#nbUnitRecrut
+{
+	position: absolute;
+	left: 20px;
+	top: 157px;
+}
+
+#nbUnitRecrut input
+{
+	width: 40px;
+	background-color: #FCF9D9;
+	border: none;
+	border: 1px inset grey;
+	text-align: center;
+	font: 11px "Trajan";
+}
+
+#coutUnite
+{
+	position: absolute;
+	width:60%;
+	top: 162px;
+	left: 210px;
+}
+
+#coutUnite img
+{
+	vertical-align:top;
+}
+
+#statsUnite
+{
+	position: absolute;
+	width:60%;
+	top: 162px;
+	left: 500px;
+}
+
+#statsUnite img
+{
+	vertical-align:top;
 }

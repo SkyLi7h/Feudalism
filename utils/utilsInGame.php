@@ -30,6 +30,10 @@ class utilsInGame
 		$village->setMetal($donneesVillage["metal"]);
 		
 		$listBatEnConstr = [];
+		$tpsADecompterBois = 0;
+		$tpsADecompterPierre = 0;
+		$tpsADecompterMine = 0;
+		$batTerminé = null;
 		
 		//Recup données de construction
 		$reponseConstruction = $bdd->query('SELECT * from construction where villageId ='.$village->getVillageId());
@@ -41,12 +45,18 @@ class utilsInGame
 				{
 					case "Scierie":
 						$village->upScierie();
+						$gainBoisEnPlus = (($BATIMENTS["Scierie"]["gain"][$village->getScierie()]/3600)*(time() - ($donneesConstruction["tempsDeb"] + $donneesConstruction["temps"])));
+						$tpsADecompterBois = time() - ($donneesConstruction["tempsDeb"] + $donneesConstruction["temps"]);
 						break;
 					case "Carriere":
 						$village->upCarriere();
+						$gainPierreEnPlus = (($BATIMENTS["Carriere"]["gain"][$village->getCarriere()]/3600)*(time() - ($donneesConstruction["tempsDeb"] + $donneesConstruction["temps"])));
+						$tpsADecompterPierre = time() - ($donneesConstruction["tempsDeb"] + $donneesConstruction["temps"]);
 						break;
 					case "Mine":
 						$village->upMine();
+						$gainMetalEnPlus = (($BATIMENTS["Mine"]["gain"][$village->getMine()]/3600)*(time() - ($donneesConstruction["tempsDeb"] + $donneesConstruction["temps"])));
+						$tpsADecompterMine = time() - ($donneesConstruction["tempsDeb"] + $donneesConstruction["temps"]);
 						break;	
 					case "Château":
 						$village->upChateau();
@@ -68,11 +78,38 @@ class utilsInGame
 		
 		//Tps ecoulé depuis la dernière maj des ressources en secondes
 		$tpsEcoule = time() - $donneesVillage["dernMaj"];
+		if($tpsADecompterBois != 0)
+		{
+			$tpsEcoule -= $tpsADecompterBois;
+			$boisTot = $village->getBois() + (($BATIMENTS["Scierie"]["gain"][$village->getScierie()-1]/3600)*$tpsEcoule);
+			$boisTot += $gainBoisEnPlus;
+		}
+		else
+		{
+			$boisTot = $village->getBois() + (($BATIMENTS["Scierie"]["gain"][$village->getScierie()]/3600)*$tpsEcoule);
+		}
 		
-		//Maj des ressources dans la session
-		$boisTot = $village->getBois() + (($BATIMENTS["Scierie"]["gain"][$village->getScierie()]/3600)*$tpsEcoule);
-		$pierreTot = $village->getPierre() + (($BATIMENTS["Carriere"]["gain"][$village->getCarriere()]/3600)*$tpsEcoule);
-		$metalTot = $village->getMetal() + (($BATIMENTS["Mine"]["gain"][$village->getMine()]/3600)*$tpsEcoule);
+		if($tpsADecompterPierre != 0)
+		{
+			$tpsEcoule -= $tpsADecompterPierre;
+			$pierreTot = $village->getPierre() + (($BATIMENTS["Carriere"]["gain"][$village->getCarriere()-1]/3600)*$tpsEcoule);
+			$pierreTot += $gainPierreEnPlus;
+		}
+		else
+		{
+			$pierreTot = $village->getPierre() + (($BATIMENTS["Carriere"]["gain"][$village->getCarriere()]/3600)*$tpsEcoule);
+		}
+		
+		if($tpsADecompterMine != 0)
+		{
+			$tpsEcoule -= $tpsADecompterMine;
+			$metalTot = $village->getMetal() + (($BATIMENTS["Mine"]["gain"][$village->getMine()-1]/3600)*$tpsEcoule);
+			$metalTot += $gainMetalEnPlus;
+		}
+		else
+		{
+			$metalTot = $village->getMetal() + (($BATIMENTS["Mine"]["gain"][$village->getMine()]/3600)*$tpsEcoule);
+		}
 		
 		$village->setBois($boisTot);
 		$village->setPierre($pierreTot);
