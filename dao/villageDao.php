@@ -57,6 +57,12 @@ class villageDao
 
 		
 	}
+	
+	public function addRecrutement($villageId, $unite, $nb)
+	{
+		global $bdd, $UNITES;
+		$bdd->query("INSERT INTO recrutement(unite, nbUnite, tpsDeb, villageId) VALUES('". $unite ."', ". $nb .", ". time() .", ". $villageId .")");
+	}
 }
 
 

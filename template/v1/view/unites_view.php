@@ -63,7 +63,6 @@
 function recruter(unite)
 			{
 				var nb = document.getElementById(unite).value;
-				console.log(nb);
 				var xhr = new XMLHttpRequest();		
 				xhr.open('POST', 'utils/recruter.php');
 				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -73,7 +72,7 @@ function recruter(unite)
 				{
 					if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) 
 					{
-						location.reload();
+						console.log(xhr.responseText);
 					}
 				});
 			}

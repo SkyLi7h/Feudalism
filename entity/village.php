@@ -157,6 +157,12 @@ class village
 	{
 		return $this->chateau;
 	}
+	
+	public function setChateau($c)
+	{
+		$this->chateau = $c;
+	}
+	
 	public function upCaserne()
 	{
 		$this->caserne++;
@@ -165,6 +171,10 @@ class village
 	public function getCaserne()
 	{
 		return $this->caserne;
+	}
+	public function setCaserne($c)
+	{
+		$this->caserne = $c;
 	}
 	
 	public function getPaysans()
@@ -177,6 +187,11 @@ class village
 		$this->paysans = $nb;
 	}
 	
+	public function addPaysans($nb)
+	{
+		$this->paysans += $nb;
+	}
+	
 	public function getLancePierre()
 	{
 		return $this->lancePierre;
@@ -185,6 +200,10 @@ class village
 	public function setLancePierre($nb)
 	{
 		$this->lancePierre = $nb;
+	}
+	public function addLancePierre($nb)
+	{
+		$this->lancePierre += $nb;
 	}
 }
 

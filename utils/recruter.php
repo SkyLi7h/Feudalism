@@ -35,12 +35,17 @@
 	$temps = $unitAConstruire["cout"]["temps"] * $nb;
 
 	if($village->getBois() >= $coutBois && $village->getPierre() >= $coutPierre && $village->getMetal() >= $coutMetal)
-	{
+	{					
 		$village->setBois($village->getBois() - $coutBois);
 		$village->setPierre($village->getPierre() - $coutPierre);
 		$village->setMetal($village->getMetal() - $coutMetal);
-					
+
 		$villageDao = new villageDao();
+		
+		$villageDao->majRessourcesVillage($village->getBois(), $village->getPierre(), $village->getMetal(), $village->getVillageId());	
+		$villageDao->addRecrutement($village->getVillageId(), $unite, $nb);
+		
+		echo 0;
 
 	}
 	else

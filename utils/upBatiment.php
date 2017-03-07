@@ -40,8 +40,8 @@
 		$village->setMetal($village->getMetal() - $coutMetal);
 					
 		$villageDao = new villageDao();
-		echo $villageDao->majRessourcesVillage($village->getBois(), $village->getPierre(), $village->getMetal(), $village->getVillageId());
-		echo $villageDao->addConstruction($village->getVillageId(), $batiment, $temps);
+		$villageDao->majRessourcesVillage($village->getBois(), $village->getPierre(), $village->getMetal(), $village->getVillageId());
+		$villageDao->addConstruction($village->getVillageId(), $batiment, $temps);
 
 	}
 
