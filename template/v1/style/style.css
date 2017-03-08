@@ -47,6 +47,49 @@ body
 	width: 900px;
 	margin: auto;
 	min-height:100%;
+	position: relative;
+}
+
+.notificationsBatUnit
+{
+	position: absolute;
+	top: 0px;
+	right: -250px;
+	width: 250px;
+	min-height: 100px;
+	font: bold 12px "Trajan", Sans-Serif;
+	color: #cbd9de;
+	text-align: center;
+}
+
+.notificationsMouv
+{
+	position: absolute;
+	top: 0px;
+	left: -250px;
+	width: 250px;
+	min-height: 100px;
+	font: bold 12px "Trajan", Sans-Serif;
+	color: #cbd9de;
+	text-align: center;
+}
+
+#notif
+{
+	margin-top: 20px;
+}
+
+#titreNotif
+{
+	width: 250px;
+	height: 30px;
+	background-image:url(../images/tealStripe.png);
+    background-position: center top;
+    background-size: 100% auto; 
+	font: bold 13px "Trajan", Sans-Serif;
+	color: #cbd9de;
+	text-align: center;
+	padding-top: 8px;
 }
 
 .hautLayout
@@ -453,13 +496,13 @@ body
 	font: bold 12px "Trajan", Sans-Serif;
 }
 
-.bouclierGeneral
+.bouclierCarte
 {
 	float: left;
 	position: relative;
 	width: 51px;
 	height: 56px;
-	background-image:url(../images/shields/shield3.png);
+	background-image:url(../images/shields/shield7.png);
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
 }
@@ -471,18 +514,6 @@ body
 	width: 51px;
 	height: 56px;
 	background-image:url(../images/shields/shield5.png);
-	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
-    background-size: cover; /* version standardisée */
-	margin-left : 75px;
-}
-
-.bouclierCarte
-{
-	float: left;
-	position: relative;
-	width: 51px;
-	height: 56px;
-	background-image:url(../images/shields/shield7.png);
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
 	margin-left : 75px;
@@ -512,13 +543,26 @@ body
 	margin-left : 75px;
 }
 
-.bouclierQuetes
+.bouclierProfil
 {
 	float: left;
 	position: relative;
 	width: 51px;
 	height: 56px;
 	background-image:url(../images/shields/shield6.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	margin-left : 75px;
+}
+
+
+.bouclierAlliance
+{
+	float: left;
+	position: relative;
+	width: 51px;
+	height: 56px;
+	background-image:url(../images/shields/shield3.png);
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
 	margin-left : 75px;

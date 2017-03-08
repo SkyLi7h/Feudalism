@@ -4,7 +4,7 @@
 	$VERSION = "A0.1"; //Version du projet
 	$TEMPLATE = "v1"; //Nom du template utilisé
 	$MOD_START = "accueil"; //Module afficher à l'arrivée
-	$DESCRIPTION = "Jeu de stratégie - role play multijoueur par navigateur";
+	$DESCRIPTION = "Jeu de stratégie - role play multijoueur par navigateur. Bâtissez, recrutez et dominez !";
 	$AUTEUR = "FERRER LUCAS";
 	$MOTSCLES = "jeu, jeux, navigateur, stratégie, role-play, mmorpg, gratuit, game, combat, guerre, alliance, humain, orc, elfe, multijoueur";
 	$DEBUG = false; //DEBUG MODE
@@ -17,9 +17,9 @@
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
-	$DBNAME = "feudalism";
+	$DBNAME = "lastimperium";
 	$LOGIN = "root";
-	$PASS = "19Nino552886!";
+	$PASS = "";
 	
 	//Bâtiments
 		$BATIMENTS = [];

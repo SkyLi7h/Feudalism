@@ -5,14 +5,6 @@
 		$debug->show("Lancement de la view $viewClass avec en business $businessClass");	
 
 	$village = unserialize($_SESSION["village"]);
-	$constrAutorise = true;
-	if(count($listBatEnConstr) > 0)
-	{
-		$constrAutorise = false;
-		$tempsFin = $listBatEnConstr[0][3] + $listBatEnConstr[0][2];
-		$tempsRest = $tempsFin - time();
-		$pourcTpsRest = ($tempsRest / $listBatEnConstr[0][2]) * 100;
-	}
 	
 	$gainSecondeBoisSuiv = ($BATIMENTS["Scierie"]["gain"][$village->getScierie()+1]/3600);
 	$gainSecondePierreSuiv = ($BATIMENTS["Carriere"]["gain"][$village->getCarriere()+1]/3600);
@@ -59,13 +51,6 @@
 </script>
 
 <?php
-	if(count($listBatEnConstr) > 0)
-	{
-?>
-<div style="width: 80%; margin: auto; margin-top: 10px; margin-bottom: 15px; height: 21px; position: relative;" id="progressbar"><div style="position: absolute; top: 3px; left:0; width:100%; height:100%; font-size: 12px; text-align: center;" id="infos"><?php echo $listBatEnConstr[0][1] . " - " . gmdate('H:i:s', floor($tempsRest)) ?></div></div>
-
-<?php
-	}
 
 	foreach ($BATIMENTS as $batiment)
 	{
@@ -144,59 +129,5 @@
 		}
 	}
 ?>
-
-<?php
-	if(count($listBatEnConstr) > 0)
-	{
-?>
-<script>
-
-	var tpsConstruction = <?php echo $listBatEnConstr[0][2]; ?>;
-	var tpsDeb = <?php echo $listBatEnConstr[0][3]; ?>;
-	var batEnConstruction = "<?php echo $listBatEnConstr[0][1]; ?>";
-
-	
-	var tempsFin = tpsDeb + tpsConstruction;
-	
-	var maintenant = new Date().getTime() / 1000;
-	
-	var tempsRest = tempsFin - maintenant;
-
-	var pourcTpsRest = (tempsRest / tpsConstruction) * 100;
-	
-	var infosBat = document.getElementById("infos").innerHTML = batEnConstruction + " - " + pourcTpsRest;
-	
-	function majTempsConstr()
-	{
-		
-		var maintenant = new Date().getTime() / 1000;
-	
-		var tempsRest = tempsFin - maintenant;
-	
-		var txtTpsRest = new Date(tempsRest * 1000).toISOString().substr(11, 8);
-		
-		var infosBat = document.getElementById("infos").innerHTML = batEnConstruction + " - " + txtTpsRest;
-			
-		if(tempsRest <= 0)
-		{
-			location.reload();
-		}
-		var pourcTpsRest = (tempsRest / tpsConstruction) * 100;
-	
-		$( function() {
-		$( "#progressbar" ).progressbar({
-		  value: 100 - pourcTpsRest
-		});
-	  } );
-		
-		setTimeout(majTempsConstr, 1000);
-	}
-	
-		 
-	majTempsConstr()
-</script>
-<?php
-	}
-	?>
 
 

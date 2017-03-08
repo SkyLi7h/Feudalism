@@ -34,8 +34,8 @@
 				});
 			}
 		</script>
-		<div class="page">
-			<?php 
+		
+		<?php 
 				if(isset($_SESSION["joueur"]))
 				{
 					$village = unserialize($_SESSION["village"]); 
@@ -48,7 +48,9 @@
 					
 				}				
 			?>
-			<body>
+			
+		<div class="page">
+			
 			<div class="hautLayout">
 				<?php if(isset($_SESSION["joueur"])) {?>
 					<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/wood.png"><span id="bois"><?php echo floor($village->getBois());?></span>
@@ -78,20 +80,16 @@
 
 			<?php if(isset($_SESSION["joueur"])) {?>
 				<div class="menuBoucliers">	
-					<div class="bouclierGeneral">
-						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Alliance</div>
-					</div>
-					<a href="index.php?mod=batiments">
-					<div class="bouclierConstruction">
-						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Bâtiments</div>
-					</div>	
-					</a>
 					<a href="index.php?mod=carte">
 					<div class="bouclierCarte">
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 						<div id="txtBouclier">Carte</div>
+					</div>	
+					</a>
+					<a href="index.php?mod=batiments">
+					<div class="bouclierConstruction">
+						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+						<div id="txtBouclier">Bâtiments</div>
 					</div>	
 					</a>
 					<a href="index.php?mod=unites">
@@ -104,13 +102,17 @@
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 						<div id="txtBouclier">Héros</div>
 					</div>
-					<div class="bouclierQuetes">
-						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Quêtes</div>
-					</div>
 					<div class="bouclierMarche">
 						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 						<div id="txtBouclier">Marché</div>
+					</div>
+					<div class="bouclierAlliance">
+						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+						<div id="txtBouclier">Alliance</div>
+					</div>
+					<div class="bouclierProfil">
+						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+						<div id="txtBouclier">Profil</div>
 					</div>
 				</div>	
 			<?php }?>
@@ -126,6 +128,114 @@
 				<div class="angleBordureBasGauche"></div>
 				<div class="angleBordureBasDroit"></div>
 				
+						<?php if(isset($_SESSION["joueur"])) {
+							
+							$constrAutorise = true;
+							
+							if(count($listBatEnConstr) > 0)
+							{
+								$constrAutorise = false;
+								$tempsFin = $listBatEnConstr[0][3] + $listBatEnConstr[0][2];
+								$tempsRest = $tempsFin - time();
+								$pourcTpsRest = ($tempsRest / $listBatEnConstr[0][2]) * 100;
+							}
+							
+							
+							
+							
+							?>
+						
+						<div class="notificationsBatUnit">
+							<div id="notif">
+								<div id="titreNotif">
+									Bâtiments
+								</div>
+								<?php
+								if(count($listBatEnConstr) > 0)
+									{
+								?>
+									<div style="width: 80%; margin: auto; margin-top: 10px; margin-bottom: 15px; height: 21px; position: relative;" id="progressbar"><div style="position: absolute; top: 3px; left:0; width:100%; height:100%; font-size: 12px; text-align: center;" id="infos"><?php echo $listBatEnConstr[0][1] . " - " . gmdate('H:i:s', floor($tempsRest)) ?></div></div>
+								<?php }else{ ?>
+								Aucune bâtiment en construction				
+								<?php } ?>
+							</div>
+							<div id="notif">
+								<div id="titreNotif">
+									Unités
+								</div>
+								Aucune unité en recrutement
+							</div>	
+						</div>
+						
+						<div class="notificationsMouv">
+							<div id="notif">
+								<div id="titreNotif">
+									Mouvements
+								</div>
+								Aucun mouvement détecté
+							</div>	
+						</div>
+						
+						<?php }?>
+				
+				<?php
+	if(count($listBatEnConstr) > 0)
+	{
+		?>
+		<script>
+
+			var tpsConstruction = <?php echo $listBatEnConstr[0][2]; ?>;
+			var tpsDeb = <?php echo $listBatEnConstr[0][3]; ?>;
+			var batEnConstruction = "<?php echo $listBatEnConstr[0][1]; ?>";
+
+			
+			var tempsFin = tpsDeb + tpsConstruction;
+			
+			var maintenant = new Date().getTime() / 1000;
+			
+			var tempsRest = tempsFin - maintenant;
+
+			var pourcTpsRest = (tempsRest / tpsConstruction) * 100;
+			
+			var infosBat = document.getElementById("infos").innerHTML = batEnConstruction + " - " + pourcTpsRest;
+			
+			var enReload = false;
+			
+			function majTempsConstr()
+			{
+				
+				var maintenant = new Date().getTime() / 1000;
+			
+				var tempsRest = tempsFin - maintenant;
+			
+				var txtTpsRest = new Date(tempsRest * 1000).toISOString().substr(11, 8);
+				
+				var infosBat = document.getElementById("infos").innerHTML = batEnConstruction + " - " + txtTpsRest;
+					
+				if(tempsRest <= 0)
+				{
+					enReload = true;
+					location.reload();
+				}
+				var pourcTpsRest = (tempsRest / tpsConstruction) * 100;
+			
+				$( function() {
+				$( "#progressbar" ).progressbar({
+				  value: 100 - pourcTpsRest
+				});
+			  } );
+				
+				if(!enReload)
+					setTimeout(majTempsConstr, 1000);
+			}
+			
+				 
+			majTempsConstr()
+		</script>
+		<?php
+			}
+			?>
+	
 				
 				<div class="include">
 					<?php if($MAINTENANCE){
