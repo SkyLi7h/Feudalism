@@ -53,7 +53,7 @@ body
 .notificationsBatUnit
 {
 	position: absolute;
-	top: 0px;
+	top: -20px;
 	right: -250px;
 	width: 250px;
 	min-height: 100px;
@@ -65,7 +65,7 @@ body
 .notificationsMouv
 {
 	position: absolute;
-	top: 0px;
+	top: -20px;
 	left: -250px;
 	width: 250px;
 	min-height: 100px;

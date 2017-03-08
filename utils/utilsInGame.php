@@ -13,7 +13,10 @@ class utilsInGame
 	//Maj des ressources et batiments dans la bdd à chaque rechargement de page
 	public function rechargementDonneesResBat()
 	{
-		global $bdd, $BATIMENTS, $UNITES;
+		global $bdd, $BATIMENTS, $UNITES, $listBatEnConstr, $listUnitEnRecrut;
+		
+		$listBatEnConstr = [];
+		$listUnitEnRecrut = [];
 		
 		$village = unserialize($_SESSION["village"]);
 		
@@ -34,7 +37,6 @@ class utilsInGame
 		$village->setPaysans($donneesVillage["paysans"]);
 		$village->setLancePierre($donneesVillage["lancePierre"]);
 		
-		$listBatEnConstr = [];
 		$tpsADecompterBois = 0;
 		$tpsADecompterPierre = 0;
 		$tpsADecompterMine = 0;
@@ -140,7 +142,11 @@ class utilsInGame
 				}
 				
 				$bdd->query('DELETE from recrutement where idRecrutement ='.$donneesRecrutement["idRecrutement"]);
-			}			
+			}
+			else
+			{			
+				array_push($listUnitEnRecrut, $donneesRecrutement);
+			}
 		}
 		
 		//Mise en session du village modfié
@@ -149,7 +155,6 @@ class utilsInGame
 		//Maj du village dans la bdd
 		$bdd->query('UPDATE village set bois='.$boisTot.', pierre='.$pierreTot.', metal='.$metalTot.', scierie='.$village->getScierie().', carriere='.$village->getCarriere().', mine='.$village->getMine().', chateau='.$village->getChateau().', caserne='.$village->getCaserne().', paysans='.$village->getPaysans().', lancePierre='.$village->getLancePierre().', dernMaj='. time() .' where villageId='.$village->getVillageId());
 		
-		return $listBatEnConstr;
 	}
 }
 

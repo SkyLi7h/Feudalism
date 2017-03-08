@@ -33,6 +33,9 @@
 
 				});
 			}
+			
+			var constrAutorise = true;
+			var recrutAutorise = true;
 		</script>
 		
 		<?php 
@@ -135,13 +138,20 @@
 							if(count($listBatEnConstr) > 0)
 							{
 								$constrAutorise = false;
-								$tempsFin = $listBatEnConstr[0][3] + $listBatEnConstr[0][2];
-								$tempsRest = $tempsFin - time();
-								$pourcTpsRest = ($tempsRest / $listBatEnConstr[0][2]) * 100;
-							}
+								$tempsFinBat = $listBatEnConstr[0][3] + $listBatEnConstr[0][2];
+								$tempsRestBat = $tempsFinBat - time();
+								$pourcTpsRestBat = ($tempsRestBat / $listBatEnConstr[0][2]) * 100;
+							}	
+
+							$recrutAutorise = true;
 							
-							
-							
+							if(count($listUnitEnRecrut) > 0)
+							{
+								$recrutAutorise = false;
+								$tempsFinUnite = ($UNITES[$listUnitEnRecrut[0][1]]["cout"]["temps"] * $listUnitEnRecrut[0][2]) + $listUnitEnRecrut[0][3];
+								$tempsRestUnite = $tempsFinUnite - time();
+								$pourcTpsRestUnite = ($tempsRestUnite / ($UNITES[$listUnitEnRecrut[0][1]]["cout"]["temps"] * $listUnitEnRecrut[0][2])) * 100;
+							}	
 							
 							?>
 						
@@ -154,7 +164,7 @@
 								if(count($listBatEnConstr) > 0)
 									{
 								?>
-									<div style="width: 80%; margin: auto; margin-top: 10px; margin-bottom: 15px; height: 21px; position: relative;" id="progressbar"><div style="position: absolute; top: 3px; left:0; width:100%; height:100%; font-size: 12px; text-align: center;" id="infos"><?php echo $listBatEnConstr[0][1] . " - " . gmdate('H:i:s', floor($tempsRest)) ?></div></div>
+									<div style="width: 80%; margin: auto; margin-top: 10px; margin-bottom: 15px; height: 21px; position: relative;" id="progressbarbat"><div style="position: absolute; top: 3px; left:0; width:100%; height:100%; font-size: 12px; text-align: center;" id="infosBat"><?php echo $listBatEnConstr[0][1] . " - " . gmdate('H:i:s', floor($tempsRestBat)) ?></div></div>
 								<?php }else{ ?>
 								Aucune bâtiment en construction				
 								<?php } ?>
@@ -163,7 +173,14 @@
 								<div id="titreNotif">
 									Unités
 								</div>
+								<?php
+								if(count($listUnitEnRecrut) > 0)
+									{
+								?>
+								<div style="width: 80%; margin: auto; margin-top: 10px; margin-bottom: 15px; height: 21px; position: relative;" id="progressbarunit"><div style="position: absolute; top: 3px; left:0; width:100%; height:100%; font-size: 12px; text-align: center;" id="infosUnite"><?php echo $listBatEnConstr[0][1] . " - " . gmdate('H:i:s', floor($tempsRest)) ?></div></div>
+								<?php }else{ ?>
 								Aucune unité en recrutement
+								<?php } ?>
 							</div>	
 						</div>
 						
@@ -184,20 +201,19 @@
 		?>
 		<script>
 
-			var tpsConstruction = <?php echo $listBatEnConstr[0][2]; ?>;
-			var tpsDeb = <?php echo $listBatEnConstr[0][3]; ?>;
+			var tpsConstructionBat = <?php echo $listBatEnConstr[0][2]; ?>;
+			var tpsDebBat = <?php echo $listBatEnConstr[0][3]; ?>;
 			var batEnConstruction = "<?php echo $listBatEnConstr[0][1]; ?>";
-
 			
-			var tempsFin = tpsDeb + tpsConstruction;
+			var tempsFinBat = tpsDebBat + tpsConstructionBat;
 			
 			var maintenant = new Date().getTime() / 1000;
 			
-			var tempsRest = tempsFin - maintenant;
+			var tempsRestBat = tempsFinBat - maintenant;
 
-			var pourcTpsRest = (tempsRest / tpsConstruction) * 100;
+			var pourcTpsRestBat = (tempsRestBat / tpsConstructionBat) * 100;
 			
-			var infosBat = document.getElementById("infos").innerHTML = batEnConstruction + " - " + pourcTpsRest;
+			var infosBat = document.getElementById("infosBat").innerHTML = batEnConstruction + " - " + pourcTpsRestBat;
 			
 			var enReload = false;
 			
@@ -206,35 +222,127 @@
 				
 				var maintenant = new Date().getTime() / 1000;
 			
-				var tempsRest = tempsFin - maintenant;
+				var tempsRestBat = tempsFinBat - maintenant;
 			
-				var txtTpsRest = new Date(tempsRest * 1000).toISOString().substr(11, 8);
+				var txtTpsRestBat = new Date(tempsRestBat * 1000).toISOString().substr(11, 8);
 				
-				var infosBat = document.getElementById("infos").innerHTML = batEnConstruction + " - " + txtTpsRest;
-					
-				if(tempsRest <= 0)
+				if(tempsRestBat <= 0)
 				{
 					enReload = true;
 					location.reload();
 				}
-				var pourcTpsRest = (tempsRest / tpsConstruction) * 100;
+				else
+				{
+					var infosBat = document.getElementById("infosBat").innerHTML = batEnConstruction + " - " + txtTpsRestBat;
+					
+					var pourcTpsRestBat = Math.round((tempsRestBat / tpsConstructionBat) * 100);
+				
+					$( function() {
+					$( "#progressbarbat" ).progressbar({
+					  value: 100 - pourcTpsRestBat
+					});
+				  } );
+					
+				}
+				
+				
+				
+			}
+</script>
+
+			<?php
+	}
+	
+	if(count($listUnitEnRecrut) > 0)
+	{
+		?>
+<script>
+			var tpsConstructionUnite = <?php echo ($UNITES[$listUnitEnRecrut[0][1]]["cout"]["temps"] * $listUnitEnRecrut[0][2]) ?>;
+			var tpsDebUnite = <?php echo $listUnitEnRecrut[0][3]; ?>;
+			var uniteEnRecrut = "(<?php echo $listUnitEnRecrut[0][2]; ?>)" + " <?php echo $listUnitEnRecrut[0][1]; ?>";
 			
-				$( function() {
-				$( "#progressbar" ).progressbar({
-				  value: 100 - pourcTpsRest
-				});
-			  } );
+			var tempsFinUnite = tpsDebUnite + tpsConstructionUnite;
+			
+			var maintenant = new Date().getTime() / 1000;
+			
+			var tempsRestUnite = tempsFinUnite - maintenant;
+
+			var pourcTpsRestUnite = (tempsRestUnite / tpsConstructionBat) * 100;
+			
+			var infosBat = document.getElementById("infosBat").innerHTML = uniteEnRecrut + " - " + pourcTpsRestUnite;
+			
+			function majTempsRecrut()
+			{
+				
+				var maintenant = new Date().getTime() / 1000;
+			
+				var tempsRestUnite = tempsFinUnite - maintenant;
+			
+				var txtTpsRestUnite = new Date(tempsRestUnite * 1000).toISOString().substr(11, 8);
+				
+				if(tempsRestUnite <= 0)
+				{
+					enReload = true;
+					location.reload();
+				}
+				else
+				{
+					var infosBat = document.getElementById("infosUnite").innerHTML = uniteEnRecrut + " - " + txtTpsRestUnite;
+				
+					var pourcTpsRestUnite = Math.round((tempsRestUnite / tpsConstructionUnite) * 100);
+				
+					$( function() {
+					$( "#progressbarunit" ).progressbar({
+					  value: 100 - pourcTpsRestUnite
+					});
+				  } );
+				}
+				
+				
+			}
+			
+</script>
+		<?php
+			}
+			if(count($listUnitEnRecrut) > 0 || count($listBatEnConstr) > 0)
+			{
+		?>
+		<?php if(!$constrAutorise) { ?>
+		<script>
+			constrAutorise = false;
+		</script>
+		
+		<?php } ?>
+		
+		<?php if(!$recrutAutorise) { ?>
+		<script>
+			recrutAutorise = false;
+		</script>
+		
+		<?php } ?>
+
+		<script>
+			
+			
+			
+			function majTemps()
+			{
+				if(!constrAutorise)
+					majTempsConstr();
+				
+				if(!recrutAutorise)
+					majTempsRecrut();				
 				
 				if(!enReload)
-					setTimeout(majTempsConstr, 1000);
+					setTimeout(majTemps, 1000);
 			}
 			
 				 
-			majTempsConstr()
+			majTemps();
 		</script>
 		<?php
 			}
-			?>
+		?>
 	
 				
 				<div class="include">
@@ -249,6 +357,15 @@
 							</div>
 						</div>			
 					<?php } ?>
+					
+					<div style="font-size: 14px; text-align: center; display:block; margin-top:10px;" id="msgInfos">
+						<div class="ui-widget">
+							<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+								<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+								<p id='msgInfosTxt'><b>Last imperium</b> est en cours de <b>développement</b> ! Des bugs et remises à zéro sont à prévoir !</p>
+							</div>
+						</div>
+					</div>
 					<?php		
 						//Definition de la vue et de la business utilisée
 						$viewClass = $_SESSION['mod']."_view.php";

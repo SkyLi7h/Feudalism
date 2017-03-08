@@ -13,15 +13,6 @@
 			</div>
 		</div>
 	</div>
-<div style="font-size: 14px; text-align: center; display:block; margin-top:10px;" id="msgInfos">
-		<div class="ui-widget">
-			<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
-				<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-				<p id='msgInfosTxt'><b>Last imperium</b> est en cours de <b>développement</b> ! Des bugs et remises à zéro sont à prévoir !</p>
-				N'hésite pas à t'inscrire sur le forum et à consulter le lien "dev" pour te tenir informé des avancements ! A bientôt sur l'alpha
-			</div>
-		</div>
-	</div>
 <div class="layoutAccueil">
 	<div class="layoutAccueilGauche">
 		<div class="layoutTitre"><span>Connexion</span></div>

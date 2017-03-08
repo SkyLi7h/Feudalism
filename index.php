@@ -37,6 +37,9 @@
 	//Si le joueur est connecté..
 	if(isset($_SESSION["joueur"]))
 	{	
+		$listBatEnConstr = [];
+		$listUnitEnRecrut = [];
+		
 		//Utils
 		require_once "utils/utilsInGame.php";
 		$utilsinGame = new utilsInGame();
@@ -55,7 +58,7 @@
 			require_once "entity/joueur.php";
 			require_once "entity/village.php";
 			
-			$listBatEnConstr = $utilsinGame->rechargementDonneesResBat();
+			$utilsinGame->rechargementDonneesResBat();
 			
 			if(isset($_GET["mod"]))
 			{		
