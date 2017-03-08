@@ -32,25 +32,34 @@
 	var maxX = x+6;
 	
 	var carte = [];
+	
+	var loadEnCours = false;
 		
 	function loadMapBd()
 	{	
-		var xhrConnexion = new XMLHttpRequest();	
-		
-		xhrConnexion.open('POST', 'utils/loadMap.php');
-		xhrConnexion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhrConnexion.send('x=' + x + '&y=' + y);
-		
-		xhrConnexion.addEventListener('readystatechange', function() {
+		if(!loadEnCours)
+		{
+			loadEnCours = true;
+			var xhrConnexion = new XMLHttpRequest();	
+			
+			xhrConnexion.open('POST', 'utils/loadMap.php');
+			xhrConnexion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhrConnexion.send('x=' + x + '&y=' + y);
+			
+			xhrConnexion.addEventListener('readystatechange', function() {
 
-        if (xhrConnexion.readyState === XMLHttpRequest.DONE && xhrConnexion.status === 200) {	
-				
-				carte = JSON.parse(xhrConnexion.responseText);
-				
-				chargerCarte();
-        }
+			if (xhrConnexion.readyState === XMLHttpRequest.DONE && xhrConnexion.status === 200) {	
+					
+					carte = JSON.parse(xhrConnexion.responseText);
+					
+					chargerCarte();
+			}
 
-		});
+			});
+			
+			loadEnCours = false;
+		}
+			
 	}
 				
 		function chargerCarte()
@@ -96,23 +105,65 @@
 					  } );
 					
 				}
+
+				var carteX = <?php echo $CARTEX; ?>;
+				var carteY = <?php echo $CARTEY; ?>;
 				
-				function test()
+				function moveUpMap()
+				{				
+					
+					if(minY >= 2)
+					{
+						y -= 1;
+						minY = y-5;
+						maxY = y+6;
+						loadMapBd();
+					}
+					
+				}
+				
+				function moveDownMap()
 				{
-					x += 1;
-					minX = x-5;
-					minY = y-5;
-					maxY = y+6;
-					maxX = x+6;
-					loadMapBd();
+					if(maxY <= carteY-1)
+					{
+						y += 1;
+						minY = y-5;
+						maxY = y+6;
+						loadMapBd();
+					}
+				}
+				
+				function moveLeftMap()
+				{
+					if(minX >= 2)
+					{
+						x -= 1;
+						minX = x-5;
+						maxX = x+6;
+						loadMapBd();
+					}
+				}
+				
+				function moveRightMap()
+				{
+					if(maxX <= carteX-1)
+					{
+						x += 1;
+						minX = x-5;
+						maxX = x+6;
+						loadMapBd();
+					}
 				}
 				
 
 	</script>
 
+<div id="arrowUpMap" onclick="moveUpMap();"></div>
+<div id="arrowDownMap" onclick="moveDownMap();"></div>
+<div id="arrowLeftMap" onclick="moveLeftMap();"></div>
+<div id="arrowRightMap" onclick="moveRightMap();"></div>
+	
 <div id="divMap"></div>
-
-<button onclick="test();">test</button>
 
 <script>
 	loadMapBd();

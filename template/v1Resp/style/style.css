@@ -56,16 +56,16 @@ body
 {
 	position: absolute;
 	top: 24px;
-	left: 100px;
-	width: 43%;
+	left: 120px;
+	width: 280px;
 }
 
 .notifUnit
 {
 	position: absolute;
 	top: 24px;
-	right: 100px;
-	width: 43%;
+	right: 120px;
+	width: 280px;
 }
 
 
@@ -452,7 +452,7 @@ body
 	width: 100%;
 	height: 56px;
 	text-align: center;
-	padding-left:5%;
+	padding-left:4.5%;
 	color: #cbd9de;
 }
 
@@ -479,7 +479,7 @@ body
 	width: 295%;
 	height: 38px;
 	top: 37px;
-	left: -50px;
+	left: -48px;
 }
 
 .menuBoucliers #txtBouclier
@@ -703,8 +703,9 @@ body
 /*carte*/
 #divMap
 {
-	margin-top: 20px;
+	margin-top: 50px;
 	overflow: auto;
+	margin-bottom: 15px;
 }
 #tableCarte
 {	
@@ -726,6 +727,97 @@ body
 	background-image: URL('img/plainTest.png');
 	background-position: center top;
 	background-size: 100% auto;
+}
+
+#arrowUpMap
+{
+	width:35px;
+	height: 35px;
+	display:block;
+	position:absolute;
+	left:0;
+	right:0;
+	top:130px;
+	margin:auto;
+	background-image:url(../images/arrowMap.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+	-ms-transform: rotate(270deg); /* IE 9 */
+    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+    transform: rotate(270deg);
+}
+
+#arrowUpMap:hover
+{
+	background-image:url(../images/arrowMapHover.png);
+}
+
+#arrowDownMap
+{
+	width:35px;
+	height: 35px;
+	display:block;
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:15px;
+	margin:auto;
+	background-image:url(../images/arrowMap.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+	-ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+}
+
+#arrowDownMap:hover
+{
+	background-image:url(../images/arrowMapHover.png);
+}
+
+#arrowLeftMap
+{
+	width:35px;
+	height: 35px;
+	position:absolute;
+	left:73px;
+	top:490px;
+	background-image:url(../images/arrowMap.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+	-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+
+#arrowLeftMap:hover
+{
+	background-image:url(../images/arrowMapHover.png);
+}
+
+#arrowRightMap
+{
+	width:35px;
+	height: 35px;
+	position:absolute;
+	right:73px;
+	top:490px;
+	background-image:url(../images/arrowMap.png);
+	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+	background-repeat: no-repeat;
+    background-position: center top; 
+}
+
+#arrowRightMap:hover
+{
+	background-image:url(../images/arrowMapHover.png);
 }
 
 /*Unités*/

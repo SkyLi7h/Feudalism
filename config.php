@@ -17,9 +17,9 @@
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
-	$DBNAME = "feudalism";
+	$DBNAME = "lastimperium";
 	$LOGIN = "root";
-	$PASS = "19Nino552886!";
+	$PASS = "";
 	
 	//Bâtiments
 		$BATIMENTS = [];
