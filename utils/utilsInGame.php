@@ -13,10 +13,20 @@ class utilsInGame
 	//Maj des ressources et batiments dans la bdd à chaque rechargement de page
 	public function rechargementDonneesResBat()
 	{
-		global $bdd, $BATIMENTS, $UNITES, $listBatEnConstr, $listUnitEnRecrut;
+		global $bdd, $BATIMENTS, $UNITES, $listBatEnConstr, $listUnitEnRecrut, $listVillagesJoueur;
 		
 		$listBatEnConstr = [];
 		$listUnitEnRecrut = [];
+		$listVillagesJoueur = [];
+		
+		$joueur = unserialize($_SESSION["joueur"]);
+		
+		$reponselisteVillages = $bdd->query('SELECT * from village where joueurId ='.$joueur->getJoueurId());
+		while($donneesListeVillages = $reponselisteVillages->fetch())
+		{
+			array_push($listVillagesJoueur, $donneesListeVillages);
+		}
+		
 		
 		$village = unserialize($_SESSION["village"]);
 		

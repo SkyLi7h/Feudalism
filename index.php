@@ -36,6 +36,7 @@
 	{	
 		$listBatEnConstr = [];
 		$listUnitEnRecrut = [];
+		$listVillagesJoueur = [];
 		
 		//Utils
 		require_once "utils/utilsInGame.php";

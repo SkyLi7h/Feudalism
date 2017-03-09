@@ -212,6 +212,17 @@ body
 	top: -17px;
 }
 
+.selectVillageLayout
+{
+	width: 200px;
+	text-align: center;
+	position: absolute;
+	top: -2px;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	
+}
 
 .bordureHorBas
 {
@@ -327,6 +338,17 @@ body
 	padding-top: 10px;
 	position: absolute;
 	bottom: 0;
+}
+
+#lienCguFooter
+{
+	font: bold 12px "Trajan", Sans-Serif;
+	color: white;
+}
+
+#lienCguFooter:hover
+{
+	color: orange;
 }
 
 /*AccueilView */
@@ -446,7 +468,7 @@ body
 
 .ui-selectmenu-button
 {
-	height: 15px;
+	height: 12px;
 	font: bold 13px "Trajan", Sans-Serif;
 	margin-left: 7px;
 }

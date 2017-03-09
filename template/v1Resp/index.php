@@ -11,7 +11,7 @@
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/external/jquery/jquery.js"></script>
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.js"></script>
 	  <link href="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.css" rel="stylesheet">
-	  <link rel="stylesheet" type="text/css" href="template/<?php echo $TEMPLATE; ?>/style/style.css?v=0.1" media="screen" />
+	  <link rel="stylesheet" type="text/css" href="template/<?php echo $TEMPLATE; ?>/style/style.css?v=0.01" media="screen" />
 	  <link rel="shortcut icon" href="template/<?php echo $TEMPLATE; ?>/images/favicon.ico" type="image/x-icon">
 	  <link rel="icon" href="template/<?php echo $TEMPLATE; ?>/images/favicon.ico" type="image/x-icon">
 	</head>	
@@ -65,10 +65,10 @@
 					<?php }?>											
 				</div>
 				<div id="bouttonForum">
-					<a href="http://forum.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all">Forum</button></a>
+					<a href="https://forum.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all">Forum</button></a>
 				</div>		
 				<div id="bouttonDev">
-					<a href="http://dev.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all">Dev</button></a>
+					<a href="https://dev.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all">Dev</button></a>
 				</div>				
 				<?php if(isset($_SESSION["joueur"])) {?>
 				<div id="bouttonDeconnexion">
@@ -136,6 +136,24 @@
 			<div class="mainLayout">
 				<div class="bordureHorHaut"></div>
 				<div class="rubanHautLayout"><img src="template/<?php echo $TEMPLATE; ?>/images/rubanPrinc.png"></div>
+				<?php if(isset($_SESSION["joueur"])) {?>
+				<div class="selectVillageLayout">
+					<select name="village" id="selectVillage">
+						<?php
+							foreach ($listVillagesJoueur as $villageList)
+							{
+								$selected = "";
+								if($village->getVillageId() == $villageList["villageId"])
+								{
+									$selected = "selected";
+								}															
+								echo '<option '. $selected .' value="'. $villageList["villageId"] .'">'. $villageList["nom"] .'</option>';
+								
+							}
+						?>
+					</select>				
+				</div>
+				<?php } ?>
 				<div class="bordureHorBas"></div>					
 				<div class="bordureVerGauche"></div>					
 				<div class="bordureVerDroite"></div>	
@@ -143,6 +161,12 @@
 				<div class="angleBordureHautDroit"></div>
 				<div class="angleBordureBasGauche"></div>
 				<div class="angleBordureBasDroit"></div>
+				
+				<script>
+					$( "#selectVillage" ).selectmenu({
+						width: 150
+					});
+				</script>
 				
 						<?php if(isset($_SESSION["joueur"])) {
 							
@@ -451,7 +475,7 @@
 				<?php } ?>
 		</div>
 		<div class="footer">
-			lastimperium.com &copy; 2016-2017 vDev0.1
+			lastimperium.com &copy; 2016-2017 vDev0.1 - <a id="lienCguFooter" href="index.php?mod=cgu" target="_blank"><u>CGU</u></a>
 		</div>
 	</body>
 </html>
