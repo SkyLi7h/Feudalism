@@ -30,6 +30,7 @@ html button:hover
 html a
 {
 	cursor:url(../images/cursor.png), auto;
+	text-decoration: none;
 }
 
 body
@@ -91,6 +92,14 @@ body
 {
 	width: 100%;
 	height: 36px;
+	position: relative;
+	margin: auto;
+}
+
+.contentHautLayout
+{
+	width: 100%;
+	height: 36px;
 	background-image:url(../images/haut.png);
 	background-repeat: no-repeat;
     background-position: center top; 
@@ -98,7 +107,10 @@ body
 	padding-top: 6px;
 	font: bold 12px "Trajan", Sans-Serif;
 	color: #cbd9de;
-	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 998;
 }
 
 .hautLayout img
@@ -119,7 +131,8 @@ body
 {
 	position: absolute;
 	top: 0px;
-	left: -140px;	
+	left: -140px;
+	z-index: 999;	
 }
 
 #bouttonForum button
@@ -134,6 +147,7 @@ body
 	position: absolute;
 	top: 0px;
 	left: -55px;
+	z-index: 999;
 }
 
 #bouttonDev button
@@ -147,7 +161,8 @@ body
 {
 	position: absolute;
 	top: 0px;
-	right: -55px
+	right: -55px;
+	z-index: 999;
 }
 
 #bouttonAide button
@@ -161,7 +176,8 @@ body
 {
 	position: absolute;
 	top: 0px;
-	right: -160px;	
+	right: -160px;
+	z-index: 999;	
 }
 
 #bouttonDeconnexion button
@@ -443,7 +459,27 @@ body
 .formInscription button
 {
 	width: 180px;
+	margin-top: 20px;
 	font: bold 14px "Trajan", Sans-Serif;
+}
+
+#cguInsc
+{
+	width: 15px;
+	margin-top: -9px;
+	vertical-align: bottom;
+	font: bold 14px "Trajan", Sans-Serif;
+}
+
+#lienCgu
+{
+	font: bold 12px "Trajan", Sans-Serif;
+	color: black;
+}
+
+#lienCgu:hover
+{
+	color: orange;
 }
 
 /* index */
@@ -701,11 +737,16 @@ body
 }
 
 /*carte*/
-#divMap
+#divMapLayout
 {
 	margin-top: 50px;
-	overflow: auto;
 	margin-bottom: 15px;
+	position: relative;
+}
+
+#divMap
+{
+	overflow: auto;
 }
 #tableCarte
 {	
@@ -737,7 +778,7 @@ body
 	position:absolute;
 	left:0;
 	right:0;
-	top:130px;
+	top:-30px;
 	margin:auto;
 	background-image:url(../images/arrowMap.png);
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
@@ -762,7 +803,7 @@ body
 	position:absolute;
 	left:0;
 	right:0;
-	bottom:15px;
+	bottom:-30px;
 	margin:auto;
 	background-image:url(../images/arrowMap.png);
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
@@ -784,8 +825,8 @@ body
 	width:35px;
 	height: 35px;
 	position:absolute;
-	left:73px;
-	top:490px;
+	left:-15px;
+	top:330px;
 	background-image:url(../images/arrowMap.png);
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
@@ -806,8 +847,8 @@ body
 	width:35px;
 	height: 35px;
 	position:absolute;
-	right:73px;
-	top:490px;
+	right:-15px;
+	top:330px;
 	background-image:url(../images/arrowMap.png);
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
@@ -818,6 +859,43 @@ body
 #arrowRightMap:hover
 {
 	background-image:url(../images/arrowMapHover.png);
+}
+
+#layoutButtonDialog
+{
+	padding: 8px;
+	margin: auto;
+	width: 90%;
+}
+
+#bouttonEnvoyerUnitees
+{
+	width: 80%;
+	height: 28px;
+	margin: auto;
+}
+
+#bouttonEnvoyerUnitees button
+{
+	font: bold 13px "Trajan", Sans-Serif;
+	width: 100%;
+	height: 28px;
+	margin: auto;
+}
+
+#bouttonEnvoyerInfos
+{
+	width: 80%;
+	height: 28px;
+	margin: auto;
+}
+
+#bouttonEnvoyerInfos button
+{
+	font: bold 13px "Trajan", Sans-Serif;
+	width: 100%;
+	height: 28px;
+	margin: auto;
 }
 
 /*Unités*/

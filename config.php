@@ -11,15 +11,16 @@
 	$TPSMAXCO = 60*5; //5 minutes
 	$VITESSE = 1;
 	$MAINTENANCE = false;
+	$INSCRIPTIONFERMEE = false;
 	$CARTEX = 50;
 	$CARTEY = 50;
 	
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
-	$DBNAME = "lastimperium";
+	$DBNAME = "feudalism";
 	$LOGIN = "root";
-	$PASS = "";
+	$PASS = "19Nino552886!";
 	
 	//Bâtiments
 		$BATIMENTS = [];

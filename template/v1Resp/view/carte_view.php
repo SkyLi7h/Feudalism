@@ -66,6 +66,7 @@
 				{
 					var tableCarte = "<table cellspacing='0' id='tableCarte'>";
 					var img;
+					var onClick = "";
 					
 					for(var y = minY; y < maxY; y++)
 					{
@@ -75,6 +76,8 @@
 
 						for(var x = minX; x < maxX; x++)
 						{
+							onClick = "";
+							
 							if(carte[y][x]["type"] == "plaine")		
 								img = "template/<?php echo $TEMPLATE;?>/images/carte/plaine.png";
 							if(carte[y][x]["type"] == "montagne")		
@@ -83,8 +86,13 @@
 								img = "template/<?php echo $TEMPLATE;?>/images/carte/forest.png";
 							if(carte[y][x]["type"] == "village")	
 								img = "template/<?php echo $TEMPLATE;?>/images/carte/village.png";
-														
-							tableCarte += "<td style='background-image:url("+ img +"); -webkit-background-size: cover; background-size: cover;' title='"+ carte[y][x]["nom"] +"' id='tooltip'></td>";
+												
+							if(carte[y][x]["type"] == "village")
+							{
+								onClick = "onclick='afficherVillage("+ carte[y][x]["joueurId"] +","+ carte[y][x]["villageId"] +",\""+ carte[y][x]["nom"] +"\");'";
+							}
+												
+							tableCarte += "<td "+ onClick +" style='background-image:url("+ img +"); -webkit-background-size: cover; background-size: cover;' title='"+ carte[y][x]["nom"] +"' id='tooltip'></td>";
 						}
 						
 						tableCarte += "</tr>";					
@@ -158,15 +166,58 @@
 
 	</script>
 
-<div id="arrowUpMap" onclick="moveUpMap();"></div>
-<div id="arrowDownMap" onclick="moveDownMap();"></div>
-<div id="arrowLeftMap" onclick="moveLeftMap();"></div>
-<div id="arrowRightMap" onclick="moveRightMap();"></div>
+<div id="dialog" title="">
+  <div id="layoutButtonDialog">
+	<div id="bouttonEnvoyerUnitees">
+		<a href="index.php?mod=envUnit" id="lienSendUnit"><button class="ui-button ui-widget ui-corner-all">Envoyer des unitées</button></a>
+	</div>
+  </div>
+  <div id="layoutButtonDialog">
+	<div id="bouttonEnvoyerInfos">
+		<a href="index.php?mod=infosVillage" id="lienViwInfosVi"><button class="ui-button ui-widget ui-corner-all">Infos du village</button></a>
+	</div>
+  </div>
+  <div id="layoutButtonDialog">
+	<div id="bouttonEnvoyerInfos">
+		<a href="index.php?mod=infosJoueur" id="lienViwInfosJo"><button class="ui-button ui-widget ui-corner-all">Infos du joueur</button></a>
+	</div>
+  </div>
+</div>
+
 	
-<div id="divMap"></div>
+<div id="divMapLayout">
+	<div id="arrowUpMap" onclick="moveUpMap();"></div>
+	<div id="arrowDownMap" onclick="moveDownMap();"></div>
+	<div id="arrowLeftMap" onclick="moveLeftMap();"></div>
+	<div id="arrowRightMap" onclick="moveRightMap();"></div>
+	<div id="divMap"></div>
+</div>
 
 <script>
 	loadMapBd();
+
+	function afficherVillage(joueurId, villageId, nom)
+	{
+		$('#dialog').dialog('option', 'title', nom);
+		$('#dialog').dialog('option', 'width', "400px");
+		document.getElementById("lienSendUnit").href = "index.php?mod=envUnit&id=" + villageId;
+		document.getElementById("lienViwInfosVi").href = "index.php?mod=infosVillage&id=" + villageId;
+		document.getElementById("lienViwInfosJo").href = "index.php?mod=infosJoueur&id=" + joueurId;
+		$( "#dialog" ).dialog( "open" );
+	}
+	
+	$( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 400
+      },
+      hide: {
+        effect: "blind",
+        duration: 400
+      }
+    });
+
 </script>
 
 

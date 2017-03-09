@@ -36,6 +36,10 @@
 	{
 		echo 2;
 	}
+	else if(!filter_var($mail, FILTER_VALIDATE_EMAIL))
+	{
+		echo 5;
+	}
 	else if($joueurDao->isExist($pseudo, $mail))
 	{
 		echo 1;

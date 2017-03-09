@@ -11,7 +11,7 @@
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/external/jquery/jquery.js"></script>
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.js"></script>
 	  <link href="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.css" rel="stylesheet">
-	  <link rel="stylesheet" type="text/css" href="template/<?php echo $TEMPLATE; ?>/style/style.css" media="screen" />
+	  <link rel="stylesheet" type="text/css" href="template/<?php echo $TEMPLATE; ?>/style/style.css?v=0.1" media="screen" />
 	  <link rel="shortcut icon" href="template/<?php echo $TEMPLATE; ?>/images/favicon.ico" type="image/x-icon">
 	  <link rel="icon" href="template/<?php echo $TEMPLATE; ?>/images/favicon.ico" type="image/x-icon">
 	</head>	
@@ -56,26 +56,27 @@
 		<div class="page">
 			
 			<div class="hautLayout">
+				<div class="contentHautLayout">
+					<?php if(isset($_SESSION["joueur"])) {?>
+						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/wood.png"><span id="bois"><?php echo floor($village->getBois());?></span>
+						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/stone.png"><span id="pierre"><?php echo floor($village->getPierre());?></span>
+						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/iron.png"><span id="metal"><?php echo floor($village->getMetal());?></span>
+						<img width="16px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/money.png"><span id="or"><?php echo floor($joueur->getOrs());?></span>
+					<?php }?>											
+				</div>
+				<div id="bouttonForum">
+					<a href="http://forum.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all">Forum</button></a>
+				</div>		
+				<div id="bouttonDev">
+					<a href="http://dev.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all">Dev</button></a>
+				</div>				
 				<?php if(isset($_SESSION["joueur"])) {?>
-					<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/wood.png"><span id="bois"><?php echo floor($village->getBois());?></span>
-					<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/stone.png"><span id="pierre"><?php echo floor($village->getPierre());?></span>
-					<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/iron.png"><span id="metal"><?php echo floor($village->getMetal());?></span>
-					<img width="16px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/money.png"><span id="or"><?php echo floor($joueur->getOrs());?></span>
-				<?php }?>
-				
-					<div id="bouttonForum">
-						<a href="http://forum.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all">Forum</button></a>
-					</div>		
-					<div id="bouttonDev">
-						<a href="http://dev.lastimperium.com" target="_blank"><button class="ui-button ui-widget ui-corner-all">Dev</button></a>
-					</div>				
-				<?php if(isset($_SESSION["joueur"])) {?>
-					<div id="bouttonDeconnexion">
-							<button onClick="deconnexion()" class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-power"></span></span>Déconnexion</button>
-					</div>
-					<div id="bouttonAide">
-							<a href="index.php?mod=aide"><button class="ui-button ui-widget ui-corner-all"></span>Aide</button></a>
-					</div>
+				<div id="bouttonDeconnexion">
+						<button onClick="deconnexion()" class="ui-button ui-widget ui-corner-all"></span><span class="ui-icon ui-icon-power"></span></span>Déconnexion</button>
+				</div>
+				<div id="bouttonAide">
+					<a href="index.php?mod=aide"><button class="ui-button ui-widget ui-corner-all"></span>Aide</button></a>
+				</div>
 				<?php }?>
 			</div>		
 			
@@ -349,8 +350,6 @@
 				
 				<div class="include">
 					<?php if($MAINTENANCE){
-							session_unset();
-							$_SESSION["mod"] = $MOD_START;
 						?>
 						<div class="ui-widget">
 							<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">

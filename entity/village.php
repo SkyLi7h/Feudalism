@@ -63,6 +63,11 @@ class village
 		}
 	}
 	
+	public function getJoueurId()
+	{
+		return $this->joueur;
+	}
+	
 	public function getVillageId()
 	{
 		return $this->villageId;

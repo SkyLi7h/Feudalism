@@ -92,7 +92,8 @@
 		if($donnees["type"] == "village")
 			{
 				$village = $villageCarte->getVillageById($donnees["villageId"]);
-				$carte[$donnees["y"]][$donnees["x"]]["id"] = $donnees["villageId"];
+				$carte[$donnees["y"]][$donnees["x"]]["villageId"] = $donnees["villageId"];
+				$carte[$donnees["y"]][$donnees["x"]]["joueurId"] = $village->getJoueurId();
 				$carte[$donnees["y"]][$donnees["x"]]["nom"] = $village->getNom();
 			}
 		else

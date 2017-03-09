@@ -8,9 +8,6 @@
 	//Appel du fichier de configuration
 	if (! @include_once("config.php")) 
 		throw new Exception ("config.php est introuvable !");
-	
-	//Classes toujours utiles en général
-		///
 		
 		
 	//Appel du fichier de debug si besoin
@@ -62,13 +59,36 @@
 			
 			if(isset($_GET["mod"]))
 			{		
+				if($_GET["mod"] == $MOD_START)
+					$_GET["mod"] = "index";
+				
 				$_SESSION["mod"] = $_GET["mod"];	
-			}	
+			}
+			if($MAINTENANCE)
+			{
+				session_unset();
+				$_SESSION["mod"] = $MOD_START;
+			}
 		}			
 	}
 	else
 	{
-		$_SESSION["mod"] = $MOD_START;
+		if(isset($_GET["mod"]))
+		{
+			if($_GET["mod"] == $MOD_START || $_GET["mod"] == "cgu")
+			{
+				$_SESSION["mod"] = $_GET["mod"];
+			}
+			else
+			{
+				$_SESSION["mod"] = $MOD_START;
+			}
+		}
+		else
+		{
+			$_SESSION["mod"] = $MOD_START;
+		}
+			
 	}
 	
 	
