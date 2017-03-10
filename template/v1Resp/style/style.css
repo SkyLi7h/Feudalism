@@ -217,7 +217,7 @@ body
 	width: 200px;
 	text-align: center;
 	position: absolute;
-	top: -2px;
+	top: -3px;
 	margin: 0 auto;
 	left: 0;
 	right: 0;
@@ -468,14 +468,14 @@ body
 
 .ui-selectmenu-button
 {
-	height: 12px;
-	font: bold 13px "Trajan", Sans-Serif;
+	height: 11px;
+	font: bold 11px "Trajan", Sans-Serif;
 	margin-left: 7px;
 }
 
 .ui-selectmenu-open
 {
-	font: bold 13px "Trajan", Sans-Serif;
+	font: bold 11px "Trajan", Sans-Serif;
 }
 
 .formInscription button
@@ -967,12 +967,23 @@ body
 #nbUnite
 {
 	font: bold 13px "Trajan", Sans-Serif;
-	margin-left: 250px;
+	margin-left: 260px;
 	text-align: center;
 	width: 150px;
 	position: absolute;
 	top: 20px;
 	left: 10px;
+}
+
+#requisUnite
+{
+	font: bold 12px "Trajan", Sans-Serif;
+	text-align: center;
+	width: 180px;
+	position: absolute;
+	top: 155px;
+	left: 20px;
+	color: red;
 }
 
 #RecrutUnite
@@ -1062,4 +1073,50 @@ body
 #statsUnite img
 {
 	vertical-align:top;
+}
+
+/* PATCH NOTES */
+
+.patchNoteTitre
+{
+	width: 100%;
+	text-align: center;
+	font: 25px "Trajan";
+}
+
+.patchNoteLayout
+{
+	width: 80%;
+	margin: auto;
+	margin-top: 20px;
+	background-color: #FCF7C2;
+	padding: 5px;
+	border-radius: 7px;
+}
+
+.patchNoteRelease
+{
+	font: 18px "Trajan";
+	text-decoration: underline;
+}
+
+.patchNoteDate
+{
+	font: 10px "Trajan";
+	margin-left: 8px;
+}
+
+.patchNoteInfos
+{
+	margin-left: 8px;
+}
+
+.patchNoteInfos h4
+{
+	font: 14px "Trajan";
+}
+
+.patchNoteInfos li
+{
+	font: 12px "Trajan";
 }

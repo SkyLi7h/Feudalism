@@ -11,7 +11,7 @@
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/external/jquery/jquery.js"></script>
 	  <script src="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.js"></script>
 	  <link href="template/<?php echo $TEMPLATE; ?>/js/jquery/jquery-ui.css" rel="stylesheet">
-	  <link rel="stylesheet" type="text/css" href="template/<?php echo $TEMPLATE; ?>/style/style.css?v=0.01" media="screen" />
+	  <link rel="stylesheet" type="text/css" href="template/<?php echo $TEMPLATE; ?>/style/style.css?v=0.02" media="screen" />
 	  <link rel="shortcut icon" href="template/<?php echo $TEMPLATE; ?>/images/favicon.ico" type="image/x-icon">
 	  <link rel="icon" href="template/<?php echo $TEMPLATE; ?>/images/favicon.ico" type="image/x-icon">
 	</head>	
@@ -153,6 +153,16 @@
 						?>
 					</select>				
 				</div>
+				
+				// <script>					
+					$( "#selectVillage" ).selectmenu({
+						width: 150
+					});
+			
+				</script>
+				
+				
+				
 				<?php } ?>
 				<div class="bordureHorBas"></div>					
 				<div class="bordureVerGauche"></div>					
@@ -161,12 +171,6 @@
 				<div class="angleBordureHautDroit"></div>
 				<div class="angleBordureBasGauche"></div>
 				<div class="angleBordureBasDroit"></div>
-				
-				<script>
-					$( "#selectVillage" ).selectmenu({
-						width: 150
-					});
-				</script>
 				
 						<?php if(isset($_SESSION["joueur"])) {
 							
@@ -272,7 +276,7 @@
 <script>
 			var tpsRecrutUnite = <?php echo ($UNITES[$listUnitEnRecrut[0][1]]["cout"]["temps"] * $listUnitEnRecrut[0][2]) ?>;
 			var tpsDebUnite = <?php echo $listUnitEnRecrut[0][3]; ?>;
-			var uniteEnRecrut = "(<?php echo $listUnitEnRecrut[0][2]; ?>)" + " <?php echo $listUnitEnRecrut[0][1]; ?>";
+			var uniteEnRecrut = "(<?php echo $listUnitEnRecrut[0][2]; ?>)" + " <?php echo $UNITES[$listUnitEnRecrut[0][1]]["nom"]; ?>";
 			
 			var tempsFinUnite = tpsDebUnite + tpsRecrutUnite;
 			

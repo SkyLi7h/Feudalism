@@ -46,6 +46,13 @@ class utilsInGame
 		
 		$village->setPaysans($donneesVillage["paysans"]);
 		$village->setLancePierre($donneesVillage["lancePierre"]);
+		$village->setGuerrier($donneesVillage["guerrier"]);
+		$village->setArcher($donneesVillage["archer"]);
+		$village->setHache($donneesVillage["hache"]);
+		$village->setPiquier($donneesVillage["piquier"]);
+		$village->setHommeDeMain($donneesVillage["hommeDeMain"]);
+		$village->setChevalier($donneesVillage["chevalier"]);
+		$village->setCatapulte($donneesVillage["catapulte"]);
 		
 		$tpsADecompterBois = 0;
 		$tpsADecompterPierre = 0;
@@ -148,7 +155,28 @@ class utilsInGame
 						break;
 					case "Lance-pierre":
 						$village->addLancePierre($donneesRecrutement["nbUnite"]);		
-						break;					
+						break;	
+					case "Guerrier":
+						$village->addGuerrier($donneesRecrutement["nbUnite"]);		
+						break;
+					case "Archer":
+						$village->addArcher($donneesRecrutement["nbUnite"]);		
+						break;
+					case "Hache":
+						$village->addHache($donneesRecrutement["nbUnite"]);		
+						break;
+					case "Piquier":
+						$village->addPiquier($donneesRecrutement["nbUnite"]);		
+						break;
+					case "HommeDeMain":
+						$village->addHommeDeMain($donneesRecrutement["nbUnite"]);		
+						break;
+					case "Chevalier":
+						$village->addChevalier($donneesRecrutement["nbUnite"]);		
+						break;
+					case "Catapulte":
+						$village->addCatapulte($donneesRecrutement["nbUnite"]);		
+						break;
 				}
 				
 				$bdd->query('DELETE from recrutement where idRecrutement ='.$donneesRecrutement["idRecrutement"]);
@@ -163,7 +191,7 @@ class utilsInGame
 		$_SESSION["village"] = serialize($village);
 		
 		//Maj du village dans la bdd
-		$bdd->query('UPDATE village set bois='.$boisTot.', pierre='.$pierreTot.', metal='.$metalTot.', scierie='.$village->getScierie().', carriere='.$village->getCarriere().', mine='.$village->getMine().', chateau='.$village->getChateau().', caserne='.$village->getCaserne().', paysans='.$village->getPaysans().', lancePierre='.$village->getLancePierre().', dernMaj='. time() .' where villageId='.$village->getVillageId());
+		$bdd->query('UPDATE village set bois='.$boisTot.', pierre='.$pierreTot.', metal='.$metalTot.', scierie='.$village->getScierie().', carriere='.$village->getCarriere().', mine='.$village->getMine().', chateau='.$village->getChateau().', caserne='.$village->getCaserne().', paysans='.$village->getPaysans().', lancePierre='.$village->getLancePierre().', guerrier='.$village->getGuerrier().', archer='.$village->getArcher().', hache='.$village->getHache().', piquier='.$village->getPiquier().', hommeDeMain='.$village->getHommeDeMain().', chevalier='.$village->getChevalier().', catapulte='.$village->getCatapulte().', dernMaj='. time() .' where villageId='.$village->getVillageId());
 		
 	}
 }

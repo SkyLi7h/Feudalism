@@ -6,18 +6,33 @@ class village
 	private $joueur;
 	private $nom;
 	private $habitant;
+	
+	//Batiments
 	private $chateau;
 	private $caserne;
 	private $mine;
 	private $scierie;
 	private $carriere;
+	
+	//Ressources
 	private $metal;
 	private $bois;
 	private $pierre;
+	
+	//Unites
 	private $paysans;
 	private $lancePierre;
+	private $guerrier;
+	private $archer;
+	private $hache;
+	private $piquier;
+	private $hommeDeMain;
+	private $chevalier;
+	private $catapulte;
 	
-	public function __construct($villageId, $joueur, $nom, $habitant, $chateau, $caserne, $mine, $scierie, $carriere, $metal, $bois, $pierre, $paysans, $lancePierre)
+	
+	
+	public function __construct($villageId, $joueur, $nom, $habitant, $chateau, $caserne, $mine, $scierie, $carriere, $metal, $bois, $pierre, $paysans, $lancePierre, $guerrier, $archer, $hache, $piquier, $hommeDeMain, $chevalier, $catapulte)
 	{
 		$this->villageId = $villageId;
 		$this->joueur = $joueur;
@@ -32,7 +47,14 @@ class village
 		$this->bois = $bois;
 		$this->pierre = $pierre;	
 		$this->paysans = $paysans;
-		$this->lancePierre = $lancePierre;			
+		$this->lancePierre = $lancePierre;	
+		$this->guerrier = $guerrier;
+		$this->archer = $archer;
+		$this->hache = $hache;
+		$this->piquier = $piquier;
+		$this->hommeDeMain = $hommeDeMain;
+		$this->chevalier = $chevalier;
+		$this->catapulte = $catapulte;
 	}
 	
 	public function GetNiveauByName($nom)
@@ -60,6 +82,20 @@ class village
 				return $this->getPaysans();
 			case "Lance-pierre":
 				return $this->getLancePierre();
+			case "Guerrier":
+				return $this->getGuerrier();
+			case "Archer":
+				return $this->getArcher();
+			case "Hache":
+				return $this->getHache();
+			case "Piquier":
+				return $this->getPiquier();
+			case "Homme De Main":
+				return $this->getHommeDeMain();
+			case "Chevalier":
+				return $this->getChevalier();
+			case "Catapulte":
+				return $this->getCatapulte();
 		}
 	}
 	
@@ -206,9 +242,113 @@ class village
 	{
 		$this->lancePierre = $nb;
 	}
+	
 	public function addLancePierre($nb)
 	{
 		$this->lancePierre += $nb;
+	}
+	
+	public function getGuerrier()
+	{
+		return $this->guerrier;
+	}
+	
+	public function setGuerrier($nb)
+	{
+		$this->guerrier = $nb;
+	}
+	
+	public function addGuerrier($nb)
+	{
+		$this->guerrier += $nb;
+	}
+	public function getArcher()
+	{
+		return $this->archer;
+	}
+	
+	public function setArcher($nb)
+	{
+		$this->archer = $nb;
+	}
+	
+	public function addArcher($nb)
+	{
+		$this->archer += $nb;
+	}
+	
+	public function getHache()
+	{
+		return $this->hache;
+	}
+	
+	public function setHache($nb)
+	{
+		$this->hache = $nb;
+	}
+	
+	public function addHache($nb)
+	{
+		$this->hache += $nb;
+	}
+	public function getPiquier()
+	{
+		return $this->piquier;
+	}
+	
+	public function setPiquier($nb)
+	{
+		$this->piquier = $nb;
+	}
+	
+	public function addPiquier($nb)
+	{
+		$this->piquier += $nb;
+	}
+	
+	public function getHommeDeMain()
+	{
+		return $this->hommeDeMain;
+	}
+	
+	public function setHommeDeMain($nb)
+	{
+		$this->hommeDeMain = $nb;
+	}
+	
+	public function addHommeDeMain($nb)
+	{
+		$this->hommeDeMain += $nb;
+	}
+	
+	public function getChevalier()
+	{
+		return $this->chevalier;
+	}
+	
+	public function setChevalier($nb)
+	{
+		$this->chevalier = $nb;
+	}
+	
+	public function addChevalier($nb)
+	{
+		$this->chevalier += $nb;
+	}
+	
+	public function getCatapulte()
+	{
+		return $this->catapulte;
+	}
+	
+	public function setCatapulte($nb)
+	{
+		$this->catapulte = $nb;
+	}
+	
+	public function addCatapulte($nb)
+	{
+		$this->catapulte += $nb;
 	}
 }
 

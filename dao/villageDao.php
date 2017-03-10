@@ -8,7 +8,7 @@ class villageDao
 		
 		$reponse = $bdd->query('SELECT * FROM village where villageId ='.$villageId);
 		$donnees = $reponse->fetch();	
-		return new village($donnees["villageId"], $donnees["joueurId"], $donnees["nom"], $donnees["habitant"], $donnees["chateau"], $donnees["caserne"], $donnees["mine"], $donnees["scierie"], $donnees["carriere"], $donnees["metal"], $donnees["bois"], $donnees["pierre"], $donnees["paysans"], $donnees["lancePierre"]);
+		return new village($donnees["villageId"], $donnees["joueurId"], $donnees["nom"], $donnees["habitant"], $donnees["chateau"], $donnees["caserne"], $donnees["mine"], $donnees["scierie"], $donnees["carriere"], $donnees["metal"], $donnees["bois"], $donnees["pierre"], $donnees["paysans"], $donnees["lancePierre"], $donnees["guerrier"], $donnees["archer"], $donnees["hache"], $donnees["piquier"], $donnees["hommeDeMain"], $donnees["chevalier"], $donnees["catapulte"]);
 	}
 	
 	public function getMinVillageConnexion($joueurId)
@@ -17,7 +17,7 @@ class villageDao
 		
 		$reponse = $bdd->query('SELECT * from village where joueurId ='.$joueurId.' ORDER BY villageId ASC LIMIT 1');
 		$donnees = $reponse->fetch();	
-		return new village($donnees["villageId"], $donnees["joueurId"], $donnees["nom"], $donnees["habitant"], $donnees["chateau"], $donnees["caserne"], $donnees["mine"], $donnees["scierie"], $donnees["carriere"], $donnees["metal"], $donnees["bois"], $donnees["pierre"], $donnees["paysans"], $donnees["lancePierre"]);
+		return new village($donnees["villageId"], $donnees["joueurId"], $donnees["nom"], $donnees["habitant"], $donnees["chateau"], $donnees["caserne"], $donnees["mine"], $donnees["scierie"], $donnees["carriere"], $donnees["metal"], $donnees["bois"], $donnees["pierre"], $donnees["paysans"], $donnees["lancePierre"], $donnees["guerrier"], $donnees["archer"], $donnees["hache"], $donnees["piquier"], $donnees["hommeDeMain"], $donnees["chevalier"], $donnees["catapulte"]);
 	}
 	
 	public function addConstruction($villageId, $batiment, $tempsCons)

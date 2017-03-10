@@ -11,12 +11,6 @@
 	$reponseCoordCarte = $bdd->query('SELECT * from carte where villageId ='.$village->getVillageId());
 	$donneesCoordCarte = $reponseCoordCarte->fetch();
 	
-	if(isset($_GET["x"]) && isset($_GET["y"]))
-	{
-		$donneesCoordCarte["x"] += $_GET["x"];
-		$donneesCoordCarte["y"] += $_GET["y"];
-	}
-	
 	$carte = $business->getCarte($donneesCoordCarte["x"], $donneesCoordCarte["y"]);
 	
 ?>
@@ -25,26 +19,75 @@
 	var x = <?php echo $donneesCoordCarte["x"]; ?>;
 	var y = <?php echo $donneesCoordCarte["y"]; ?>;
 	
+	var carteX = <?php echo $CARTEX; ?>;
+	var carteY = <?php echo $CARTEY; ?>;
 				
 	var minX = x-5;
 	var minY = y-5;
-	var maxY = y+6;
-	var maxX = x+6;
+	var maxY = y+5;
+	var maxX = x+5;
 	
+	
+	function verifXY()
+	{
+		
+		if(x < 1)
+			x = 1;
+		
+		if(x > carteX)
+			x = carteX;
+		
+		if(y < 1)
+			y = 1;
+		
+		if(y > carteY)
+			y = carteY;
+		
+		
+		if(minX < 1)
+		{
+			reste = 1 - minX;
+			minX = 1;
+			maxX += reste;
+		}
+		
+		if(minY < 1)
+		{
+			reste = 1 - minY;
+			minY = 1;
+			maxY += reste;
+		}
+
+		if(maxX > carteX)
+		{
+			reste = maxX - carteX;
+			maxX = carteX;
+			minX -= reste;
+		}
+		
+		if(maxY > carteY)
+		{
+			reste = maxY - carteY;
+			maxY = carteY;
+			minY -= reste;
+		}
+	}
+	
+	verifXY();
+
 	var carte = [];
 	
 	var loadEnCours = false;
 		
 	function loadMapBd()
 	{	
-		if(!loadEnCours)
-		{
 			loadEnCours = true;
 			var xhrConnexion = new XMLHttpRequest();	
 			
 			xhrConnexion.open('POST', 'utils/loadMap.php');
 			xhrConnexion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xhrConnexion.send('x=' + x + '&y=' + y);
+			
 			
 			xhrConnexion.addEventListener('readystatechange', function() {
 
@@ -55,11 +98,7 @@
 					chargerCarte();
 			}
 
-			});
-			
-			loadEnCours = false;
-		}
-			
+			});		
 	}
 				
 		function chargerCarte()
@@ -68,15 +107,15 @@
 					var img;
 					var onClick = "";
 					
-					for(var y = minY; y < maxY; y++)
+					for(var y = minY; y <= maxY; y++)
 					{
 						tableCarte += "<tr>";
 						ligne = carte[y];
 						
 
-						for(var x = minX; x < maxX; x++)
+						for(var x = minX; x <= maxX; x++)
 						{
-							onClick = "";
+							onClick = "";							
 							
 							if(carte[y][x]["type"] == "plaine")		
 								img = "template/<?php echo $TEMPLATE;?>/images/carte/plaine.png";
@@ -91,7 +130,9 @@
 							{
 								onClick = "onclick='afficherVillage("+ carte[y][x]["joueurId"] +","+ carte[y][x]["villageId"] +",\""+ carte[y][x]["nom"] +"\");'";
 							}
-												
+							
+							carte[y][x]["nom"] = carte[y][x]["nom"] + " x: " + x + " y: " + y;
+							
 							tableCarte += "<td "+ onClick +" style='background-image:url("+ img +"); -webkit-background-size: cover; background-size: cover;' title='"+ carte[y][x]["nom"] +"' id='tooltip'></td>";
 						}
 						
@@ -111,56 +152,79 @@
 						  }
 						});
 					  } );
+					  
+					  loadEnCours = false;
+					  					
 					
 				}
 
-				var carteX = <?php echo $CARTEX; ?>;
-				var carteY = <?php echo $CARTEY; ?>;
+
 				
 				function moveUpMap()
 				{				
-					
-					if(minY >= 2)
+					if(!loadEnCours)
 					{
-						y -= 1;
-						minY = y-5;
-						maxY = y+6;
-						loadMapBd();
-					}
-					
+						if((y-5) > 1)
+						{
+							loadEnCours = true;
+							y -= 1;
+							minY = y-5;
+							maxY = y+5;							
+							verifXY();
+							loadMapBd();
+						}
+					}					
 				}
 				
 				function moveDownMap()
 				{
-					if(maxY <= carteY-1)
+					if(!loadEnCours)
 					{
-						y += 1;
-						minY = y-5;
-						maxY = y+6;
-						loadMapBd();
+						if((y + 5) < carteY)
+						{
+							loadEnCours = true;
+							y += 1;
+							minY = y-5;
+							maxY = y+5;						
+							verifXY();
+							loadMapBd();
+						}
 					}
 				}
 				
 				function moveLeftMap()
 				{
-					if(minX >= 2)
+					if(!loadEnCours)
 					{
-						x -= 1;
-						minX = x-5;
-						maxX = x+6;
-						loadMapBd();
+						if((x-5) > 1)
+						{	
+							loadEnCours = true;
+							x -= 1;
+							minX = x-5;
+							maxX = x+5;					
+							verifXY();
+							loadMapBd();
+						}
 					}
 				}
 				
 				function moveRightMap()
 				{
-					if(maxX <= carteX-1)
+						
+					if(!loadEnCours)
 					{
-						x += 1;
-						minX = x-5;
-						maxX = x+6;
-						loadMapBd();
+						
+						if((x + 5) < carteX)
+						{
+							loadEnCours = true;
+							x += 1;
+							minX = x-5;
+							maxX = x+5;															
+							verifXY();
+							loadMapBd();
+						}					
 					}
+					
 				}
 				
 
