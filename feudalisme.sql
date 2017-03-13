@@ -364,7 +364,7 @@ INSERT INTO `carte` (`carteId`, `x`, `y`, `type`, `villageId`) VALUES
 	(322, 22, 7, 'plaine', NULL),
 	(323, 23, 7, 'montagne', NULL),
 	(324, 24, 7, 'plaine', NULL),
-	(325, 25, 7, 'plaine', NULL),
+	(325, 25, 7, 'village', 11),
 	(326, 26, 7, 'plaine', NULL),
 	(327, 27, 7, 'plaine', NULL),
 	(328, 28, 7, 'foret', NULL),
@@ -789,7 +789,7 @@ INSERT INTO `carte` (`carteId`, `x`, `y`, `type`, `villageId`) VALUES
 	(747, 47, 15, 'plaine', NULL),
 	(748, 48, 15, 'plaine', NULL),
 	(749, 49, 15, 'plaine', NULL),
-	(750, 50, 15, 'plaine', NULL),
+	(750, 50, 15, 'village', 9),
 	(751, 1, 16, 'plaine', NULL),
 	(752, 2, 16, 'plaine', NULL),
 	(753, 3, 16, 'plaine', NULL),
@@ -810,9 +810,9 @@ INSERT INTO `carte` (`carteId`, `x`, `y`, `type`, `villageId`) VALUES
 	(768, 18, 16, 'plaine', NULL),
 	(769, 19, 16, 'plaine', NULL),
 	(770, 20, 16, 'foret', NULL),
-	(771, 21, 16, 'plaine', NULL),
+	(771, 21, 16, 'village', 13),
 	(772, 22, 16, 'plaine', NULL),
-	(773, 23, 16, 'village', 9),
+	(773, 23, 16, 'plaine', NULL),
 	(774, 24, 16, 'plaine', NULL),
 	(775, 25, 16, 'plaine', NULL),
 	(776, 26, 16, 'plaine', NULL),
@@ -2075,7 +2075,7 @@ INSERT INTO `carte` (`carteId`, `x`, `y`, `type`, `villageId`) VALUES
 	(2033, 33, 41, 'plaine', NULL),
 	(2034, 34, 41, 'plaine', NULL),
 	(2035, 35, 41, 'plaine', NULL),
-	(2036, 36, 41, 'plaine', NULL),
+	(2036, 36, 41, 'village', 12),
 	(2037, 37, 41, 'plaine', NULL),
 	(2038, 38, 41, 'plaine', NULL),
 	(2039, 39, 41, 'plaine', NULL),
@@ -2550,12 +2550,40 @@ CREATE TABLE IF NOT EXISTS `construction` (
   `tempsDeb` int(11) DEFAULT NULL,
   `villageId` int(11) DEFAULT NULL,
   PRIMARY KEY (`constructionId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Export de données de la table feudalism.construction : ~0 rows (environ)
 DELETE FROM `construction`;
 /*!40000 ALTER TABLE `construction` DISABLE KEYS */;
+INSERT INTO `construction` (`constructionId`, `batiment`, `temps`, `tempsDeb`, `villageId`) VALUES
+	(1, 'Mine', 250, 1489414489, 13);
 /*!40000 ALTER TABLE `construction` ENABLE KEYS */;
+
+-- Export de la structure de la table feudalism. deplacement
+CREATE TABLE IF NOT EXISTS `deplacement` (
+  `deplacementId` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(50) NOT NULL DEFAULT '0',
+  `idVillageOri` int(11) NOT NULL DEFAULT '0',
+  `idVillageDest` int(11) NOT NULL DEFAULT '0',
+  `tpsDeb` int(11) NOT NULL DEFAULT '0',
+  `paysans` int(11) NOT NULL DEFAULT '0',
+  `lancePierre` int(11) NOT NULL DEFAULT '0',
+  `guerrier` int(11) NOT NULL DEFAULT '0',
+  `archer` int(11) NOT NULL DEFAULT '0',
+  `hache` int(11) NOT NULL DEFAULT '0',
+  `piquier` int(11) NOT NULL DEFAULT '0',
+  `hommeDeMain` int(11) NOT NULL DEFAULT '0',
+  `chevalier` int(11) NOT NULL DEFAULT '0',
+  `catapulte` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`deplacementId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Export de données de la table feudalism.deplacement : ~0 rows (environ)
+DELETE FROM `deplacement`;
+/*!40000 ALTER TABLE `deplacement` DISABLE KEYS */;
+INSERT INTO `deplacement` (`deplacementId`, `type`, `idVillageOri`, `idVillageDest`, `tpsDeb`, `paysans`, `lancePierre`, `guerrier`, `archer`, `hache`, `piquier`, `hommeDeMain`, `chevalier`, `catapulte`) VALUES
+	(1, 'combat', 10, 13, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0);
+/*!40000 ALTER TABLE `deplacement` ENABLE KEYS */;
 
 -- Export de la structure de la table feudalism. hero
 CREATE TABLE IF NOT EXISTS `hero` (
@@ -2578,14 +2606,16 @@ CREATE TABLE IF NOT EXISTS `joueur` (
   `pass` text NOT NULL,
   `or` int(11) DEFAULT '0',
   PRIMARY KEY (`joueurId`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
--- Export de données de la table feudalism.joueur : ~1 rows (environ)
+-- Export de données de la table feudalism.joueur : ~4 rows (environ)
 DELETE FROM `joueur`;
 /*!40000 ALTER TABLE `joueur` DISABLE KEYS */;
 INSERT INTO `joueur` (`joueurId`, `mail`, `pseudo`, `pass`, `or`) VALUES
 	(16, 'lastimperium@lastimperium.com', 'lastimperium', 'c41705783f0c989f9717aad182a1a7a5', 0),
-	(17, 'teste@teste.com', 'teste', '698dc19d489c4e4db73e28a713eab07b', 0);
+	(17, 'teste@teste.com', 'teste', '698dc19d489c4e4db73e28a713eab07b', 0),
+	(18, '', 'retest', 'e8e3c8d799244cf4c634247103189356', 0),
+	(19, 'retestee@ferger.com', 'retestee', '4a28a944d00e19b6cd0d77204895f7ca', 0);
 /*!40000 ALTER TABLE `joueur` ENABLE KEYS */;
 
 -- Export de la structure de la table feudalism. recrutement
@@ -2596,7 +2626,7 @@ CREATE TABLE IF NOT EXISTS `recrutement` (
   `tpsDeb` int(11) NOT NULL DEFAULT '0',
   `villageId` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idRecrutement`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Export de données de la table feudalism.recrutement : ~1 rows (environ)
 DELETE FROM `recrutement`;
@@ -2621,15 +2651,25 @@ CREATE TABLE IF NOT EXISTS `village` (
   `dernMaj` int(11) DEFAULT NULL,
   `paysans` int(11) DEFAULT '0',
   `lancePierre` int(11) DEFAULT '0',
+  `guerrier` int(11) DEFAULT '0',
+  `archer` int(11) DEFAULT '0',
+  `hache` int(11) DEFAULT '0',
+  `piquier` int(11) DEFAULT '0',
+  `hommeDeMain` int(11) DEFAULT '0',
+  `chevalier` int(11) DEFAULT '0',
+  `catapulte` int(11) DEFAULT '0',
   PRIMARY KEY (`villageId`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
--- Export de données de la table feudalism.village : ~2 rows (environ)
+-- Export de données de la table feudalism.village : ~5 rows (environ)
 DELETE FROM `village`;
 /*!40000 ALTER TABLE `village` DISABLE KEYS */;
-INSERT INTO `village` (`villageId`, `joueurId`, `nom`, `habitant`, `chateau`, `caserne`, `ferme`, `mine`, `scierie`, `carriere`, `metal`, `bois`, `pierre`, `dernMaj`, `paysans`, `lancePierre`) VALUES
-	(9, 16, 'Village de lastimperium', 100, 1, 0, 1, 1, 2, 1, 3253.39, 3159.93, 3253.39, 1488533325, 500, 100),
-	(10, 17, 'Village de teste', 100, 10, 0, 1, 4, 7, 5, 21307, 122465, 37618.2, 1488901301, 504, 257);
+INSERT INTO `village` (`villageId`, `joueurId`, `nom`, `habitant`, `chateau`, `caserne`, `ferme`, `mine`, `scierie`, `carriere`, `metal`, `bois`, `pierre`, `dernMaj`, `paysans`, `lancePierre`, `guerrier`, `archer`, `hache`, `piquier`, `hommeDeMain`, `chevalier`, `catapulte`) VALUES
+	(9, 16, 'Village de lastimperium', 100, 1, 0, 1, 1, 2, 1, 20017.3, 61834, 28399.3, 1489136828, 500, 100, 0, 0, 0, 0, 0, 0, 0),
+	(10, 17, 'Village de teste', 100, 11, 1, 1, 4, 7, 7, 48933.8, 1200500, 958212, 1489414586, 818, 285, 101, 0, 0, 0, 16, 0, 1),
+	(11, 18, 'Village de retest', 100, 1, 0, 1, 1, 1, 1, 504.139, 506.208, 506.208, 1489057062, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+	(12, 19, 'Village de retestee', 100, 1, 0, 1, 1, 1, 1, 523.472, 535.209, 535.209, 1489057970, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+	(13, 17, 'Village de teste2', 100, 1, 0, 1, 1, 1, 1, 5002.14, 5003.21, 5003.21, 1489414581, 500, 0, 0, 0, 0, 0, 0, 0, 0);
 /*!40000 ALTER TABLE `village` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

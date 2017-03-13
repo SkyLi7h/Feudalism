@@ -136,7 +136,7 @@
 			<div class="mainLayout">
 				<div class="bordureHorHaut"></div>
 				<div class="rubanHautLayout"><img src="template/<?php echo $TEMPLATE; ?>/images/rubanPrinc.png"></div>
-				<?php if(isset($_SESSION["joueur"])) {?>
+				<?php if(isset($_SESSION["joueur"])) {?>			
 				<div class="selectVillageLayout">
 					<select name="village" id="selectVillage">
 						<?php
@@ -154,11 +154,31 @@
 					</select>				
 				</div>
 				
-				// <script>					
+			    <script>						
 					$( "#selectVillage" ).selectmenu({
 						width: 150
 					});
-			
+					
+					$('#selectVillage').on('selectmenuchange', function() {						
+							var villageId = this.value;
+							var xhrConnexion = new XMLHttpRequest();
+							
+							xhrConnexion.open('POST', 'utils/changeVillage.php');
+							xhrConnexion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+							xhrConnexion.send('villageId=' + villageId);
+							
+							xhrConnexion.addEventListener('readystatechange', function() {
+
+							if (xhrConnexion.readyState === XMLHttpRequest.DONE && xhrConnexion.status === 200) {
+								
+								if(xhrConnexion.responseText == 0)
+								{
+									document.location.href="index.php";
+								}
+							}
+
+							});
+					});
 				</script>
 				
 				

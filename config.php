@@ -801,22 +801,7 @@
 						$UNITES["Piquier"]["ATK"] = 30;
 						$UNITES["Piquier"]["DEF"] = 70;
 						$UNITES["Piquier"]["VIT"] = 100;
-						$UNITES["Piquier"]["TRA"] = 20;
-						
-					$UNITES["Piquier"] = [];
-						$UNITES["Piquier"]["nom"] = "Piquier";
-						$UNITES["Piquier"]["description"] = "Les piquiers, en formation, ils sont infranchissables !";
-						$UNITES["Piquier"]["caserne"] = 12;
-						$UNITES["Piquier"]["cout"] = [];
-						$UNITES["Piquier"]["img"] = "piquier.png";
-							$UNITES["Piquier"]["cout"]["bois"] = 70;
-							$UNITES["Piquier"]["cout"]["metal"] = 40;
-							$UNITES["Piquier"]["cout"]["pierre"] = 0;
-							$UNITES["Piquier"]["cout"]["temps"] = 50;
-						$UNITES["Piquier"]["ATK"] = 30;
-						$UNITES["Piquier"]["DEF"] = 70;
-						$UNITES["Piquier"]["VIT"] = 100;
-						$UNITES["Piquier"]["TRA"] = 20;
+						$UNITES["Piquier"]["TRA"] = 20;						
 						
 					$UNITES["HommeDeMain"] = [];
 						$UNITES["HommeDeMain"]["nom"] = "Homme De Main";
