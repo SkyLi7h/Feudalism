@@ -499,7 +499,7 @@
 				<?php } ?>
 		</div>
 		<div class="footer">
-			lastimperium.com &copy; 2016-2017 vDev0.1 - <a id="lienCguFooter" href="index.php?mod=cgu" target="_blank"><u>CGU</u></a>
+			lastimperium.com &copy; 2016-2017 vDev0.2 - <a id="lienCguFooter" href="index.php?mod=cgu" target="_blank"><u>CGU</u></a>
 		</div>
 	</body>
 </html>

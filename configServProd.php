@@ -17,7 +17,7 @@
 	
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
-	$HOST = "localhost";
+	$HOST = "91.234.194.249";
 	$DBNAME = "apmqlasti808566_lastimperium";
 	$LOGIN = "apmqlasti808566_lastimperium";
 	$PASS = "19Nino552886!!";
