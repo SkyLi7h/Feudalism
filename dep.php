@@ -1,6 +1,8 @@
 <?php
 if (! @include_once("config.php")) 
 		throw new Exception ("config.php est introuvable !");
+	
+require_once "entity/village.php";
 
 $bdd = new PDO('mysql:host='.$HOST.';dbname='.$DBNAME.';charset=utf8', $LOGIN, $PASS);
 
@@ -17,15 +19,14 @@ function runServ()
 		{
 			if($deplacement["type"] = "combat")
 			{
+				
+				$villageDest = refreshDonneesVillage($deplacement["idVillageDest"]);
+				
 				//Init
 				$forceAttaquant = 0;
 				$forceDefenseur = 0;
 				
-				$atkChance = (rand ( 90 , 110 ))/100;
-				
-				//Recup données du village défenseur
-				$resultVillageDest = $bdd->query('SELECT * FROM village WHERE villageId=' . $deplacement["idVillageDest"]);
-				$villageDest = $resultVillageDest->fetch();
+				$atkChance = (rand ( 90 , 110 ))/100;				
 				
 				//Force de l'attaquant
 				$forceAttaquant += $UNITES["Paysans"]["ATK"]  * $deplacement["paysans"];
@@ -40,20 +41,34 @@ function runServ()
 				$forceAttaquant *= $atkChance;
 				
 				//Force du défenseur
-				$forceDefenseur += $UNITES["Paysans"]["ATK"]  * $villageDest["paysans"];
-				$forceDefenseur += $UNITES["Lance-pierre"]["ATK"]  * $villageDest["lancePierre"];
-				$forceDefenseur += $UNITES["Guerrier"]["ATK"]  * $villageDest["guerrier"];
-				$forceDefenseur += $UNITES["Archer"]["ATK"]  * $villageDest["archer"];
-				$forceDefenseur += $UNITES["Hache"]["ATK"]  * $villageDest["hache"];
-				$forceDefenseur += $UNITES["Piquier"]["ATK"]  * $villageDest["piquier"];
-				$forceDefenseur += $UNITES["HommeDeMain"]["ATK"]  * $villageDest["hommeDeMain"];
-				$forceDefenseur += $UNITES["Chevalier"]["ATK"]  * $villageDest["chevalier"];
-				$forceDefenseur += $UNITES["Catapulte"]["ATK"]  * $villageDest["catapulte"];
+				$forceDefenseur += $UNITES["Paysans"]["ATK"]  * $villageDest->getPaysans();
+				$forceDefenseur += $UNITES["Lance-pierre"]["ATK"]  * $villageDest->getLancePierre();
+				$forceDefenseur += $UNITES["Guerrier"]["ATK"]  * $villageDest->getGuerrier();
+				$forceDefenseur += $UNITES["Archer"]["ATK"]  * $villageDest->getArcher();
+				$forceDefenseur += $UNITES["Hache"]["ATK"]  * $villageDest->getHache();
+				$forceDefenseur += $UNITES["Piquier"]["ATK"]  * $villageDest->getPiquier();
+				$forceDefenseur += $UNITES["HommeDeMain"]["ATK"]  * $villageDest->getHommeDeMain();
+				$forceDefenseur += $UNITES["Chevalier"]["ATK"]  * $villageDest->getChevalier();
+				$forceDefenseur += $UNITES["Catapulte"]["ATK"]  * $villageDest->getCatapulte();
 				
 				$combat = $forceAttaquant - $forceDefenseur;
 				
 				if($combat > 0)
 				{
+					
+					$pourcRest = $combat / $forceAttaquant;
+					
+					$paysansRest = round($deplacement["paysans"] * $pourcRest);
+					$lancePierreRest = round($deplacement["lancePierre"] * $pourcRest);
+					$guerrierRest = round($deplacement["guerrier"] * $pourcRest);
+					$archerRest = round($deplacement["archer"] * $pourcRest);
+					$hacheRest = round($deplacement["hache"] * $pourcRest);
+					$piquierRest = round($deplacement["piquier"] * $pourcRest);
+					$hommeDeMainRest = round($deplacement["hommeDeMain"] * $pourcRest);
+					$chevalierRest = round($deplacement["chevalier"] * $pourcRest);					
+					$catapulteRest = round($deplacement["catapulte"] * $pourcRest);
+					
+					
 					$capaciteButain = 0;
 					$capaciteButain += $UNITES["Paysans"]["TRA"]  * $deplacement["paysans"];
 					$capaciteButain += $UNITES["Lance-pierre"]["TRA"]  * $deplacement["lancePierre"];
@@ -65,16 +80,75 @@ function runServ()
 					$capaciteButain += $UNITES["Chevalier"]["TRA"]  * $deplacement["chevalier"];
 					$capaciteButain += $UNITES["Catapulte"]["TRA"]  * $deplacement["catapulte"];
 					
+					if(($villageDest->getBois() + $villageDest->getPierre() + $villageDest->getMetal()) <= $capaciteButain)
+					{
+						$butainBois = $villageDest->getBois();
+						$butainPierre = $villageDest->getPierre();
+						$butainMetal = $villageDest->getMetal();
+						
+						$restVillageDestBois = 0;
+						$restVillageDestPierre = 0;
+						$restVillageDestMetal = 0;
+					}
+					else
+					{
+						$rest = 0;
+						
+						$butainBois = $capaciteButain / 3;
+						$butainPierre = $capaciteButain / 3;
+						$butainMetal = $capaciteButain / 3;
+						
+						if($butainBois > $villageDest->getBois())
+						{
+							$rest = $butainBois - $villageDest->getBois();
+							$butainBois = $villageDest->getBois();
+							$butainPierre += $rest;
+						}
+						
+						if($butainPierre > $villageDest->getPierre())
+						{
+							$rest = $butainPierre - $villageDest->getPierre();
+							$butainPierre = $villageDest->getPierre();
+							$butainMetal += $rest;
+						}
+						
+						if($butainMetal > $villageDest->getMetal())
+						{
+							$rest = $butainMetal - $villageDest->getMetal();
+							$butainMetal = $villageDest->getMetal();
+						}
+						
+						if($rest > 0)
+						{
+							$butainBois += $rest;
+							
+							if($butainBois > $villageDest->getBois())
+							{
+								$rest = $butainBois - $villageDest->getBois();
+								$butainBois = $villageDest->getBois();
+								$butainPierre += $rest;
+							}
+						}
+						
+						
+						$restVillageDestBois = $villageDest->getBois() - $butainBois;
+						$restVillageDestPierre = $villageDest->getPierre() - $butainPierre;
+						$restVillageDestMetal = $villageDest->getMetal() - $butainMetal;
+					}
 					
-					echo "Attaquant gagne avec une force de " . $forceAttaquant;
+					
+					echo "<br>gain bois = ". $butainBois;
+					echo "<br>gain pierre = ". $butainBois;
+					echo "<br>gain metal = ". $butainBois;
+					echo "<br>Pour unite rest = ". $catapulteRest;
 				}
 				else if($combat < 0)
 				{
-					echo "Defenseur gagne avec une force de " . $forceDefenseur;
+					//echo "Defenseur gagne avec une force de " . $forceDefenseur;
 				}
 				else if($combat == 0)
 				{
-					echo "Egalite";
+					//echo "Egalite";
 				}			
 			}								
 		}
@@ -88,13 +162,11 @@ function runServ()
 
 function refreshDonneesVillage($villageId)
 {
-	public function rechargementDonneesResBat()
-	{
 		global $bdd, $BATIMENTS, $UNITES;
 		
-		$village = unserialize($_SESSION["village"]);
+		$village = new village($villageId, "", "", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		
-		//Recup donnée villages et maj si modif manuelle depuis panel ou bdd ou si add construction ( ressources retirées )
+		//Recup donnée villages et maj si modif manuelle depuis panel ou bdd ou si add construction( ressources retirées )
 		$reponseVillage = $bdd->query('SELECT * from village where villageId ='.$villageId);
 		$donneesVillage = $reponseVillage->fetch();
 		
@@ -121,7 +193,6 @@ function refreshDonneesVillage($villageId)
 		$tpsADecompterBois = 0;
 		$tpsADecompterPierre = 0;
 		$tpsADecompterMine = 0;
-		$batTerminé = null;
 		
 		//Recup données de construction
 		$reponseConstruction = $bdd->query('SELECT * from construction where villageId ='.$villageId);
@@ -155,13 +226,7 @@ function refreshDonneesVillage($villageId)
 				}
 				
 				$bdd->query('DELETE from construction where constructionId ='.$donneesConstruction["constructionId"]);
-			}
-			else
-			{
-				array_push($listBatEnConstr, $donneesConstruction);
-			}
-			
-			
+			}			
 		}
 		
 		//Tps ecoulé depuis la dernière maj des ressources en secondes
@@ -205,7 +270,7 @@ function refreshDonneesVillage($villageId)
 		
 		
 		// Recup données de recrutement
-		$reponseRecrutement = $bdd->query('SELECT * from recrutement where villageId ='.$village->getVillageId());
+		$reponseRecrutement = $bdd->query('SELECT * from recrutement where villageId ='.$villageId);
 		while($donneesRecrutement = $reponseRecrutement->fetch())
 		{
 			$termineA = (($donneesRecrutement["nbUnite"] * $UNITES[$donneesRecrutement["unite"]]["cout"]["temps"]) + $donneesRecrutement["tpsDeb"]);
@@ -245,19 +310,12 @@ function refreshDonneesVillage($villageId)
 				
 				$bdd->query('DELETE from recrutement where idRecrutement ='.$donneesRecrutement["idRecrutement"]);
 			}
-			else
-			{			
-				array_push($listUnitEnRecrut, $donneesRecrutement);
-			}
 		}
 		
-		//Mise en session du village modfié
-		$_SESSION["village"] = serialize($village);
-		
 		//Maj du village dans la bdd
-		$bdd->query('UPDATE village set bois='.$boisTot.', pierre='.$pierreTot.', metal='.$metalTot.', scierie='.$village->getScierie().', carriere='.$village->getCarriere().', mine='.$village->getMine().', chateau='.$village->getChateau().', caserne='.$village->getCaserne().', paysans='.$village->getPaysans().', lancePierre='.$village->getLancePierre().', guerrier='.$village->getGuerrier().', archer='.$village->getArcher().', hache='.$village->getHache().', piquier='.$village->getPiquier().', hommeDeMain='.$village->getHommeDeMain().', chevalier='.$village->getChevalier().', catapulte='.$village->getCatapulte().', dernMaj='. time() .' where villageId='.$village->getVillageId());
+		$bdd->query('UPDATE village set bois='.$boisTot.', pierre='.$pierreTot.', metal='.$metalTot.', scierie='.$village->getScierie().', carriere='.$village->getCarriere().', mine='.$village->getMine().', chateau='.$village->getChateau().', caserne='.$village->getCaserne().', paysans='.$village->getPaysans().', lancePierre='.$village->getLancePierre().', guerrier='.$village->getGuerrier().', archer='.$village->getArcher().', hache='.$village->getHache().', piquier='.$village->getPiquier().', hommeDeMain='.$village->getHommeDeMain().', chevalier='.$village->getChevalier().', catapulte='.$village->getCatapulte().', dernMaj='. time() .' where villageId='.$villageId);
 		
-	}
+		return $village;
 }
 
 while(1)
