@@ -14,7 +14,7 @@
 	$INSCRIPTIONFERMEE = false;
 	$CARTEX = 50;
 	$CARTEY = 50;
-	$TEMPSDEPCASE = 60*3;//3 min par distance x/y
+	$TEMPSDEPCASE = (60*3) / $VITESSE ;//3 min par distance x/y
 	
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
