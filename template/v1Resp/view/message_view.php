@@ -22,12 +22,12 @@
 			$joueurOri = $bdd->query('SELECT * FROM joueur WHERE joueurId = '. $message["joueurOri"]);
 			$joueurOri = $joueurOri->fetch();
 ?>
-		<tr <?php if($message["lu"]){?>class="ligneMessage"<?php }else { ?> class="ligneMessageGras" <?php } ?>>
+		<a href="index.php?mod=openMessage&id=<?php echo $message['messageId']?>;"><tr <?php if($message["lu"]){?>class="ligneMessage"<?php }else { ?> class="ligneMessageGras" <?php } ?>>
 			<td class="colAction"><input type="checkbox" name="checkbox" id="checkbox"></td>
 			<td class="colDate"><?php echo date('d/m/Y H:i:s', $message["temps"]);?></td>
 			<td class="colPseudo"><?php echo $joueurOri["pseudo"];?></td>
 			<td class="colSujet"><?php echo $message["sujet"];?></td>
-		</tr>
+		</tr></a>
 
 
 <?php
