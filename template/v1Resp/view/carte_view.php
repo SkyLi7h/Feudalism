@@ -5,8 +5,6 @@
  	
 	if($DEBUG)
 		$debug->show("Lancement de la view $viewClass avec en business $businessClass");	
-
-	$village = unserialize($_SESSION["village"]);
 	
 	$reponseCoordCarte = $bdd->query('SELECT * from carte where villageId ='.$village->getVillageId());
 	$donneesCoordCarte = $reponseCoordCarte->fetch();

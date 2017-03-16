@@ -113,6 +113,19 @@ body
 	z-index: 998;
 }
 
+.contentHautLayout a
+{
+	font: bold 12px "Trajan", Sans-Serif;
+	color: #cbd9de;
+}
+
+.contentHautLayout a:hover
+{
+	font: bold 12px "Trajan", Sans-Serif;
+	color: orange;
+	text-decoration: underline;
+}
+
 .hautLayout img
 {
 	vertical-align:top;
@@ -1120,3 +1133,74 @@ body
 {
 	font: 12px "Trajan";
 }
+
+/*MESSAGE*/
+.tableListMessages
+{
+	width: 90%;
+	margin: auto;
+	text-align: center;
+	border-collapse:collapse;
+}
+
+.tableListMessages th
+{
+	font: 16px "Trajan";
+	height: 40px;
+	text-decoration: underline;
+}
+
+.ligneMessage
+{
+	font: 14px "Times New Roman";
+	background-color: #FCF7C2;
+	border-top: 1px solid #DCCB5C;
+	height: 20px;
+	color: #4F4400;
+}
+
+.ligneMessageGras
+{
+	font: 14px "Times New Roman";
+	background-color: #FCF7C2;
+	border-top: 1px solid #DCCB5C;
+	height: 20px;
+	color: #4F4400;
+	font-weight: bold;
+}
+
+.ligneMessage:hover
+{
+	background-color: #FEE64C;
+}
+
+.ligneMessageGras:hover
+{
+	background-color: #FEE64C;
+}
+
+.colDate
+{
+	width: 25%;
+}
+
+.colPseudo
+{
+	width: 25%;
+}
+
+.colSujet
+{
+	width: 44%;
+}
+
+.colAction
+{
+	width: 5%;
+}
+
+#notifMessageImg
+{
+	margin-right: 5px;
+}
+

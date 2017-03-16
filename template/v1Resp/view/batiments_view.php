@@ -3,8 +3,6 @@
 	$business = new batimentsBusiness();	
 	if($DEBUG)
 		$debug->show("Lancement de la view $viewClass avec en business $businessClass");	
-
-	$village = unserialize($_SESSION["village"]);
 	
 	$gainSecondeBoisSuiv = ($BATIMENTS["Scierie"]["gain"][$village->getScierie()+1]/3600);
 	$gainSecondePierreSuiv = ($BATIMENTS["Carriere"]["gain"][$village->getCarriere()+1]/3600);

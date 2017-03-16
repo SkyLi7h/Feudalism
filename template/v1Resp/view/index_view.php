@@ -4,8 +4,6 @@
 	if($DEBUG)
 		$debug->show("Lancement de la view $viewClass avec en business $businessClass");	
 
-	$village = unserialize($_SESSION["village"]);
-
 ?>
 
 <div class="patchNoteTitre">
@@ -70,5 +68,4 @@
 			<li>Création du serveur de jeu backend.</li>
 		</ul>
 	</div>
-</div>
 </div>

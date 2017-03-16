@@ -50,18 +50,19 @@
 					$gainSecondePierre = ($BATIMENTS["Carriere"]["gain"][$village->getCarriere()]/3600);
 					$gainSecondeMetal = ($BATIMENTS["Mine"]["gain"][$village->getMine()]/3600);
 					
-				}				
-			?>
+					$nbMessageNonLus = $bdd->query("SELECT COUNT(*) FROM message WHERE joueurDest=". $joueur->getJoueurId() ." AND lu=0")->fetchColumn();
+}
+?>
 			
 		<div class="page">
 			
 			<div class="hautLayout">
 				<div class="contentHautLayout">
-					<?php if(isset($_SESSION["joueur"])) {?>
+					<?php if(isset($_SESSION["joueur"])) {?>						
 						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/wood.png"><span id="bois"><?php echo floor($village->getBois());?></span>
 						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/stone.png"><span id="pierre"><?php echo floor($village->getPierre());?></span>
 						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/iron.png"><span id="metal"><?php echo floor($village->getMetal());?></span>
-						<img width="16px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/money.png"><span id="or"><?php echo floor($joueur->getOrs());?></span>
+						<a href="index.php?mod=message"><span id ="notifMessage" <?php if($nbMessageNonLus > 0){?> style="color:orange;" <?php }; ?>><img id ="notifMessageImg" width="20px" src="template/<?php echo $TEMPLATE; ?>/images/message.png"><?php echo $nbMessageNonLus; ?><?php if($nbMessageNonLus > 1){?> messages <?php }else{ ?> message <?php }; ?></span></a>
 					<?php }?>											
 				</div>
 				<div id="bouttonForum">
