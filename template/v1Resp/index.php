@@ -95,45 +95,50 @@
 					<div style="width: 80%; margin: auto; margin-top: 10px; margin-bottom: 15px; height: 17px; position: relative;" id="progressbarunit"><div style="position: absolute; top: 3px; left:0; width:100%; height:100%; font-size: 11px; text-align: center;" id="infosUnite">Aucune unité en recrutement</div></div>
 				</div>
 			
-			
-				<div class="menuBoucliers">	
-					<a href="index.php?mod=carte">
-					<div class="bouclierCarte">
-						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Carte</div>
-					</div>	
-					</a>
-					<a href="index.php?mod=batiments">
-					<div class="bouclierConstruction">
-						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Bâtiments</div>
-					</div>	
-					</a>
-					<a href="index.php?mod=unites">
-					<div class="bouclierArmee">
-						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Armée</div>
+				
+					<div class="menuBoucliers">	
+							<img class="knight1" src="template/<?php echo $TEMPLATE; ?>/images/bottom/knight1.png">
+							<img class="knight2" src="template/<?php echo $TEMPLATE; ?>/images/bottom/knight2.png">
+							<img class="castel" src="template/<?php echo $TEMPLATE; ?>/images/bottom/castel.png">
+							
+							<a href="index.php?mod=carte">
+							<div class="bouclierCarte">
+								<img class="imgBouclier" src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+								<div id="txtBouclier">Carte</div>
+							</div>	
+							</a>
+							<a href="index.php?mod=batiments">
+							<div class="bouclierConstruction">
+								<img class="imgBouclier" src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+								<div id="txtBouclier">Bâtiments</div>
+							</div>	
+							</a>
+							<a href="index.php?mod=unites">
+							<div class="bouclierArmee">
+								<img class="imgBouclier" src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+								<div id="txtBouclier">Armée</div>
+							</div>
+							</a>
+							<div class="bouclierHeros">
+								<img class="imgBouclier" src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+								<div id="txtBouclier">Héros</div>
+							</div>
+							<div class="bouclierMarche">
+								<img class="imgBouclier" src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+								<div id="txtBouclier">Marché</div>
+							</div>
+							<div class="bouclierAlliance">
+								<img class="imgBouclier" src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+								<div id="txtBouclier">Alliance</div>
+							</div>
+							<div class="bouclierProfil">
+								<img class="imgBouclier" src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
+								<div id="txtBouclier">Profil</div>
+							</div>
 					</div>
-					</a>
-					<div class="bouclierHeros">
-						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Héros</div>
-					</div>
-					<div class="bouclierMarche">
-						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Marché</div>
-					</div>
-					<div class="bouclierAlliance">
-						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Alliance</div>
-					</div>
-					<div class="bouclierProfil">
-						<img src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
-						<div id="txtBouclier">Profil</div>
-					</div>
-				</div>	
+
 			<?php }?>
-			
+			<div class="townHautLayout"><img src="template/<?php echo $TEMPLATE; ?>/images/top/town.png"></div>
 			<div class="mainLayout">
 				<div class="bordureHorHaut"></div>
 				<div class="rubanHautLayout"><img src="template/<?php echo $TEMPLATE; ?>/images/rubanPrinc.png"></div>
@@ -500,7 +505,7 @@
 				<?php } ?>
 		</div>
 		<div class="footer">
-			lastimperium.com &copy; 2016-2017 vDev0.2 - <a id="lienCguFooter" href="index.php?mod=cgu" target="_blank"><u>CGU</u></a>
+			lastimperium.com &copy;2017 vDev0.2 - <a id="lienCguFooter" href="index.php?mod=cgu" target="_blank"><u>CGU</u></a>
 		</div>
 	</body>
 </html>

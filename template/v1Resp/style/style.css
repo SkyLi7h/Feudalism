@@ -40,17 +40,16 @@ body
 	width: 100%;
 	min-height: 100%;
 	position: relative;
-	padding-bottom: 15%;
 }
 
 .page
 {
-	width: 60%;
+	width: 900px;
 	max-width : 900px;
-	min-width : 770px;
 	margin: auto;
 	min-height:100%;
 	position: relative;
+	margin-bottom: 200px;
 }
 
 .notifBat
@@ -88,6 +87,26 @@ body
 	padding-top: 8px;
 }
 
+.footer
+{
+	position: fixed;
+	bottom:0;
+	right:5px;
+	color: #E5D3AF;
+	font: 12px "Trajan", Sans-Serif;
+}
+
+#lienCguFooter
+{
+	font: 12px "Trajan", Sans-Serif;
+	color: white;
+}
+
+#lienCguFooter:hover
+{
+	color: orange;
+}
+
 .hautLayout
 {
 	width: 100%;
@@ -98,6 +117,8 @@ body
 
 .contentHautLayout
 {
+	margin-left:auto;
+    margin-right:auto;
 	width: 100%;
 	height: 36px;
 	background-image:url(../images/haut.png);
@@ -201,7 +222,6 @@ body
 
 .mainLayout
 {
-	margin-top: 30px;
 	width: 100%;
 	background-image:url(../images/fondPage.png);
 	position: relative;
@@ -225,6 +245,13 @@ body
 	top: -17px;
 }
 
+.townHautLayout
+{
+	width: 100%;
+	text-align: center;
+	margin-bottom: -10px;
+}
+
 .selectVillageLayout
 {
 	width: 200px;
@@ -234,7 +261,6 @@ body
 	margin: 0 auto;
 	left: 0;
 	right: 0;
-	
 }
 
 .bordureHorBas
@@ -336,32 +362,6 @@ body
 .include
 {
 	padding: 30px;
-}
-
-.footer
-{
-	width: 100%;
-	height: 150px;
-	margin-top: 70px;
-	background-color: black;
-	border-top: 5px inset grey;
-	text-align: center;
-	color: white;
-	font: bold 11px "Trajan", Sans-Serif;
-	padding-top: 10px;
-	position: absolute;
-	bottom: 0;
-}
-
-#lienCguFooter
-{
-	font: bold 12px "Trajan", Sans-Serif;
-	color: white;
-}
-
-#lienCguFooter:hover
-{
-	color: orange;
 }
 
 /*AccueilView */
@@ -520,12 +520,20 @@ body
 /* index */
 .menuBoucliers
 {
-	width: 100%;
+	width: 900px;
 	height: 56px;
 	text-align: center;
-	padding-left:4.5%;
 	color: #cbd9de;
+	position: fixed;
+	bottom: 0;
+	z-index:998;	
+	background: url(../images/bottom/metalPanel.png) no-repeat; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
+
 
 .menuBoucliers a
 {
@@ -538,13 +546,17 @@ body
 	text-decoration: none;
 }
 
+.menuBoucliers div
+{
+	margin-top: -13px;
+}
 
 .menuBoucliers div:hover
 {
 	color: yellow;
 }
 
-.menuBoucliers img
+.imgBouclier
 {
 	position: absolute;
 	width: 295%;
@@ -553,10 +565,33 @@ body
 	left: -48px;
 }
 
+.knight1
+{
+	position: absolute;
+	top: 0px;
+	left: -100px;
+}
+
+.knight2
+{
+	position: absolute;
+	top: -50px;
+	left: -100px;
+}
+
+.castel
+{
+	position: absolute;
+	top: -50px;
+	right: -130px;
+}
+
+
+
 .menuBoucliers #txtBouclier
 {
 	position: absolute;
-	top: 46px;
+	top: 60px;
 	left: -50px;
 	width: 295%;
 	height: 38px;
@@ -572,6 +607,7 @@ body
 	background-image:url(../images/shields/shield7.png);
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: 100% auto; 
+	margin-left : 4%;
 }
 
 .bouclierConstruction
