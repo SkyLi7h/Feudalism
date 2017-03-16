@@ -2550,7 +2550,7 @@ CREATE TABLE IF NOT EXISTS `construction` (
   `tempsDeb` int(11) DEFAULT NULL,
   `villageId` int(11) DEFAULT NULL,
   PRIMARY KEY (`constructionId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Export de données de la table feudalism.construction : ~0 rows (environ)
 DELETE FROM `construction`;
@@ -2577,13 +2577,11 @@ CREATE TABLE IF NOT EXISTS `deplacement` (
   `pierre` int(11) NOT NULL DEFAULT '0',
   `metal` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`deplacementId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Export de données de la table feudalism.deplacement : ~1 rows (environ)
+-- Export de données de la table feudalism.deplacement : ~0 rows (environ)
 DELETE FROM `deplacement`;
 /*!40000 ALTER TABLE `deplacement` DISABLE KEYS */;
-INSERT INTO `deplacement` (`deplacementId`, `type`, `idVillageOri`, `idVillageDest`, `tpsArrive`, `paysans`, `lancePierre`, `guerrier`, `archer`, `hache`, `piquier`, `hommeDeMain`, `chevalier`, `catapulte`, `bois`, `pierre`, `metal`) VALUES
-	(4, 'retourPillage', 13, 9, 1489590829, 20, 0, 0, 0, 0, 0, 0, 0, 0, 33, 33, 33);
 /*!40000 ALTER TABLE `deplacement` ENABLE KEYS */;
 
 -- Export de la structure de la table feudalism. hero
@@ -2618,6 +2616,27 @@ INSERT INTO `joueur` (`joueurId`, `mail`, `pseudo`, `pass`, `or`) VALUES
 	(18, '', 'retest', 'e8e3c8d799244cf4c634247103189356', 0),
 	(19, 'retestee@ferger.com', 'retestee', '4a28a944d00e19b6cd0d77204895f7ca', 0);
 /*!40000 ALTER TABLE `joueur` ENABLE KEYS */;
+
+-- Export de la structure de la table feudalism. message
+CREATE TABLE IF NOT EXISTS `message` (
+  `messageId` int(11) NOT NULL AUTO_INCREMENT,
+  `joueurOri` int(11) DEFAULT NULL,
+  `JoueurDest` int(11) DEFAULT NULL,
+  `sujet` varchar(200) DEFAULT NULL,
+  `message` text,
+  `lu` tinyint(4) DEFAULT '0',
+  `temps` int(11) DEFAULT '0',
+  `type` varchar(50) DEFAULT 'message',
+  PRIMARY KEY (`messageId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Export de données de la table feudalism.message : ~2 rows (environ)
+DELETE FROM `message`;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` (`messageId`, `joueurOri`, `JoueurDest`, `sujet`, `message`, `lu`, `temps`, `type`) VALUES
+	(1, 16, 17, 'test', 'ceci est un message de test', 1, 1489670230, 'message'),
+	(2, 19, 17, 'salut', 'encore un autre test', 0, 1489670230, 'message');
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
 
 -- Export de la structure de la table feudalism. recrutement
 CREATE TABLE IF NOT EXISTS `recrutement` (
@@ -2666,11 +2685,11 @@ CREATE TABLE IF NOT EXISTS `village` (
 DELETE FROM `village`;
 /*!40000 ALTER TABLE `village` DISABLE KEYS */;
 INSERT INTO `village` (`villageId`, `joueurId`, `nom`, `habitant`, `chateau`, `caserne`, `ferme`, `mine`, `scierie`, `carriere`, `metal`, `bois`, `pierre`, `dernMaj`, `paysans`, `lancePierre`, `guerrier`, `archer`, `hache`, `piquier`, `hommeDeMain`, `chevalier`, `catapulte`) VALUES
-	(9, 16, 'Village de lastimperium', 100, 1, 0, 1, 1, 2, 1, 20083.3, 61900, 28465.3, 1489136828, 540, 100, 0, 0, 0, 0, 0, 0, 0),
-	(10, 17, 'Village de teste', 100, 11, 1, 1, 4, 7, 7, 48933.8, 1200500, 958212, 1489414586, 818, 285, 101, 0, 0, 0, 16, 0, 1),
+	(9, 16, 'Village de lastimperium', 100, 1, 0, 1, 1, 2, 1, 20116.3, 61933, 28498.3, 1489136828, 560, 100, 0, 0, 0, 0, 0, 0, 0),
+	(10, 17, 'Village de teste', 100, 11, 1, 1, 4, 7, 7, 85820.9, 1780630, 1538340, 1489675371, 996, 315, 101, 0, 0, 0, 16, 0, 1),
 	(11, 18, 'Village de retest', 100, 1, 0, 1, 1, 1, 1, 504.139, 506.208, 506.208, 1489057062, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 	(12, 19, 'Village de retestee', 100, 1, 0, 1, 1, 1, 1, 523.472, 535.209, 535.209, 1489057970, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-	(13, 17, 'Village de teste2', 100, 1, 0, 1, 2, 1, 1, 13267, 10895.6, 10895.6, 1489585606, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	(13, 17, 'Village de teste2', 100, 1, 1, 1, 2, 1, 1, 16061.8, 12874.6, 12874.6, 1489655103, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 /*!40000 ALTER TABLE `village` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
