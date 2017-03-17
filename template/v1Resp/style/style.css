@@ -687,12 +687,13 @@ body
 .layoutBatiment
 {
 	position: relative;
-	width: 90%;
+	width: 98%;
 	margin: auto;
-	margin-top: 8px;
 	background-color: #FCF7C2;
+	margin-top: 8px;
 	padding: 8px;
 	height: 180px;
+	font-size: 11px;
 }
 
 #nomBatiment
@@ -988,12 +989,22 @@ body
 .layoutUnite
 {
 	position: relative;
-	width: 90%;
+	width: 98%;
 	margin: auto;
-	margin-top: 8px;
+	margin-bottom: 8px;
 	background-color: #FCF7C2;
+	font-size: 12px;
 	padding: 8px;
 	height: 180px;
+}
+
+.recapUniteLayout
+{
+	width: 98%;
+	background-color: #FCF7C2;
+	margin: auto;
+	padding: 8px;
+	border-bottom: 1px solid black;
 }
 
 .recapUnite
@@ -1316,5 +1327,16 @@ body
 .sendUnitPillage input
 {
 	width: 50px;
+}
+
+.ui-tabs-tab
+{
+	font-size: 13px;
+}
+.ui-tabs-panel
+{
+	color: black;
+	font: none;
+	border: none;
 }
 
