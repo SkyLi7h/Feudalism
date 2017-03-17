@@ -4,6 +4,32 @@
 	if($DEBUG)
 		$debug->show("Lancement de la view $viewClass avec en business $businessClass");	
 	
+	
+?>
+<table class="recapUnite">
+	<tr>
+		<td>Unité :</td>
+		<?php
+			foreach ($UNITES as $unite)
+				{
+					echo '<td id="tooltip" title="'. $unite["nom"] .'"><img width="15px" src="template/'. $TEMPLATE .'/images/unites/'.$unite["img"].'"></td>';
+				}
+		?>
+	</tr>
+	<tr>
+		<td>Nombre :</td>
+		<?php
+			foreach ($UNITES as $unite)
+				{
+					echo "<td>" . $village->GetNbByName($unite["nom"]) . "</td>";
+				}
+		?>
+	</tr>
+
+</table>
+
+
+<?php
 	foreach ($UNITES as $unite)
 	{
 		
@@ -52,7 +78,7 @@
 		{
 			echo '<div class="layoutUnite">';
 				echo'<div id="nomUnite">'.$unite["nom"].'</div>';
-				echo'<div id="nbUnite">Nombre actuel : ' . $village->GetNbByName($unite["nom"]) .'</div>';
+				//echo'<div id="nbUnite">Nombre actuel : ' . $village->GetNbByName($unite["nom"]) .'</div>';
 				echo'<div id="imgUnite"><img width="65px" src="template/'. $TEMPLATE .'/images/unites/'.$unite["img"].'"></div>';
 				echo'<div id="descUnite">'.$unite["description"].'</div>';	
 				echo'<div id="nbUnitRecrut"><input placeholder="0" type="number" min="0" id="'. str_replace(' ','',$unite["nom"]) .'"></input></div>';

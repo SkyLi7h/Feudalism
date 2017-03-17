@@ -230,8 +230,13 @@
 
 <div id="dialog" title="">
   <div id="layoutButtonDialog">
-	<div id="bouttonEnvoyerUnitees">
-		<a href="index.php?mod=envUnit" id="lienSendUnit"><button class="ui-button ui-widget ui-corner-all">Envoyer des unitées</button></a>
+	<div id="piller">
+		<a href="index.php?mod=piller" id="lienPiller"><button class="ui-button ui-widget ui-corner-all">Piller</button></a>
+	</div>
+  </div>
+  <div id="layoutButtonDialog">
+	<div id="envoyerSoutien">
+		<a href="index.php?mod=envSoutien" id="lienEnvSoutien"><button class="ui-button ui-widget ui-corner-all">Envoyer du soutien</button></a>
 	</div>
   </div>
   <div id="layoutButtonDialog">
@@ -262,7 +267,8 @@
 	{
 		$('#dialog').dialog('option', 'title', nom);
 		$('#dialog').dialog('option', 'width', "400px");
-		document.getElementById("lienSendUnit").href = "index.php?mod=envUnit&id=" + villageId;
+		document.getElementById("lienPiller").href = "index.php?mod=piller&id=" + villageId;
+		document.getElementById("lienEnvSoutien").href = "index.php?mod=envSoutien&id=" + villageId;
 		document.getElementById("lienViwInfosVi").href = "index.php?mod=infosVillage&id=" + villageId;
 		document.getElementById("lienViwInfosJo").href = "index.php?mod=infosJoueur&id=" + joueurId;
 		$( "#dialog" ).dialog( "open" );

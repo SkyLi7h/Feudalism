@@ -10,6 +10,14 @@ class messageBusiness
 		
 			return $reponse;
 		}
+		
+			
+	public function setAllLu($joueurId)
+		{
+			global $bdd;
+
+			$bdd->query('UPDATE message SET lu=1 WHERE joueurDest = '. $joueurId)->fetch();
+		}
 }
 
 

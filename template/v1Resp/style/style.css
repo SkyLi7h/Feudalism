@@ -939,14 +939,29 @@ body
 	width: 90%;
 }
 
-#bouttonEnvoyerUnitees
+#piller
 {
 	width: 80%;
 	height: 28px;
 	margin: auto;
 }
 
-#bouttonEnvoyerUnitees button
+#piller button
+{
+	font: bold 13px "Trajan", Sans-Serif;
+	width: 100%;
+	height: 28px;
+	margin: auto;
+}
+
+#envoyerSoutien
+{
+	width: 80%;
+	height: 28px;
+	margin: auto;
+}
+
+#envoyerSoutien button
 {
 	font: bold 13px "Trajan", Sans-Serif;
 	width: 100%;
@@ -979,6 +994,14 @@ body
 	background-color: #FCF7C2;
 	padding: 8px;
 	height: 180px;
+}
+
+.recapUnite
+{
+	width: 400px;
+	text-align: center;
+	margin: auto;
+	font: bold 12px "Trajan", Sans-Serif;
 }
 
 #nomUnite
@@ -1238,5 +1261,60 @@ body
 #notifMessageImg
 {
 	margin-right: 5px;
+}
+
+#sujetMessage
+{
+	font: 16px "Trajan";
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+#oriMessage
+{
+	font: 12px "Times New Roman";
+	margin-left: 25px;
+}
+
+#messageViewLayout
+{
+	width: 100%;
+	min-height: 200px;
+	padding: 5px;
+	margin-top: 15px;
+	background-color: #FCF7C2;
+}
+
+#textAreaMsg
+{
+	width: 500px;
+	height: 100px;
+	margin: auto;
+	margin-top: 30px;
+}
+
+/* PILLER */
+.titrePiller
+{
+	width: 100%;
+	text-align: center;
+	font: 16px "Trajan";
+	font-weight: bold;
+	margin-top: 5px
+}
+
+.sendUnitPillage
+{
+	width: 600px;
+	text-align: center;
+	margin: auto;
+	font: bold 12px "Trajan", Sans-Serif;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.sendUnitPillage input
+{
+	width: 50px;
 }
 
