@@ -20,7 +20,7 @@ function runServ()
 			$maintenant = time();						
 			if($deplacement["tpsArrive"] <= $maintenant)
 			{								
-				if($deplacement["type"] == "pillage")
+				if($deplacement["type"] == "combat")
 				{
 					
 					$villageDest = refreshDonneesVillage($deplacement["idVillageDest"]);

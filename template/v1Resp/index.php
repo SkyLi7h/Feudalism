@@ -51,6 +51,7 @@
 					$gainSecondeMetal = ($BATIMENTS["Mine"]["gain"][$village->getMine()]/3600);
 					
 					$nbMessageNonLus = $bdd->query("SELECT COUNT(*) FROM message WHERE joueurDest=". $joueur->getJoueurId() ." AND lu=0")->fetchColumn();
+					$nbAttaques = $bdd->query("SELECT COUNT(*) FROM deplacement WHERE idVillageDest=". $village->getVillageId() ." AND type='combat'")->fetchColumn();
 }
 ?>
 			
