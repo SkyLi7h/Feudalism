@@ -114,6 +114,11 @@ class village
 		return $this->nom;
 	}
 	
+	public function setNom($n)
+	{
+		$this->nom = $n;
+	}
+	
 	public function upScierie()
 	{
 		$this->scierie++;

@@ -1,8 +1,8 @@
 ﻿<?php
 	//Fichier de configuration
 	$NAME_APPLICATION = "Last imperium"; //Nom du site
-	$VERSION = "A0.1"; //Version du projet
-	$TEMPLATE = "v1Resp"; //Nom du template utilisé
+	$VERSION = "A.0.2.0"; //Version du projet
+	$TEMPLATE = "v2"; //Nom du template utilisé
 	$MOD_START = "accueil"; //Module afficher à l'arrivée
 	$DESCRIPTION = "Jeu de stratégie - role play multijoueur par navigateur. Bâtissez, recrutez et dominez !";
 	$AUTEUR = "FERRER LUCAS";
@@ -19,9 +19,9 @@
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
-	$DBNAME = "feudalism";
+	$DBNAME = "lastimperium";
 	$LOGIN = "root";
-	$PASS = "19Nino552886!";
+	$PASS = "";
 	
 	//Bâtiments
 		$BATIMENTS = [];
@@ -30,7 +30,7 @@
 				$BATIMENTS["Château"]["type"] = "Normal";
 				$BATIMENTS["Château"]["maxNiveau"] = 30;
 				$BATIMENTS["Château"]["description"] = "Le château, votre résidence et coeur de votre village !";
-				$BATIMENTS["Château"]["img"] = "buildingTemp.png";
+				$BATIMENTS["Château"]["img"] = "chateau.png";
 				$BATIMENTS["Château"]["prerequis"] = [];
 				$BATIMENTS["Château"]["cout"] = [];
 					$BATIMENTS["Château"]["cout"][0] = [];
@@ -216,7 +216,8 @@
 					$BATIMENTS["Scierie"]["gain"][20] = 125000 * $VITESSE;
 				$BATIMENTS["Scierie"]["maxNiveau"] = 20;
 				$BATIMENTS["Scierie"]["description"] = "Le bois, une ressource indispensable pour améliorer votre village !";
-				$BATIMENTS["Scierie"]["img"] = "buildingTemp.png";
+				$BATIMENTS["Scierie"]["img"] = "scierie.png";
+				$BATIMENTS["Scierie"]["imgRes"] = "ressources/wood.png";
 				$BATIMENTS["Scierie"]["prerequis"] = [];
 				$BATIMENTS["Scierie"]["cout"] = [];
 					$BATIMENTS["Scierie"]["cout"][0] = [];
@@ -352,7 +353,8 @@
 					$BATIMENTS["Carriere"]["gain"][20] = 125000 * $VITESSE;
 				$BATIMENTS["Carriere"]["maxNiveau"] = 20;
 				$BATIMENTS["Carriere"]["description"] = "La pierre, une ressource indispensable pour améliorer votre village !";
-				$BATIMENTS["Carriere"]["img"] = "buildingTemp.png";
+				$BATIMENTS["Carriere"]["img"] = "carriere.png";
+				$BATIMENTS["Carriere"]["imgRes"] = "ressources/stone.png";
 				$BATIMENTS["Carriere"]["prerequis"] = [];
 				$BATIMENTS["Carriere"]["cout"] = [];
 					$BATIMENTS["Carriere"]["cout"][0] = [];
@@ -488,7 +490,8 @@
 					$BATIMENTS["Mine"]["gain"][20] = 35000 * $VITESSE;
 				$BATIMENTS["Mine"]["maxNiveau"] = 20;
 				$BATIMENTS["Mine"]["description"] = "Le métal, une ressource indispensable pour améliorer votre village et vos unités !";
-				$BATIMENTS["Mine"]["img"] = "buildingTemp.png";
+				$BATIMENTS["Mine"]["img"] = "mine.png";
+				$BATIMENTS["Mine"]["imgRes"] = "ressources/iron.png";
 				$BATIMENTS["Mine"]["prerequis"] = [];
 				$BATIMENTS["Mine"]["cout"] = [];
 					$BATIMENTS["Mine"]["cout"][0] = [];
@@ -602,7 +605,7 @@
 				$BATIMENTS["Caserne"]["type"] = "Unite";
 				$BATIMENTS["Caserne"]["maxNiveau"] = 20;
 				$BATIMENTS["Caserne"]["description"] = "Par ici, mon seigneur ! Depuis ce bâtiment, vous pouvez recruter des hommes de main !";
-				$BATIMENTS["Caserne"]["img"] = "buildingTemp.png";
+				$BATIMENTS["Caserne"]["img"] = "caserne.png";
 				$BATIMENTS["Caserne"]["prerequis"] = [];
 				$BATIMENTS["Caserne"]["cout"] = [];
 					$BATIMENTS["Caserne"]["cout"][0] = [];

@@ -19,7 +19,11 @@ function runServ()
 		{
 			$maintenant = time();						
 			if($deplacement["tpsArrive"] <= $maintenant)
-			{								
+			{
+					
+				$joueurDestMsg = $bdd->query('SELECT * FROM village WHERE villageId = '.$deplacement["idVillageOri"]);
+				$joueurDestMsg = $joueurDestMsg->fetch();
+				
 				if($deplacement["type"] == "combat")
 				{
 					
@@ -154,6 +158,10 @@ function runServ()
 						$bdd->query('DELETE from deplacement where deplacementId ='.$deplacement["deplacementId"]);
 						
 						$bdd->query("INSERT INTO deplacement(type, idVillageOri, idVillageDest, tpsArrive, paysans, lancePierre, guerrier, archer, hache, piquier, hommeDeMain, chevalier, catapulte, bois, pierre, metal) VALUES('". $type ."', ". $deplacement["idVillageDest"] .", ". $deplacement["idVillageOri"] .", ". $tempsArrive .", ". $paysansRest .", ". $lancePierreRest .", ". $guerrierRest .", ". $archerRest .", ". $hacheRest .", ". $piquierRest .", ". $hommeDeMainRest .", ". $chevalierRest .", ". $catapulteRest .", ". $butainBois .", ". $butainPierre .", ". $butainMetal .")");
+						
+						$sujet = "Rapport de combat : " . $villageDest->getNom();
+						$message = "Vous avez gagné !";
+						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurDestMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
 					}
 					else if($combat < 0) //Defenseur gagne
 					{
@@ -175,11 +183,19 @@ function runServ()
 						
 						$bdd->query('UPDATE village set paysans='.$paysansRest.', lancePierre='.$lancePierreRest.', guerrier='.$guerrierRest.', archer='.$archerRest.', hache='.$hacheRest.', piquier='.$piquierRest.', hommeDeMain='.$hommeDeMainRest.', chevalier='.$chevalierRest.', catapulte='.$catapulteRest.' where villageId='.$deplacement["idVillageDest"]);
 						$bdd->query('DELETE from deplacement where deplacementId ='.$deplacement["deplacementId"]);
+						
+						$sujet = "Rapport de combat : " . $villageDest->getNom();
+						$message = "Vous avez perdu !";
+						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurDestMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
 					}
 					else
 					{
 						$bdd->query('UPDATE village set paysans=0, lancePierre=0, guerrier=0, archer=0, hache=0, piquier=0, hommeDeMain=0, chevalier=0, catapulte=0 where villageId='.$deplacement["idVillageDest"]);
 						$bdd->query('DELETE from deplacement where deplacementId ='.$deplacement["deplacementId"]);
+						
+						$sujet = "Rapport de combat : " . $villageDest->getNom();
+						$message = "Egalité !";
+						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurDestMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
 					}			
 				}
 				else if($deplacement["type"] == "retourPillage")
@@ -221,6 +237,8 @@ function refreshDonneesVillage($villageId)
 		//Recup donnée villages et maj si modif manuelle depuis panel ou bdd ou si add construction( ressources retirées )
 		$reponseVillage = $bdd->query('SELECT * from village where villageId ='.$villageId);
 		$donneesVillage = $reponseVillage->fetch();
+		
+		$village->setNom($donneesVillage["nom"]);
 		
 		$village->setScierie($donneesVillage["scierie"]);
 		$village->setCarriere($donneesVillage["carriere"]);
