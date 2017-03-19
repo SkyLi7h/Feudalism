@@ -105,7 +105,7 @@
 					<div class="menuBoucliers">	
 												
 							<img class="knight2" src="template/<?php echo $TEMPLATE; ?>/images/bottom/knight2.png">												
-							<a href="index.php?mod=batiments">
+							<a href="index.php?mod=village">
 							<div class="bouclierConstruction">
 								<img class="imgBouclier hiddenMenu" src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">							
 								<span class="txtBouclier hiddenMenu">Village</span>
