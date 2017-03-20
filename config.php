@@ -1,4 +1,8 @@
 ﻿<?php
+
+	//https://remusprites.carbonmade.com/
+	//http://opengameart.org/content/galata-tower-bleeds-game-art
+
 	//Fichier de configuration
 	$NAME_APPLICATION = "Last imperium"; //Nom du site
 	$VERSION = "A.0.2.0"; //Version du projet
@@ -19,9 +23,9 @@
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
-	$DBNAME = "lastimperium";
+	$DBNAME = "feudalism";
 	$LOGIN = "root";
-	$PASS = "";
+	$PASS = "19Nino552886!";
 	
 	//Bâtiments
 		$BATIMENTS = [];
@@ -32,6 +36,37 @@
 				$BATIMENTS["Château"]["description"] = "Le château, votre résidence et coeur de votre village !";
 				$BATIMENTS["Château"]["img"] = "chateau.png";
 				$BATIMENTS["Château"]["prerequis"] = [];
+				$BATIMENTS["Château"]["point"] = [];
+					$BATIMENTS["Château"]["point"][0] = 0;
+					$BATIMENTS["Château"]["point"][2] = 50;
+					$BATIMENTS["Château"]["point"][3] = 50;
+					$BATIMENTS["Château"]["point"][4] = 50;
+					$BATIMENTS["Château"]["point"][5] = 50;
+					$BATIMENTS["Château"]["point"][6] = 50;
+					$BATIMENTS["Château"]["point"][7] = 50;
+					$BATIMENTS["Château"]["point"][8] = 50;
+					$BATIMENTS["Château"]["point"][9] = 50;
+					$BATIMENTS["Château"]["point"][10] = 50;
+					$BATIMENTS["Château"]["point"][11] = 50;
+					$BATIMENTS["Château"]["point"][12] = 50;
+					$BATIMENTS["Château"]["point"][13] = 50;
+					$BATIMENTS["Château"]["point"][14] = 50;
+					$BATIMENTS["Château"]["point"][15] = 50;
+					$BATIMENTS["Château"]["point"][16] = 50;
+					$BATIMENTS["Château"]["point"][17] = 50;
+					$BATIMENTS["Château"]["point"][18] = 50;
+					$BATIMENTS["Château"]["point"][19] = 50;
+					$BATIMENTS["Château"]["point"][20] = 50;
+					$BATIMENTS["Château"]["point"][21] = 50;
+					$BATIMENTS["Château"]["point"][22] = 50;
+					$BATIMENTS["Château"]["point"][23] = 50;
+					$BATIMENTS["Château"]["point"][24] = 50;
+					$BATIMENTS["Château"]["point"][25] = 50;
+					$BATIMENTS["Château"]["point"][26] = 50;
+					$BATIMENTS["Château"]["point"][27] = 50;
+					$BATIMENTS["Château"]["point"][28] = 50;
+					$BATIMENTS["Château"]["point"][29] = 50;
+					$BATIMENTS["Château"]["point"][30] = 50;
 				$BATIMENTS["Château"]["cout"] = [];
 					$BATIMENTS["Château"]["cout"][0] = [];
 						$BATIMENTS["Château"]["cout"][0]["bois"] = 150;
@@ -183,11 +218,6 @@
 						$BATIMENTS["Château"]["cout"][29]["pierre"] = 900000;
 						$BATIMENTS["Château"]["cout"][29]["metal"] = 900000;
 						$BATIMENTS["Château"]["cout"][29]["temps"] = 220000;
-					$BATIMENTS["Château"]["cout"][30] = [];
-						$BATIMENTS["Château"]["cout"][30]["bois"] = 1200000;
-						$BATIMENTS["Château"]["cout"][30]["pierre"] = 1100000;
-						$BATIMENTS["Château"]["cout"][30]["metal"] = 1100000;
-						$BATIMENTS["Château"]["cout"][30]["temps"] = 259200;
 
 			$BATIMENTS["Scierie"] = [];
 				$BATIMENTS["Scierie"]["nom"] = "Scierie";
@@ -320,11 +350,6 @@
 						$BATIMENTS["Scierie"]["cout"][19]["pierre"] = 550000;
 						$BATIMENTS["Scierie"]["cout"][19]["metal"] = 450000;
 						$BATIMENTS["Scierie"]["cout"][19]["temps"] = 270000;
-					$BATIMENTS["Scierie"]["cout"][20] = [];
-						$BATIMENTS["Scierie"]["cout"][20]["bois"] = 550000;
-						$BATIMENTS["Scierie"]["cout"][20]["pierre"] = 700000;
-						$BATIMENTS["Scierie"]["cout"][20]["metal"] = 550000;
-						$BATIMENTS["Scierie"]["cout"][20]["temps"] = 340000;
 				
 			$BATIMENTS["Carriere"] = [];
 				$BATIMENTS["Carriere"]["nom"] = "Carriere";
@@ -457,11 +482,6 @@
 						$BATIMENTS["Carriere"]["cout"][19]["pierre"] = 450000;
 						$BATIMENTS["Carriere"]["cout"][19]["metal"] = 450000;
 						$BATIMENTS["Carriere"]["cout"][19]["temps"] = 270000;
-					$BATIMENTS["Carriere"]["cout"][20] = [];
-						$BATIMENTS["Carriere"]["cout"][20]["bois"] = 700000;
-						$BATIMENTS["Carriere"]["cout"][20]["pierre"] = 550000;
-						$BATIMENTS["Carriere"]["cout"][20]["metal"] = 550000;
-						$BATIMENTS["Carriere"]["cout"][20]["temps"] = 340000;
 				
 			$BATIMENTS["Mine"] = [];
 				$BATIMENTS["Mine"]["nom"] = "Mine";
@@ -594,11 +614,6 @@
 						$BATIMENTS["Mine"]["cout"][19]["pierre"] = 450000;
 						$BATIMENTS["Mine"]["cout"][19]["metal"] = 550000;
 						$BATIMENTS["Mine"]["cout"][19]["temps"] = 270000;
-					$BATIMENTS["Mine"]["cout"][20] = [];
-						$BATIMENTS["Mine"]["cout"][20]["bois"] = 550000;
-						$BATIMENTS["Mine"]["cout"][20]["pierre"] = 550000;
-						$BATIMENTS["Mine"]["cout"][20]["metal"] = 700000;
-						$BATIMENTS["Mine"]["cout"][20]["temps"] = 340000;
 				
 			$BATIMENTS["Caserne"] = [];
 				$BATIMENTS["Caserne"]["nom"] = "Caserne";
@@ -708,11 +723,6 @@
 						$BATIMENTS["Caserne"]["cout"][19]["pierre"] = 300000;
 						$BATIMENTS["Caserne"]["cout"][19]["metal"] = 550000;
 						$BATIMENTS["Caserne"]["cout"][19]["temps"] = 350000;
-					$BATIMENTS["Caserne"]["cout"][20] = [];
-						$BATIMENTS["Caserne"]["cout"][20]["bois"] = 400000;
-						$BATIMENTS["Caserne"]["cout"][20]["pierre"] = 400000;
-						$BATIMENTS["Caserne"]["cout"][20]["metal"] = 700000;
-						$BATIMENTS["Caserne"]["cout"][20]["temps"] = 420000;
 						
 						
 			//Unités

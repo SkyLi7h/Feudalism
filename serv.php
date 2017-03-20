@@ -149,7 +149,7 @@ function runServ()
 							$restVillageDestMetal = $villageDest->getMetal() - $butainMetal;
 						}					
 						
-						$type = "retourPillage";
+						$type = "deplacement";
 						
 						$distance = calculDistance($deplacement["idVillageOri"], $deplacement["idVillageDest"]);
 						$tempsArrive = time() + ($distance * $TEMPSDEPCASE);

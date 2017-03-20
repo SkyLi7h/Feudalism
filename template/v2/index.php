@@ -59,7 +59,8 @@
 			
 			<div class="hautLayout">
 				<div class="contentHautLayout">
-					<?php if(isset($_SESSION["joueur"])) {?>						
+					<?php if(isset($_SESSION["joueur"])) {?>
+						<?php if($nbAttaques == 1){ ?> <a href="index.php?mod=armee"><span id="attaquesNotif"><img width="15px" src="template/<?php echo $TEMPLATE; ?>/images/atk.png"> <?php echo $nbAttaques; ?> attaque !</span></a>  <?php }?><?php if($nbAttaques > 1){ ?> <a href="index.php?mod=armee"><span id="attaquesNotif"><img width="15px" src="template/<?php echo $TEMPLATE; ?>/images/atk.png"> <?php echo $nbAttaques; ?> attaques !</span></a>  <?php }?>
 						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/wood.png"><span id="bois"><?php echo floor($village->getBois());?></span>
 						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/stone.png"><span id="pierre"><?php echo floor($village->getPierre());?></span>
 						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/iron.png"><span id="metal"><?php echo floor($village->getMetal());?></span>
@@ -117,7 +118,7 @@
 								<span class="txtBouclier hiddenMenu">Carte</span>
 							</div>	
 							</a>
-							<a href="index.php?mod=unites">
+							<a href="index.php?mod=armee">
 							<div class="bouclierArmee">
 								<img class="imgBouclier hiddenMenu" src="template/<?php echo $TEMPLATE; ?>/images/redStripe.png">
 								<span class="txtBouclier hiddenMenu">Armée</span>

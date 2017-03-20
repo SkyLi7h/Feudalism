@@ -69,6 +69,7 @@
 		$distance = calculDistance($village->getVillageId(), $villageDestId);
 		$tempsArrive = time() + ($distance * $TEMPSDEPCASE);
 		$bdd->query("INSERT INTO deplacement(type, idVillageOri, idVillageDest, tpsArrive, paysans, lancePierre, guerrier, archer, hache, piquier, hommeDeMain, chevalier, catapulte) VALUES('combat', ". $village->getVillageId() .", ". $villageDestId .", ". $tempsArrive .", ". $paysans .", ". $lancePierre .", ". $guerrier .", ". $archer .", ". $hache .", ". $piquier .", ". $hommeDeMain .", ". $chevalier .", ". $catapulte .")");
+		$bdd->query('UPDATE village set paysans=paysans-'. $paysans.', lancePierre=lancePierre-'.$lancePierre.', guerrier=guerrier-'.$guerrier.', archer=archer-'.$archer.', hache=hache-'.$hache.', piquier=piquier-'.$piquier.', hommeDeMain=hommeDeMain-'.$hommeDeMain.', chevalier=chevalier-'.$chevalier.', catapulte=catapulte-'.$catapulte.' where villageId='.$village->getVillageId());
 		echo 0;
 	}
 	

@@ -28,7 +28,7 @@
 	</div>
 	
 	<div class="mine">
-		<a href="index.php?mod=batiments">
+		<a href="index.php?mod=mine">
 			<div class="batVillageContent">
 				<div class="niveauBatCarte">
 					<?php echo $village->getMine(); ?>
@@ -38,7 +38,7 @@
 	</div>
 
 	<div class="scierie">
-		<a href="index.php?mod=batiments">
+		<a href="index.php?mod=scierie">
 			<div class="batVillageContent">
 				<div class="niveauBatCarte">
 					<?php echo $village->getScierie(); ?>
@@ -48,7 +48,7 @@
 	</div>
 	
 	<div class="carriere">
-		<a href="index.php?mod=batiments">
+		<a href="index.php?mod=carriere">
 			<div class="batVillageContent">
 				<div class="niveauBatCarte">
 					<?php echo $village->getCarriere(); ?>
