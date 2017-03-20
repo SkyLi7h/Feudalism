@@ -5,7 +5,7 @@
 
 	//Fichier de configuration
 	$NAME_APPLICATION = "Last imperium"; //Nom du site
-	$VERSION = "A.0.2.0"; //Version du projet
+	$VERSION = "A.0.3.0"; //Version du projet
 	$TEMPLATE = "v2"; //Nom du template utilisé
 	$MOD_START = "accueil"; //Module afficher à l'arrivée
 	$DESCRIPTION = "Jeu de stratégie - role play multijoueur par navigateur. Bâtissez, recrutez et dominez !";
@@ -23,9 +23,9 @@
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
-	$DBNAME = "feudalism";
+	$DBNAME = "lastimperium";
 	$LOGIN = "root";
-	$PASS = "19Nino552886!";
+	$PASS = "";
 	
 	//Bâtiments
 		$BATIMENTS = [];

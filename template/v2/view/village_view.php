@@ -56,7 +56,7 @@
 			</div>
 		</a>
 	</div>
-	<?php echo '<img style="margin-left: -20px;" src="template/'. $TEMPLATE .'/images/mapVillage.png">'; ?>
+	<?php echo '<img src="template/'. $TEMPLATE .'/images/mapVillage.png">'; ?>
 
 </div>
 

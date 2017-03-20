@@ -13,6 +13,12 @@
 			</div>
 		</div>
 	</div>
+	<div style="font-size: 13px; text-align: center;" class="ui-widget">
+			<div class="ui-state-highlight ui-corner-all" style="margin-top: 0px; padding: 0 .7em;">
+				<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+				Le jeu a été remis à zéro !</p>
+			</div>
+		</div>	
 			<?php if($INSCRIPTIONFERMEE){?> 
 		
 		<div style="font-size: 13px; text-align: center;" class="ui-widget">
@@ -23,6 +29,8 @@
 		</div>		
 		
 		<?php } ?>
+		
+		<div id="slogan">Bâtissez, recrutez et dominez !</div>
 <div class="layoutAccueil">
 	<div class="layoutAccueilGauche">
 		<div class="layoutTitre"><span>Connexion</span></div>

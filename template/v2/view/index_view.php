@@ -17,7 +17,7 @@
 	</div>
 	
 	<div class="patchNoteDate">
-		le 14/03/2017 10:40
+		le 20/03/2017 23:47
 	</div>
 	
 	<div class="patchNoteInfos">
@@ -27,7 +27,10 @@
 			<li>Module patchnotes implémenté.</li>
 			<li>Module de connexion/inscription terminé.</li>
 			<li>Gestion des ressources terminée.</li>
+			<li>Module carte du vilage implémenté.</li>
 			<li>Gestion des villages terminée.</li>
+			<li>Gestion des combats implémentés.</li>
+			<li>Serveur de jeu implémenté et tourne h24 sur un vps.</li>
 			<li>Les bâtiments :
 				<ul>
 					<li>Gestion de la construction des bâtiments terminée.</li>
@@ -53,19 +56,21 @@
 		
 		<h4>Actuellement en dev : </h4>
 		<ul>
-			<li>Améliorations, corrections et ajouts au template.</li>
-			<li>Module de déplacement des unités. (85%)</li>
-			<li>Module de combat. (70%)</li>			
+			<li>Améliorations, corrections et ajouts au template.</li>		
 			<li>Ajout de bâtiments.</li>
-			<li>Amélioration du serveur de jeu en backend (gérer déplacements, combats, ...) </li>
+			<li>Module de messagerie.</li>
+			<li>Amélioration du système de rapport de combat.</li>
+			<li>Correction d'un bug sur la carte.</li>
 		</ul>
 		
 		<h4>Nouveauté : </h4>
 		<ul>
-			<li>Ajout d'unités.</li>
-			<li>Déplacement sur la carte implémenté.</li>
-			<li>Gestion des villages ( possibilité d'en posséder plusieurs ) implémentée.</li>
-			<li>Création du serveur de jeu backend.</li>
+			<li>Carte du village implémenté.</li>
+			<li>Ajout d'images pour les bâtiments.</li>
+			<li>Gestion des combats implémentée.</li>
+			<li>Début de la gestion de la messagerie et des rapports de combat.</li>
+			<li>Modification au niveau du template.</li>
+			<li>Pas mal d'autres choses et de bugs résolus ...</li>
 		</ul>
 	</div>
 </div>

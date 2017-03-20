@@ -32,14 +32,14 @@
 		if(x < 1)
 			x = 1;
 		
-		if(x > carteX)
-			x = carteX;
+		if(x > carteX -5)
+			x = carteX -5;
 		
 		if(y < 1)
 			y = 1;
 		
-		if(y > carteY)
-			y = carteY;
+		if(y > carteY - 5)
+			y = carteY - 5;
 		
 		
 		if(minX < 1)
@@ -202,6 +202,7 @@
 							maxX = x+5;					
 							verifXY();
 							loadMapBd();
+							console.log(x + " " + y);
 						}
 					}
 				}

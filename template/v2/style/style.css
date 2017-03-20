@@ -97,6 +97,14 @@ body
 	padding-top: 8px;
 }
 
+#slogan
+{
+	width: 600px;
+	text-align: center;
+	font: bold 25px "Trajan", Sans-Serif;
+	margin: auto;
+}
+
 .footer
 {
 	position: fixed;
@@ -372,7 +380,7 @@ body
 
 .include
 {
-	padding: 30px;
+	padding: 10px;
 }
 
 /*AccueilView */
@@ -533,6 +541,7 @@ body
 {
 	width: 52px;
 	height: 100%;
+	max-height: 1200px;
 	text-align: center;
 	color: #cbd9de;
 	position: absolute;
@@ -560,9 +569,10 @@ body
 .menuBoucliers div
 {	
 	margin: auto;
-	margin-top: 25px;
+	margin-top: 30px;
 	width: 40px;
 	height: 44px;
+	margin-left: 10px;
 }
 
 
@@ -825,15 +835,18 @@ body
 /*carte*/
 #divMapLayout
 {
-	margin-top: 50px;
-	margin-bottom: 15px;
 	position: relative;
+	width: 700px;
+	margin:auto;
+	margin-top: 50px;
+	margin-bottom: 40px;
 }
 
 #divMap
 {
 	overflow: auto;
 }
+
 #tableCarte
 {	
 	margin: auto;
@@ -911,7 +924,7 @@ body
 	width:35px;
 	height: 35px;
 	position:absolute;
-	left:-15px;
+	left:-28px;
 	top:330px;
 	background-image:url(../images/arrowMap.png);
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
@@ -933,7 +946,7 @@ body
 	width:35px;
 	height: 35px;
 	position:absolute;
-	right:-15px;
+	right: -28px;
 	top:330px;
 	background-image:url(../images/arrowMap.png);
 	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
@@ -1354,6 +1367,8 @@ body
 	border: none;
 }
 
+
+/*village*/
 .layoutVillage
 {
 	position: relative;
@@ -1417,7 +1432,6 @@ body
 	color: white;
 	background-color: orange;
 }
-
 
 .niveauBatCarte
 {

@@ -400,8 +400,6 @@ while(1)
 	if(!$run)
 		runServ();	
 	sleep(1);
-	flush();
-	ob_flush();
 }
 
 
