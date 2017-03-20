@@ -233,6 +233,7 @@ body
 .mainLayout
 {
 	width: 100%;
+	min-height: 620px;
 	background-image:url(../images/fondPage.png);
 	position: relative;
 	padding-top: 10px;
@@ -531,7 +532,7 @@ body
 .menuBoucliers
 {
 	width: 52px;
-	height: 620px;
+	height: 100%;
 	text-align: center;
 	color: #cbd9de;
 	position: absolute;
@@ -603,7 +604,7 @@ body
 .knight2
 {
 	position: absolute;
-	top: 545px;
+	bottom: 20px;
 	left: -50px;
 	width: 100px;
 }
