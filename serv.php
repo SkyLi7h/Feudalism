@@ -21,7 +21,10 @@ function runServ()
 			if($deplacement["tpsArrive"] <= $maintenant)
 			{
 					
-				$joueurDestMsg = $bdd->query('SELECT * FROM village WHERE villageId = '.$deplacement["idVillageOri"]);
+				$joueurOriMsg = $bdd->query('SELECT * FROM village WHERE villageId = '.$deplacement["idVillageOri"]);
+				$joueurOriMsg = $joueurOriMsg->fetch();
+				
+				$joueurDestMsg = $bdd->query('SELECT * FROM village WHERE villageId = '.$deplacement["idVillageDest"]);
 				$joueurDestMsg = $joueurDestMsg->fetch();
 				
 				if($deplacement["type"] == "combat")
@@ -149,7 +152,7 @@ function runServ()
 							$restVillageDestMetal = $villageDest->getMetal() - $butainMetal;
 						}					
 						
-						$type = "deplacement";
+						$type = "retourPillage";
 						
 						$distance = calculDistance($deplacement["idVillageOri"], $deplacement["idVillageDest"]);
 						$tempsArrive = time() + ($distance * $TEMPSDEPCASE);
@@ -161,6 +164,10 @@ function runServ()
 						
 						$sujet = "Rapport de combat : " . $villageDest->getNom();
 						$message = "Vous avez gagné !";
+						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurOriMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
+						
+						$sujet = "Pillage provenant de : " . $joueurOriMsg["nom"];
+						$message = "Vous avez perdu !";
 						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurDestMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
 					}
 					else if($combat < 0) //Defenseur gagne

@@ -1438,20 +1438,21 @@ body
 {
 	width: 300px;
 	margin: auto;
-	text-align: center;
-	font: 12px "Trajan";	
+	text-align: center;	
 	border-collapse:collapse;
-	
 }
 
 .recapGain th
 {
 	border-bottom: 3px solid black;
+	background-color: none;
+	font: 15px "Trajan";
 }
 
 .recapGain td
 {
 	border-bottom: 1px solid black;
+	font: 11px "Trajan";
 }
 
 /* armee */
@@ -1471,6 +1472,7 @@ body
 	text-align: center;
 	line-height: 45px;
 	font-size: 13px;
+	margin-top: 50px;
 }
 
 .recapAttaquesEntrantes
@@ -1478,6 +1480,20 @@ body
 	width: 600px;
 	margin:auto;
 	text-align: center;
+	border-collapse:collapse;
+}
+
+.recapAttaquesEntrantes th
+{
+	border-bottom: 3px solid black;
+	font: bold 14px "Trajan", Sans-Serif;
+}
+
+.recapAttaquesEntrantes td
+{
+	border-bottom: 1px solid black;
+	background-color: #FCF7C2;
+	font: bold 11px "Trajan", Sans-Serif;
 }
 
 .recapAttaquesSortantes
@@ -1485,4 +1501,40 @@ body
 	width: 600px;
 	margin:auto;
 	text-align: center;
+	border-collapse:collapse;
+}
+
+.recapAttaquesSortantes th
+{
+	border-bottom: 3px solid black;
+	font: bold 14px "Trajan", Sans-Serif;
+}
+
+.recapAttaquesSortantes td
+{
+	border-bottom: 1px solid black;
+	background-color: #FCF7C2;
+	font: bold 11px "Trajan", Sans-Serif;
+}
+
+
+.recapRetourCombat
+{
+	width: 600px;
+	margin:auto;
+	text-align: center;
+	border-collapse:collapse;
+}
+
+.recapRetourCombat th
+{
+	border-bottom: 3px solid black;
+	font: bold 14px "Trajan", Sans-Serif;
+}
+
+.recapRetourCombat td
+{
+	border-bottom: 1px solid black;
+	background-color: #FCF7C2;
+	font: bold 11px "Trajan", Sans-Serif;
 }
