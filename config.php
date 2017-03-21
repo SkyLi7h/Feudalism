@@ -1,5 +1,5 @@
 ﻿<?php
-
+	date_default_timezone_set("Europe/Brussels");
 	//https://remusprites.carbonmade.com/
 	//http://opengameart.org/content/galata-tower-bleeds-game-art
 
@@ -23,9 +23,9 @@
 	//Base de données
 	$DB_ACCESS = "MYSQL"; //Type d'accès aux données
 	$HOST = "localhost";
-	$DBNAME = "lastimperium";
+	$DBNAME = "feudalism";
 	$LOGIN = "root";
-	$PASS = "";
+	$PASS = "19Nino552886!";
 	
 	//Bâtiments
 		$BATIMENTS = [];

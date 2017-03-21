@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Europe/Brussels");
 if (! @include_once("config.php")) 
 		throw new Exception ("config.php est introuvable !");
 	
