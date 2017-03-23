@@ -1553,3 +1553,38 @@ body
 	background-color: #FCF7C2;
 	font: bold 11px "Trajan", Sans-Serif;
 }
+
+/*rapport combat*/
+.RapportRecapUnite
+{
+	width: 400px;
+	text-align: center;
+	margin: auto;
+	font: bold 12px "Trajan", Sans-Serif;
+	margin-top: 40px;
+	border-collapse:collapse;
+}
+
+.RapportRecapUnite td
+{
+	border-bottom: 1px solid black;
+}
+
+#perte
+{
+	color: red;
+}
+
+#titreRapportCombat
+{
+	width: 320px;
+	height: 33px;
+	background-image:url(../images/tealStripe.png);
+    background-position: center top;
+    background-size: 100% auto; 
+	font: bold 13px "Trajan", Sans-Serif;
+	color: #cbd9de;
+	text-align: center;
+	padding-top: 12px;
+	margin: auto;
+}

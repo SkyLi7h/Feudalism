@@ -163,7 +163,7 @@ function runServ()
 						$bdd->query("INSERT INTO deplacement(type, idVillageOri, idVillageDest, tpsArrive, paysans, lancePierre, guerrier, archer, hache, piquier, hommeDeMain, chevalier, catapulte, bois, pierre, metal) VALUES('". $type ."', ". $deplacement["idVillageDest"] .", ". $deplacement["idVillageOri"] .", ". $tempsArrive .", ". $paysansRest .", ". $lancePierreRest .", ". $guerrierRest .", ". $archerRest .", ". $hacheRest .", ". $piquierRest .", ". $hommeDeMainRest .", ". $chevalierRest .", ". $catapulteRest .", ". $butainBois .", ". $butainPierre .", ". $butainMetal .")");
 						
 						//Rapport tab attaquant
-						$rapportTabAtk = '<table class="recapUnite">';
+						$rapportTabAtk = '<table class="RapportRecapUnite">';
 							$rapportTabAtk .= '<tr>';
 								$rapportTabAtk .= '<td>Unité :</td>';
 										foreach ($UNITES as $unite)
@@ -210,7 +210,7 @@ function runServ()
 						$rapportTabAtk .= '</table>';
 						
 						//Rapport tab defenseur
-						$rapportTabDef = '<table class="recapUnite">';
+						$rapportTabDef = '<table class="RapportRecapUnite">';
 							$rapportTabDef .= '<tr>';
 								$rapportTabDef .= '<td>Unité :</td>';
 										foreach ($UNITES as $unite)
@@ -232,15 +232,15 @@ function runServ()
 							$rapportTabDef .= '</tr>';
 							$rapportTabDef .= '<tr>';
 								$rapportTabDef .= '<td>Perte :</td>';
-								$rapportTabDef .= '<td>'. $villageDest->getPaysans() .'</td>';								
-								$rapportTabDef .= '<td>'. $villageDest->getLancePierre() .'</td>';								
-								$rapportTabDef .= '<td>'. $villageDest->getGuerrier() .'</td>';								
-								$rapportTabDef .= '<td>'.  $villageDest->getArcher() .'</td>';								
-								$rapportTabDef .= '<td>'.  $villageDest->getHache() .'</td>';								
-								$rapportTabDef .= '<td>'.  $villageDest->getPiquier() .'</td>';								
-								$rapportTabDef .= '<td>'.  $villageDest->getHommeDeMain() .'</td>';								
-								$rapportTabDef .= '<td>'.  $villageDest->getChevalier() .'</td>';								
-								$rapportTabDef .= '<td>'.  $villageDest->getCatapulte() .'</td>';	
+								$rapportTabDef .= '<td id="perte">'. $villageDest->getPaysans() .'</td>';								
+								$rapportTabDef .= '<td id="perte">'. $villageDest->getLancePierre() .'</td>';								
+								$rapportTabDef .= '<td id="perte">'. $villageDest->getGuerrier() .'</td>';								
+								$rapportTabDef .= '<td id="perte">'.  $villageDest->getArcher() .'</td>';								
+								$rapportTabDef .= '<td id="perte">'.  $villageDest->getHache() .'</td>';								
+								$rapportTabDef .= '<td id="perte">'.  $villageDest->getPiquier() .'</td>';								
+								$rapportTabDef .= '<td id="perte">'.  $villageDest->getHommeDeMain() .'</td>';								
+								$rapportTabDef .= '<td id="perte">'.  $villageDest->getChevalier() .'</td>';								
+								$rapportTabDef .= '<td id="perte">'.  $villageDest->getCatapulte() .'</td>';	
 							$rapportTabDef .= '</tr>';
 							$rapportTabDef .= '<tr>';
 								$rapportTabDef .= '<td>Restant :</td>';
@@ -258,13 +258,15 @@ function runServ()
 						
 						//Construction rapport attaquant//
 						$sujet = "Rapport de combat : " . $villageDest->getNom();
-						$message = "Vous avez gagné !" . $rapportTabAtk . $rapportTabDef;
+						$titre = '<div id=\"titreRapportCombat\">Vous avez gagné</div>';
+						$message = $titre . $rapportTabAtk . $rapportTabDef;
 						
 						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurOriMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
 						
 						//Construction rapport def//
 						$sujet = "Pillage provenant de : " . $joueurOriMsg["nom"];
-						$message = "Vous avez perdu !" . $rapportTabAtk . $rapportTabDef;
+						$titre = '<div id=\"titreRapportCombat\">Vous avez perdu</div>';
+						$message = $titre . $rapportTabAtk . $rapportTabDef;
 						
 						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurDestMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
 					}
