@@ -65,12 +65,7 @@
 		
 		<h4>Nouveauté : </h4>
 		<ul>
-			<li>Carte du village implémenté.</li>
-			<li>Ajout d'images pour les bâtiments.</li>
-			<li>Gestion des combats implémentée.</li>
-			<li>Début de la gestion de la messagerie et des rapports de combat.</li>
-			<li>Modification au niveau du template.</li>
-			<li>Pas mal d'autres choses et de bugs résolus ...</li>
+			<li>Correction carte.</li>		
 		</ul>
 	</div>
 </div>
