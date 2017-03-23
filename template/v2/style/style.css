@@ -591,15 +591,15 @@ body
 	position: absolute;
 	width: 124px;
 	height: 38px;
-	top: 0px;
-	left: -125px;
+	top: -20px;
+	right: -40px;
 }
 
 .txtBouclier
 {
 	position: absolute;
-	top:9px;
-	left: -92px;
+	top:-11px;
+	left: -10px;
 	width: 60px;
 	height: 15px;
 	font: bold 12px "Trajan", Sans-Serif;
