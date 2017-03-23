@@ -14,217 +14,117 @@
 ?>
 	<script>
 	
+	var mx = <?php echo $donneesCoordCarte["x"]; ?>;
+	var my = <?php echo $donneesCoordCarte["y"]; ?>;
+	
 	var x = <?php echo $donneesCoordCarte["x"]; ?>;
 	var y = <?php echo $donneesCoordCarte["y"]; ?>;
 	
 	var carteX = <?php echo $CARTEX; ?>;
 	var carteY = <?php echo $CARTEY; ?>;
-				
-	var minX = x-5;
-	var minY = y-5;
-	var maxY = y+5;
-	var maxX = x+5;
 	
 	
-	function verifXY()
+	function verifPos()
 	{
+		if(x-5 < 0)
+		{
+			x = 6;
+		}
 		
-		if(x < 1)
-			x = 1;
+		if(x+5 > carteX)
+		{
+			x = carteX - 5;
+		}
 		
-		if(x > carteX -5)
-			x = carteX -5;
+		if(y-5 < 0)
+		{
+			y = 6;
+		}
 		
-		if(y < 1)
-			y = 1;
-		
-		if(y > carteY - 5)
+		if(y+5 > carteY)
+		{
 			y = carteY - 5;
-		
-		
-		if(minX < 1)
-		{
-			reste = 1 - minX;
-			minX = 1;
-			maxX += reste;
-		}
-		
-		if(minY < 1)
-		{
-			reste = 1 - minY;
-			minY = 1;
-			maxY += reste;
-		}
-
-		if(maxX > carteX)
-		{
-			reste = maxX - carteX;
-			maxX = carteX;
-			minX -= reste;
-		}
-		
-		if(maxY > carteY)
-		{
-			reste = maxY - carteY;
-			maxY = carteY;
-			minY -= reste;
 		}
 	}
-	
-	verifXY();
-
-	var carte = [];
 	
 	var loadEnCours = false;
 		
 	function loadMapBd()
 	{	
-			loadEnCours = true;
-			var xhrConnexion = new XMLHttpRequest();	
-			
-			xhrConnexion.open('POST', 'utils/loadMap.php');
-			xhrConnexion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			xhrConnexion.send('x=' + x + '&y=' + y);
-			
-			
-			xhrConnexion.addEventListener('readystatechange', function() {
-
-			if (xhrConnexion.readyState === XMLHttpRequest.DONE && xhrConnexion.status === 200) {	
-					
-					carte = JSON.parse(xhrConnexion.responseText);
-					
-					chargerCarte();
-			}
-
-			});		
+		loadEnCours = true;
+		var xhrConnexion = new XMLHttpRequest();	
+		
+		xhrConnexion.open('POST', 'utils/loadMap.php');
+		xhrConnexion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhrConnexion.send('x=' + x + '&y=' + y);
+		
+		
+		xhrConnexion.addEventListener('readystatechange', function() {
+	
+		if (xhrConnexion.readyState === XMLHttpRequest.DONE && xhrConnexion.status === 200) {						
+				document.getElementById("divMap").innerHTML = xhrConnexion.responseText;
+				$( function() {
+					var tooltips = $( "[title]" ).tooltip({
+					position: {
+						my: "left top",
+						at: "right+5 top-5",
+						collision: "none"
+					}
+					});
+				} );
+				loadEnCours = false;
+		}
+	
+		});		
 	}
-				
-		function chargerCarte()
-				{
-					var tableCarte = "<table cellspacing='0' id='tableCarte'>";
-					var img;
-					var onClick = "";
-					
-					for(var y = minY; y <= maxY; y++)
-					{
-						tableCarte += "<tr>";
-						ligne = carte[y];
-						
-
-						for(var x = minX; x <= maxX; x++)
-						{
-							onClick = "";							
-							
-							if(carte[y][x]["type"] == "plaine")		
-								img = "template/<?php echo $TEMPLATE;?>/images/carte/plaine.png";
-							if(carte[y][x]["type"] == "montagne")		
-								img = "template/<?php echo $TEMPLATE;?>/images/carte/moutain.png";
-							if(carte[y][x]["type"] == "foret")		
-								img = "template/<?php echo $TEMPLATE;?>/images/carte/forest.png";
-							if(carte[y][x]["type"] == "village")	
-								img = "template/<?php echo $TEMPLATE;?>/images/carte/village.png";
-												
-							if(carte[y][x]["type"] == "village")
-							{
-								onClick = "onclick='afficherVillage("+ carte[y][x]["joueurId"] +","+ carte[y][x]["villageId"] +",\""+ carte[y][x]["nom"] +"\");'";
-							}
-							
-							carte[y][x]["nom"] = carte[y][x]["nom"] + " x: " + x + " y: " + y;
-							
-							tableCarte += "<td "+ onClick +" style='background-image:url("+ img +"); -webkit-background-size: cover; background-size: cover;' title='"+ carte[y][x]["nom"] +"' id='tooltip'></td>";
-						}
-						
-						tableCarte += "</tr>";					
-					}
-					
-					
-					tableCarte += "</table>";
-					document.getElementById("divMap").innerHTML = tableCarte;
-					
-					$( function() {
-						var tooltips = $( "[title]" ).tooltip({
-						  position: {
-							my: "left top",
-							at: "right+5 top-5",
-							collision: "none"
-						  }
-						});
-					  } );
-					  
-					  loadEnCours = false;
-					  					
-					
-				}
 
 
 				
-				function moveUpMap()
-				{				
-					if(!loadEnCours)
-					{
-						if((y-5) > 1)
-						{
-							loadEnCours = true;
-							y -= 1;
-							minY = y-5;
-							maxY = y+5;							
-							verifXY();
-							loadMapBd();
-						}
-					}					
-				}
-				
-				function moveDownMap()
-				{
-					if(!loadEnCours)
-					{
-						if((y + 5) < carteY)
-						{
-							loadEnCours = true;
-							y += 1;
-							minY = y-5;
-							maxY = y+5;						
-							verifXY();
-							loadMapBd();
-						}
-					}
-				}
-				
-				function moveLeftMap()
-				{
-					if(!loadEnCours)
-					{
-						if((x-5) > 1)
-						{	
-							loadEnCours = true;
-							x -= 1;
-							minX = x-5;
-							maxX = x+5;					
-							verifXY();
-							loadMapBd();
-							console.log(x + " " + y);
-						}
-					}
-				}
-				
-				function moveRightMap()
-				{
-						
-					if(!loadEnCours)
-					{
-						
-						if((x + 5) < carteX)
-						{
-							loadEnCours = true;
-							x += 1;
-							minX = x-5;
-							maxX = x+5;															
-							verifXY();
-							loadMapBd();
-						}					
-					}
-					
-				}
+	function moveUpMap()
+	{				
+		if(!loadEnCours)
+		{
+			loadEnCours = true;
+			y -= 3;							
+			verifPos();
+			loadMapBd();
+		}					
+	}
+
+	function moveDownMap()
+	{
+		if(!loadEnCours)
+		{
+			loadEnCours = true;
+			y += 3;					
+			verifPos();
+			loadMapBd();
+		}
+	}
+
+	function moveLeftMap()
+	{
+		if(!loadEnCours)
+		{
+			loadEnCours = true;
+			x -= 3;				
+			verifPos();
+			loadMapBd();
+		}
+	}
+
+	function moveRightMap()
+	{
+			
+		if(!loadEnCours)
+		{						
+			loadEnCours = true;
+			x += 3;														
+			verifPos();
+			loadMapBd();				
+		}
+		
+	}
 				
 
 	</script>
@@ -262,6 +162,7 @@
 </div>
 
 <script>
+	verifPos();
 	loadMapBd();
 
 	function afficherVillage(joueurId, villageId, nom)

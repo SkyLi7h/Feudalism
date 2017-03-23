@@ -19,89 +19,56 @@
 	$joueurDao = new joueurDao();
 	$villageDao = new villageDao();
 	
+	$villageCarte = new villageDao();
+	
 	$x = strip_tags(trim($_POST["x"]));
 	$y = strip_tags(trim($_POST["y"]));
 		
 	$xMin = $x - 5;
-	$xMax = $x + 6;
+	$xMax = $x + 5;
 	$yMin = $y - 5;
-	$yMax = $y + 6;
-		
-	if($xMin < 1)
-	{
-		$xMin = 1;
-		$xMax = 11;
-	}
-	
-	if($yMin < 1)
-	{
-		$yMin = 1;
-		$yMax = 11;
-	}
-		
-	if($xMax > $CARTEX)
-	{
-		$xMax = $CARTEX;
-		$xMin = $CARTEX - 11;
-	}
-	
-	if($yMax > $CARTEY)
-	{
-		$yMax = $CARTEY;
-		$yMin = $CARTEY - 11;
-	}
+	$yMax = $y + 5;
 
-	$carteDonnees = $bdd->query('SELECT * FROM carte WHERE x BETWEEN '. $xMin  .' AND '. $xMax  .' AND y BETWEEN '. $yMin  .' AND '. $yMax);
+	$carteDonnees = $bdd->query('SELECT * FROM carte WHERE x BETWEEN '. $xMin  .' AND '. $xMax  .' AND y BETWEEN '. $yMin  .' AND '. $yMax .' order by y ASC');
 	
-	$minX =99999;
-	$minY =99999;
-	$maxX = 0;
-	$maxY = 0;
+	$carte = "<table cellspacing='0' id='tableCarte'>";
 	
-	$carte = [];
-	
-	$villageCarte = new villageDao();
-	
-	while($donnees = $carteDonnees->fetch())
+	for($yHtml = 0; $yHtml < 11; $yHtml++)
 	{
-		if($donnees["y"] < $minY)
+		$carte .= "<tr>";
+		for($xHtml = 0; $xHtml < 11; $xHtml++)
 		{
-			$minY = $donnees["y"];
-		}
-		if($donnees["x"] < $minX)
-		{
-			$minX = $donnees["x"];
-		}
-		
-		if($donnees["y"] > $maxY)
-		{
-			$maxY = $donnees["y"];
-		}
-		if($donnees["x"] > $maxX)
-		{
-			$maxX = $donnees["x"];
-		}
-		
-		if(!isset($carte[$donnees["y"]]))
-			$carte[$donnees["y"]] = [];
-				
-		$carte[$donnees["y"]][$donnees["x"]] = [];
-		
-		$carte[$donnees["y"]][$donnees["x"]]["type"] = $donnees["type"];
-		
-		if($donnees["type"] == "village")
+			$onClick = "";
+			$donnees = $carteDonnees->fetch();
+	
+			
+			
+			if($donnees["type"] == "plaine")		
+				$img = "template/".$TEMPLATE."/images/carte/plaine.png";
+			if($donnees["type"] == "montagne")		
+				$img = "template/".$TEMPLATE."/images/carte/moutain.png";
+			if($donnees["type"] == "foret")		
+				$img = "template/".$TEMPLATE."/images/carte/forest.png";
+			if($donnees["type"] == "village")	
+				$img = "template/".$TEMPLATE."/images/carte/village.png";
+												
+			if($donnees["type"] == "village")
 			{
 				$village = $villageCarte->getVillageById($donnees["villageId"]);
-				$carte[$donnees["y"]][$donnees["x"]]["villageId"] = $donnees["villageId"];
-				$carte[$donnees["y"]][$donnees["x"]]["joueurId"] = $village->getJoueurId();
-				$carte[$donnees["y"]][$donnees["x"]]["nom"] = $village->getNom();
+				$onClick = "onclick='afficherVillage(". $village->getJoueurId() .",". $village->getVillageId() .",\"".$village->getNom()."\");'";
+				$titre = $village->getNom() . " x: " . $donnees["x"] . " y: " . $donnees["y"];
 			}
-		else
+			else
 			{
-				$carte[$donnees["y"]][$donnees["x"]]["nom"] = $donnees["type"];
+				$titre = $donnees["type"] . " x: " . $donnees["x"] . " y: " . $donnees["y"];
 			}
-	}
+			
+			$carte .= "<td ". $onClick ." style='background-image:url(". $img ."); -webkit-background-size: cover; background-size: cover;' title='". $titre ."' id='tooltip'></td>";
+		}
+		$carte .= "</tr>";
+	}	
+	$carte .= "</table>";
 	
-	echo json_encode($carte);
+	echo $carte;
 
 ?>
