@@ -2,6 +2,7 @@
 	date_default_timezone_set("Europe/Brussels");
 	//https://remusprites.carbonmade.com/
 	//http://opengameart.org/content/galata-tower-bleeds-game-art
+	//http://stackoverflow.com/questions/1490563/why-doesnt-jquery-fadein-work-with-html
 
 	//Fichier de configuration
 	$NAME_APPLICATION = "Last imperium"; //Nom du site

@@ -1588,3 +1588,17 @@ body
 	padding-top: 12px;
 	margin: auto;
 }
+
+#SousTitreRapportCombat
+{
+	width: 250px;
+	height: 28px;
+	background-image:url(../images/redStripe.png);
+    background-position: center top;
+    background-size: 100% auto; 
+	font: bold 12px "Trajan", Sans-Serif;
+	color: #cbd9de;
+	text-align: center;
+	padding-top: 8px;
+	margin: auto;
+}

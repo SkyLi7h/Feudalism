@@ -259,6 +259,11 @@ function runServ()
 						//Construction rapport attaquant//
 						$sujet = "Rapport de combat : " . $villageDest->getNom();
 						$titre = '<div id=\"titreRapportCombat\">Vous avez gagné</div>';
+						$sousTitre = '<div id=\"sousTitreRapportCombat\">'.$joueurOriMsg["nom"].'</div>';
+						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/wood.png"><span id="bois"><?php echo floor($village->getBois());?></span>
+						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/stone.png"><span id="pierre"><?php echo floor($village->getPierre());?></span>
+						<img width="25px" src="template/<?php echo $TEMPLATE; ?>/images/ressources/iron.png"><span id="metal"><?php echo floor($village->getMetal());?></span>
+						$gain = '';
 						$message = $titre . $rapportTabAtk . $rapportTabDef;
 						
 						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurOriMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
@@ -266,6 +271,7 @@ function runServ()
 						//Construction rapport def//
 						$sujet = "Pillage provenant de : " . $joueurOriMsg["nom"];
 						$titre = '<div id=\"titreRapportCombat\">Vous avez perdu</div>';
+						$sousTitre = '<div id=\"sousTitreRapportCombat\">'. $joueurDestMsg["nom"] .'</div>';
 						$message = $titre . $rapportTabAtk . $rapportTabDef;
 						
 						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurDestMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
