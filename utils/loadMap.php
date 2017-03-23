@@ -29,7 +29,7 @@
 	$yMin = $y - 5;
 	$yMax = $y + 5;
 
-	$carteDonnees = $bdd->query('SELECT * FROM carte WHERE x BETWEEN '. $xMin  .' AND '. $xMax  .' AND y BETWEEN '. $yMin  .' AND '. $yMax .' order by y ASC');
+	$carteDonnees = $bdd->query('SELECT * FROM carte WHERE x BETWEEN '. $xMin  .' AND '. $xMax  .' AND y BETWEEN '. $yMin  .' AND '. $yMax .' ORDER BY y ASC, x ASC');
 	
 	$carte = "<table cellspacing='0' id='tableCarte'>";
 	

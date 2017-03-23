@@ -10,7 +10,7 @@ $bdd = new PDO('mysql:host='.$HOST.';dbname='.$DBNAME.';charset=utf8', $LOGIN, $
 $run = false;
 function runServ()
 {
-	GLOBAL $bdd, $UNITES, $run, $TEMPSDEPCASE;
+	GLOBAL $bdd, $UNITES, $run, $TEMPSDEPCASE, $TEMPLATE;
 	$run = true;
 	$listDeplacements = $bdd->query('SELECT * FROM deplacement');
 
@@ -68,8 +68,7 @@ function runServ()
 					
 					//Si attaquant gagne
 					if($combat > 0)
-					{
-						
+					{						
 						//Pourcentage force restant
 						$pourcRest = $combat / $forceAttaquant;
 						
@@ -95,7 +94,7 @@ function runServ()
 						$capaciteButain += $UNITES["HommeDeMain"]["TRA"]  * $deplacement["hommeDeMain"];
 						$capaciteButain += $UNITES["Chevalier"]["TRA"]  * $deplacement["chevalier"];
 						$capaciteButain += $UNITES["Catapulte"]["TRA"]  * $deplacement["catapulte"];
-						
+																
 						//Calcul butain////////
 						if(($villageDest->getBois() + $villageDest->getPierre() + $villageDest->getMetal()) <= $capaciteButain)
 						{
@@ -163,12 +162,110 @@ function runServ()
 						
 						$bdd->query("INSERT INTO deplacement(type, idVillageOri, idVillageDest, tpsArrive, paysans, lancePierre, guerrier, archer, hache, piquier, hommeDeMain, chevalier, catapulte, bois, pierre, metal) VALUES('". $type ."', ". $deplacement["idVillageDest"] .", ". $deplacement["idVillageOri"] .", ". $tempsArrive .", ". $paysansRest .", ". $lancePierreRest .", ". $guerrierRest .", ". $archerRest .", ". $hacheRest .", ". $piquierRest .", ". $hommeDeMainRest .", ". $chevalierRest .", ". $catapulteRest .", ". $butainBois .", ". $butainPierre .", ". $butainMetal .")");
 						
+						//Rapport tab attaquant
+						$rapportTabAtk = '<table class="recapUnite">';
+							$rapportTabAtk .= '<tr>';
+								$rapportTabAtk .= '<td>Unité :</td>';
+										foreach ($UNITES as $unite)
+											{
+												$rapportTabAtk.= '<td id="tooltip" title="'. $unite["nom"] .'"><img width="15px" src="template/'. $TEMPLATE .'/images/unites/'.$unite["img"].'"></td>';
+											}
+							$rapportTabAtk .= '</tr>';
+							$rapportTabAtk .= '<tr>';
+								$rapportTabAtk .= '<td>Nombre :</td>';
+								$rapportTabAtk .= '<td>'. $deplacement["paysans"] .'</td>';								
+								$rapportTabAtk .= '<td>'. $deplacement["lancePierre"] .'</td>';								
+								$rapportTabAtk .= '<td>'. $deplacement["guerrier"] .'</td>';								
+								$rapportTabAtk .= '<td>'. $deplacement["archer"] .'</td>';								
+								$rapportTabAtk .= '<td>'. $deplacement["hache"] .'</td>';								
+								$rapportTabAtk .= '<td>'. $deplacement["piquier"] .'</td>';								
+								$rapportTabAtk .= '<td>'. $deplacement["hommeDeMain"] .'</td>';								
+								$rapportTabAtk .= '<td>'. $deplacement["chevalier"] .'</td>';								
+								$rapportTabAtk .= '<td>'. $deplacement["catapulte"] .'</td>';								
+							$rapportTabAtk .= '</tr>';
+							$rapportTabAtk .= '<tr>';
+								$rapportTabAtk .= '<td>Perte :</td>';
+								$rapportTabAtk .= '<td id="perte">'. ($deplacement["paysans"] - $paysansRest) .'</td>';								
+								$rapportTabAtk .= '<td id="perte">'. ($deplacement["lancePierre"] - $lancePierreRest) .'</td>';								
+								$rapportTabAtk .= '<td id="perte">'. ($deplacement["guerrier"] - $guerrierRest).'</td>';								
+								$rapportTabAtk .= '<td id="perte">'. ($deplacement["archer"] - $archerRest).'</td>';								
+								$rapportTabAtk .= '<td id="perte">'. ($deplacement["hache"] - $hacheRest).'</td>';								
+								$rapportTabAtk .= '<td id="perte">'. ($deplacement["piquier"] - $piquierRest).'</td>';								
+								$rapportTabAtk .= '<td id="perte">'. ($deplacement["hommeDeMain"] - $hommeDeMainRest).'</td>';								
+								$rapportTabAtk .= '<td id="perte">'. ($deplacement["chevalier"] - $chevalierRest).'</td>';								
+								$rapportTabAtk .= '<td id="perte">'. ($deplacement["catapulte"] - $catapulteRest).'</td>';								
+							$rapportTabAtk .= '</tr>';
+							$rapportTabAtk .= '<tr>';
+								$rapportTabAtk .= '<td>Restant :</td>';
+								$rapportTabAtk .= '<td>'. $paysansRest .'</td>';								
+								$rapportTabAtk .= '<td>'. $lancePierreRest .'</td>';								
+								$rapportTabAtk .= '<td>'. $guerrierRest.'</td>';								
+								$rapportTabAtk .= '<td>'. $archerRest.'</td>';								
+								$rapportTabAtk .= '<td>'. $hacheRest.'</td>';								
+								$rapportTabAtk .= '<td>'. $piquierRest.'</td>';								
+								$rapportTabAtk .= '<td>'. $hommeDeMainRest.'</td>';								
+								$rapportTabAtk .= '<td>'. $chevalierRest.'</td>';								
+								$rapportTabAtk .= '<td>'. $catapulteRest.'</td>';								
+							$rapportTabAtk .= '</tr>';
+						$rapportTabAtk .= '</table>';
+						
+						//Rapport tab defenseur
+						$rapportTabDef = '<table class="recapUnite">';
+							$rapportTabDef .= '<tr>';
+								$rapportTabDef .= '<td>Unité :</td>';
+										foreach ($UNITES as $unite)
+											{
+												$rapportTabDef.= '<td id="tooltip" title="'. $unite["nom"] .'"><img width="15px" src="template/'. $TEMPLATE .'/images/unites/'.$unite["img"].'"></td>';
+											}
+							$rapportTabDef .= '</tr>';
+							$rapportTabDef .= '<tr>';
+								$rapportTabDef .= '<td>Nombre :</td>';
+								$rapportTabDef .= '<td>'. $villageDest->getPaysans() .'</td>';								
+								$rapportTabDef .= '<td>'. $villageDest->getLancePierre() .'</td>';								
+								$rapportTabDef .= '<td>'. $villageDest->getGuerrier() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getArcher() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getHache() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getPiquier() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getHommeDeMain() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getChevalier() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getCatapulte() .'</td>';								
+							$rapportTabDef .= '</tr>';
+							$rapportTabDef .= '<tr>';
+								$rapportTabDef .= '<td>Perte :</td>';
+								$rapportTabDef .= '<td>'. $villageDest->getPaysans() .'</td>';								
+								$rapportTabDef .= '<td>'. $villageDest->getLancePierre() .'</td>';								
+								$rapportTabDef .= '<td>'. $villageDest->getGuerrier() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getArcher() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getHache() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getPiquier() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getHommeDeMain() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getChevalier() .'</td>';								
+								$rapportTabDef .= '<td>'.  $villageDest->getCatapulte() .'</td>';	
+							$rapportTabDef .= '</tr>';
+							$rapportTabDef .= '<tr>';
+								$rapportTabDef .= '<td>Restant :</td>';
+								$rapportTabDef .= '<td>0</td>';								
+								$rapportTabDef .= '<td>0</td>';								
+								$rapportTabDef .= '<td>0</td>';								
+								$rapportTabDef .= '<td>0</td>';							
+								$rapportTabDef .= '<td>0</td>';					
+								$rapportTabDef .= '<td>0</td>';							
+								$rapportTabDef .= '<td>0</td>';						
+								$rapportTabDef .= '<td>0</td>';				
+								$rapportTabDef .= '<td>0</td>';							
+							$rapportTabDef .= '</tr>';
+						$rapportTabDef .= '</table>';
+						
+						//Construction rapport attaquant//
 						$sujet = "Rapport de combat : " . $villageDest->getNom();
-						$message = "Vous avez gagné !";
+						$message = "Vous avez gagné !" . $rapportTabAtk . $rapportTabDef;
+						
 						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurOriMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
 						
+						//Construction rapport def//
 						$sujet = "Pillage provenant de : " . $joueurOriMsg["nom"];
-						$message = "Vous avez perdu !";
+						$message = "Vous avez perdu !" . $rapportTabAtk . $rapportTabDef;
+						
 						$bdd->query("INSERT INTO message(joueurOri, joueurDest, sujet, message, temps, type) VALUES(0, ". $joueurDestMsg["joueurId"] .", '". $sujet ."', '". $message ."', ". time() .", 'rapportCombat')");
 					}
 					else if($combat < 0) //Defenseur gagne

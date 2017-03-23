@@ -12,7 +12,7 @@
 	$AUTEUR = "FERRER LUCAS";
 	$MOTSCLES = "jeu, jeux, navigateur, stratégie, role-play, mmorpg, gratuit, game, combat, guerre, alliance, humain, orc, elfe, multijoueur";
 	$DEBUG = false; //DEBUG MODE
-	$TPSMAXCO = 60*5; //5 minutes
+	$TPSMAXCO = 60*15; //5 minutes
 	$VITESSE = 1;
 	$MAINTENANCE = false;
 	$INSCRIPTIONFERMEE = false;
